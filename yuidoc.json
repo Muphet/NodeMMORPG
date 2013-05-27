@@ -1,0 +1,9 @@
+{
+    "name": "NodeMMORPG",
+    "description": "Super-speedup canvas library!",
+    "version": "0.0.1",
+    "url": "http://www.github.com/ilmattodel93/NodeMMORPG",
+    "options": {
+        "outdir": "docs"
+    }
+}

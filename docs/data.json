@@ -1,0 +1,302 @@
+{
+    "project": {
+        "name": "NodeMMORPG",
+        "description": "Super-speedup canvas library!",
+        "version": "0.0.1",
+        "url": "http://www.github.com/ilmattodel93/NodeMMORPG"
+    },
+    "files": {
+        "lib\\Client\\InputElement.js": {
+            "name": "lib\\Client\\InputElement.js",
+            "modules": {},
+            "classes": {
+                "InputElement": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\Client\\ResponsiveStage.js": {
+            "name": "lib\\Client\\ResponsiveStage.js",
+            "modules": {},
+            "classes": {
+                "ResponsiveStage": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "InputElement": {
+            "name": "InputElement",
+            "shortname": "InputElement",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Client\\InputElement.js",
+            "line": 34,
+            "description": "<b>This class is still experimental, and more advanced use is likely to be buggy. Please report bugs.</b>\n\nA DOMElement allows you to associate a HTMLElement with the display list. It will be transformed\nwithin the DOM as though it is child of the {{#crossLink \"Container\"}}{{/crossLink}} it is added to. However, it is\nnot rendered to canvas, and as such will retain whatever z-index it has relative to the canvas (ie. it will be\ndrawn in front of or behind the canvas).\n\nThe position of a DOMElement is relative to their parent node in the DOM. It is recommended that\nthe DOM Object be added to a div that also contains the canvas so that they share the same position\non the page.\n\nDOMElement is useful for positioning HTML elements over top of canvas content, and for elements\nthat you want to display outside the bounds of the canvas. For example, a tooltip with rich HTML\ncontent.\n\n<h4>Mouse Interaction</h4>\n\nDOMElement instances are not full EaselJS display objects, and do not participate in EaselJS mouse\nevents or support methods like hitTest. To get mouse events from a DOMElement, you must instead add handlers to\nthe htmlElement (note, this does not support EventDispatcher)\n\n     var domElement = new createjs.DOMElement(htmlElement);\n     domElement.htmlElement.onclick = function() {\n         console.log(\"clicked\");\n     }",
+            "extends": "DisplayObject",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "htmlElement",
+                    "description": "A reference or id for the DOM element to manage.",
+                    "type": "HTMLElement"
+                }
+            ]
+        },
+        "ResponsiveStage": {
+            "name": "ResponsiveStage",
+            "shortname": "ResponsiveStage",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Client\\ResponsiveStage.js",
+            "line": 2,
+            "description": "An extension to easeljs Stage, it resizes itself, and it takes a max_width and max_height parameter.",
+            "extends": "Stage",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "element",
+                    "description": "Stage HTML Element.",
+                    "type": "HTMLElement"
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 72,
+            "description": "The DOM object to manage.",
+            "itemtype": "property",
+            "name": "htmlElement",
+            "type": "HTMLElement",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 80,
+            "itemtype": "property",
+            "name": "_oldMtx",
+            "access": "protected",
+            "tagname": "",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 86,
+            "itemtype": "property",
+            "name": "_oldVisible",
+            "access": "protected",
+            "tagname": "",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 93,
+            "itemtype": "property",
+            "name": "DisplayObject_initialize",
+            "type": "Function",
+            "access": "private",
+            "tagname": "",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 100,
+            "description": "Initialization method.",
+            "itemtype": "method",
+            "name": "initialize",
+            "access": "protected",
+            "tagname": "",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 117,
+            "description": "Returns true or false indicating whether the display object would be visible if drawn to a canvas.\nThis does not account for whether it would be visible within the boundaries of the stage.\nNOTE: This method is mainly for internal use, though it may be useful for advanced uses.",
+            "itemtype": "method",
+            "name": "isVisible",
+            "return": {
+                "description": "Boolean indicating whether the display object would be visible if drawn to a canvas",
+                "type": "Boolean"
+            },
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 128,
+            "description": "Draws the display object into the specified context ignoring it's visible, alpha, shadow, and transform.\nReturns true if the draw was handled (useful for overriding functionality).\nNOTE: This method is mainly for internal use, though it may be useful for advanced uses.",
+            "itemtype": "method",
+            "name": "draw",
+            "params": [
+                {
+                    "name": "ctx",
+                    "description": "The canvas 2D context object to draw into.",
+                    "type": "CanvasRenderingContext2D"
+                },
+                {
+                    "name": "ignoreCache",
+                    "description": "Indicates whether the draw operation should ignore any current cache.\nFor example, used for drawing the cache (to prevent it from simply drawing an existing cache back\ninto itself).",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 159,
+            "description": "Not applicable to DOMElement.",
+            "itemtype": "method",
+            "name": "cache",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 165,
+            "description": "Not applicable to DOMElement.",
+            "itemtype": "method",
+            "name": "uncache",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 171,
+            "description": "Not applicable to DOMElement.",
+            "itemtype": "method",
+            "name": "updateCache",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 177,
+            "description": "Not applicable to DOMElement.",
+            "itemtype": "method",
+            "name": "hitArea",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 183,
+            "description": "Not applicable to DOMElement.",
+            "itemtype": "method",
+            "name": "localToGlobal",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 189,
+            "description": "Not applicable to DOMElement.",
+            "itemtype": "method",
+            "name": "globalToLocal",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 195,
+            "description": "Not applicable to DOMElement.",
+            "itemtype": "method",
+            "name": "localToLocal",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 201,
+            "description": "DOMElement cannot be cloned. Throws an error.",
+            "itemtype": "method",
+            "name": "clone",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 209,
+            "description": "Returns a string representation of this object.",
+            "itemtype": "method",
+            "name": "toString",
+            "return": {
+                "description": "a string representation of the instance.",
+                "type": "String"
+            },
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 218,
+            "description": "Interaction events should be added to `htmlElement`, and not the DOMElement instance, since DOMElement instances\nare not full EaselJS display objects and do not participate in EaselJS mouse events.",
+            "itemtype": "event",
+            "name": "click",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 224,
+            "description": "Interaction events should be added to `htmlElement`, and not the DOMElement instance, since DOMElement instances\nare not full EaselJS display objects and do not participate in EaselJS mouse events.",
+            "itemtype": "event",
+            "name": "dblClick",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 230,
+            "description": "Interaction events should be added to `htmlElement`, and not the DOMElement instance, since DOMElement instances\nare not full EaselJS display objects and do not participate in EaselJS mouse events.",
+            "itemtype": "event",
+            "name": "mousedown",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 236,
+            "description": "The HTMLElement can listen for the mouseover event, not the DOMElement instance.\nSince DOMElement instances are not full EaselJS display objects and do not participate in EaselJS mouse events.",
+            "itemtype": "event",
+            "name": "mouseover",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 242,
+            "description": "Not applicable to DOMElement.",
+            "itemtype": "event",
+            "name": "tick",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 249,
+            "itemtype": "property",
+            "name": "DisplayObject__tick",
+            "type": "Function",
+            "access": "protected",
+            "tagname": "",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\InputElement.js",
+            "line": 256,
+            "itemtype": "method",
+            "name": "_tick",
+            "access": "protected",
+            "tagname": "",
+            "class": "InputElement"
+        },
+        {
+            "file": "lib\\Client\\ResponsiveStage.js",
+            "line": 16,
+            "access": "protected",
+            "tagname": "",
+            "class": "ResponsiveStage"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type",
+            "line": " lib\\Client\\ResponsiveStage.js:16"
+        }
+    ]
+}
