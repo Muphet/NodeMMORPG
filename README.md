@@ -1,4 +1,3 @@
-NodeMMORPG
-==========
+# NodeMMORPG is an HTML5-MMORPG Tactic Engine!
 
-A NodeJS based MMORPG that will run on every HTML5 enabled mobile and desktop device!
+Our website is [http://mymmorpg.altervista.org](http://mymmorpg.altervista.org).
