@@ -43,6 +43,8 @@
             
                 <li><a href="..&#x2F;classes/InputElement.html">InputElement</a></li>
             
+                <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
+            
                 <li><a href="..&#x2F;classes/ResponsiveStage.html">ResponsiveStage</a></li>
             
             </ul>
@@ -88,13 +90,15 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define([&#x27;createjs&#x27;, &#x27;jquery&#x27;], function(createjs, $){
+define([&#x27;createjs&#x27;, &#x27;Shared&#x2F;Logger&#x27;, &#x27;jquery&#x27;], function(createjs, Logger, $){
 	&#x2F;**
 	* An extension to easeljs Stage, it resizes itself, and it takes a max_width and max_height parameter.
 	* @extends Stage
 	* @class ResponsiveStage
 	* @constructor
-	* @param element {HTMLElement} Stage HTML Element.
+	* @param element {HTMLElement} Stage &lt;canvas&gt; HTML Element.
+	* @param max_width {Integer} Max Stage width, above will be max screen size.
+	* @param max_height {Integer} Max Stage height, above will be max screen size.
 	**&#x2F;
 	function ResponsiveStage(element, max_width, max_height){
 		this.initialize(element, max_width || 800, max_height || 600);
@@ -128,6 +132,7 @@ define([&#x27;createjs&#x27;, &#x27;jquery&#x27;], function(createjs, $){
 			that.el.height = h0;
 			that.scaleX = w0&#x2F;max_width;
 			that.scaleY = h0&#x2F;max_height;
+			Logger.getLogger(&quot;ResponsiveStage&quot;).debug(&quot;Resizing Canvas HTML element...&quot;);
 		};
 		$(window).resize(fn);
 		fn();

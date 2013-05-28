@@ -23,6 +23,15 @@
             },
             "fors": {},
             "namespaces": {}
+        },
+        "lib\\Shared\\Logger.js": {
+            "name": "lib\\Shared\\Logger.js",
+            "modules": {},
+            "classes": {
+                "Logger": 1
+            },
+            "fors": {},
+            "namespaces": {}
         }
     },
     "modules": {},
@@ -64,10 +73,32 @@
             "params": [
                 {
                     "name": "element",
-                    "description": "Stage HTML Element.",
+                    "description": "Stage <canvas> HTML Element.",
                     "type": "HTMLElement"
+                },
+                {
+                    "name": "max_width",
+                    "description": "Max Stage width, above will be max screen size.",
+                    "type": "Integer"
+                },
+                {
+                    "name": "max_height",
+                    "description": "Max Stage height, above will be max screen size.",
+                    "type": "Integer"
                 }
             ]
+        },
+        "Logger": {
+            "name": "Logger",
+            "shortname": "Logger",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Shared\\Logger.js",
+            "line": 2,
+            "description": "Logger utilities, only interface to console methods."
         }
     },
     "classitems": [
@@ -152,7 +183,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 159,
+            "line": 158,
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "cache",
@@ -160,7 +191,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 165,
+            "line": 164,
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "uncache",
@@ -168,7 +199,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 171,
+            "line": 170,
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "updateCache",
@@ -176,7 +207,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 177,
+            "line": 176,
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "hitArea",
@@ -184,7 +215,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 183,
+            "line": 182,
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "localToGlobal",
@@ -192,7 +223,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 189,
+            "line": 188,
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "globalToLocal",
@@ -200,7 +231,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 195,
+            "line": 194,
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "localToLocal",
@@ -208,7 +239,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 201,
+            "line": 200,
             "description": "DOMElement cannot be cloned. Throws an error.",
             "itemtype": "method",
             "name": "clone",
@@ -216,7 +247,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 209,
+            "line": 208,
             "description": "Returns a string representation of this object.",
             "itemtype": "method",
             "name": "toString",
@@ -228,7 +259,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 218,
+            "line": 217,
             "description": "Interaction events should be added to `htmlElement`, and not the DOMElement instance, since DOMElement instances\nare not full EaselJS display objects and do not participate in EaselJS mouse events.",
             "itemtype": "event",
             "name": "click",
@@ -236,7 +267,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 224,
+            "line": 223,
             "description": "Interaction events should be added to `htmlElement`, and not the DOMElement instance, since DOMElement instances\nare not full EaselJS display objects and do not participate in EaselJS mouse events.",
             "itemtype": "event",
             "name": "dblClick",
@@ -244,7 +275,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 230,
+            "line": 229,
             "description": "Interaction events should be added to `htmlElement`, and not the DOMElement instance, since DOMElement instances\nare not full EaselJS display objects and do not participate in EaselJS mouse events.",
             "itemtype": "event",
             "name": "mousedown",
@@ -252,7 +283,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 236,
+            "line": 235,
             "description": "The HTMLElement can listen for the mouseover event, not the DOMElement instance.\nSince DOMElement instances are not full EaselJS display objects and do not participate in EaselJS mouse events.",
             "itemtype": "event",
             "name": "mouseover",
@@ -260,7 +291,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 242,
+            "line": 241,
             "description": "Not applicable to DOMElement.",
             "itemtype": "event",
             "name": "tick",
@@ -268,7 +299,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 249,
+            "line": 248,
             "itemtype": "property",
             "name": "DisplayObject__tick",
             "type": "Function",
@@ -278,7 +309,7 @@
         },
         {
             "file": "lib\\Client\\InputElement.js",
-            "line": 256,
+            "line": 255,
             "itemtype": "method",
             "name": "_tick",
             "access": "protected",
@@ -287,16 +318,45 @@
         },
         {
             "file": "lib\\Client\\ResponsiveStage.js",
-            "line": 16,
+            "line": 18,
             "access": "protected",
             "tagname": "",
             "class": "ResponsiveStage"
+        },
+        {
+            "file": "lib\\Shared\\Logger.js",
+            "line": 11,
+            "description": "All instances of active loggers.",
+            "itemtype": "property",
+            "name": "loggers",
+            "class": "Logger"
+        },
+        {
+            "file": "lib\\Shared\\Logger.js",
+            "line": 17,
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "Logger"
+        },
+        {
+            "file": "lib\\Shared\\Logger.js",
+            "line": 23,
+            "description": "Get requested logger, or create instance if not exists.",
+            "itemtype": "method",
+            "name": "getLogger",
+            "params": [
+                {
+                    "name": "name",
+                    "description": ""
+                }
+            ],
+            "class": "Logger"
         }
     ],
     "warnings": [
         {
             "message": "Missing item type",
-            "line": " lib\\Client\\ResponsiveStage.js:16"
+            "line": " lib\\Client\\ResponsiveStage.js:18"
         }
     ]
 }

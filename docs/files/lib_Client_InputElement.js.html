@@ -43,6 +43,8 @@
             
                 <li><a href="..&#x2F;classes/InputElement.html">InputElement</a></li>
             
+                <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
+            
                 <li><a href="..&#x2F;classes/ResponsiveStage.html">ResponsiveStage</a></li>
             
             </ul>
@@ -240,7 +242,6 @@ define([&#x27;createjs&#x27;], function(createjs){
 				style.transform = style.WebkitTransform = style.OTransform =  style.msTransform = [&quot;matrix(&quot;+mtx.a,mtx.b,mtx.c,mtx.d,(mtx.tx+0.5|0),(mtx.ty+0.5|0)+&quot;)&quot;].join(&quot;,&quot;);
 				style.MozTransform = [&quot;matrix(&quot;+mtx.a,mtx.b,mtx.c,mtx.d,(mtx.tx+0.5|0)+&quot;px&quot;,(mtx.ty+0.5|0)+&quot;px)&quot;].join(&quot;,&quot;);
 				this._oldMtx = mtx.clone();
-				console.log(&#x27;drawn&#x27;);
 			}
 			
 			return true;

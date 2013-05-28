@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ResponsiveStage - NodeMMORPG</title>
+    <title>Logger - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -86,19 +86,15 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>ResponsiveStage Class</h1>
+                        <h1>Logger Class</h1>
 <div class="box meta">
     
 
     
-        <div class="extends">
-            Extends Stage
-        </div>
-    
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;lib_Client_ResponsiveStage.js.html#l2"><code>lib\Client\ResponsiveStage.js:2</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l2"><code>lib\Shared\Logger.js:2</code></a>
         </div>
     
 
@@ -110,14 +106,82 @@
 
 
 <div class="box intro">
-    <p>An extension to easeljs Stage, it resizes itself, and it takes a max<em>width and max</em>height parameter.</p>
+    <p>Logger utilities, only interface to console methods.</p>
 </div>
 
 
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_ResponsiveStage" class="method item">
-    <h3 class="name"><code>ResponsiveStage</code></h3>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_getLogger">getLogger</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_initialize">initialize</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                                <a href="#property_loggers">loggers</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_getLogger" class="method item">
+    <h3 class="name"><code>getLogger</code></h3>
 
     
         <div class="args">
@@ -125,19 +189,7 @@
             
                 <li class="arg">
                     
-                        <code>element</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>max_width</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>max_height</code>
+                        <code>name</code>
                     
                 </li>
             
@@ -170,7 +222,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Client_ResponsiveStage.js.html#l2"><code>lib\Client\ResponsiveStage.js:2</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l23"><code>lib\Shared\Logger.js:23</code></a>
         
         </p>
 
@@ -181,7 +233,7 @@
     </div>
 
     <div class="description">
-        
+        <p>Get requested logger, or create instance if not exists.</p>
     </div>
 
     
@@ -192,44 +244,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">element</code>
-                        <span class="type">HTMLElement</span>
+                        <code class="param-name">name</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Stage <canvas> HTML Element.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">max_width</code>
-                        <span class="type">Integer</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Max Stage width, above will be max screen size.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">max_height</code>
-                        <span class="type">Integer</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Max Stage height, above will be max screen size.</p>
+                         
                     </div>
 
                     
@@ -244,34 +266,114 @@
     
 </div>
 
+                
+                    <div id="method_initialize" class="method item">
+    <h3 class="name"><code>initialize</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l17"><code>lib\Shared\Logger.js:17</code></a>
+        
+        </p>
+
+
+        
+
+        
     </div>
 
+    <div class="description">
+        
+    </div>
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
 
         
-        
-        
-        
-    </ul>
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
 
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
+                
+                    <div id="property_loggers" class="property item">
+    <h3 class="name"><code>loggers</code></h3>
+    <span class="type">Unknown</span>
 
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
             
-
+                
+                <p>
+                
+                Defined in
+                
             
-
-            
-
-            
-        </div>
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l11"><code>lib\Shared\Logger.js:11</code></a>
+        
+        </p>
 
         
 
+        
+    </div>
+
+    <div class="description">
+        <p>All instances of active loggers.</p>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         

@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>NodeMMORPG</title>
+    <title>lib\Shared\Logger.js - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
-    <link rel="stylesheet" href=".&#x2F;assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href=".&#x2F;assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href=".&#x2F;assets/favicon.png">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
     <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
@@ -15,7 +15,7 @@
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
             
-                <h1><img src=".&#x2F;assets/css/logo.png" title="NodeMMORPG"></h1>
+                <h1><img src="..&#x2F;assets/css/logo.png" title="NodeMMORPG"></h1>
             
         </div>
         <div class="yui3-u-1-4 version">
@@ -41,11 +41,11 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href=".&#x2F;classes/InputElement.html">InputElement</a></li>
+                <li><a href="..&#x2F;classes/InputElement.html">InputElement</a></li>
             
-                <li><a href=".&#x2F;classes/Logger.html">Logger</a></li>
+                <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
             
-                <li><a href=".&#x2F;classes/ResponsiveStage.html">ResponsiveStage</a></li>
+                <li><a href="..&#x2F;classes/ResponsiveStage.html">ResponsiveStage</a></li>
             
             </ul>
 
@@ -86,27 +86,57 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                            <div class="apidocs">
-        <div id="docs-main" class="content">
-            <p>
-            Browse to a module or class using the sidebar to view its API documentation.
-            </p>
+                        <h1 class="file-heading">File: lib\Shared\Logger.js</h1>
 
-            <h2>Keyboard Shortcuts</h2>
-
-            <ul>
-                <li><p>Press <kbd>s</kbd> to focus the API search box.</p></li>
-
-                <li><p>Use <kbd>Up</kbd> and <kbd>Down</kbd> to select classes, modules, and search results.</p></li>
-
-                <li class="mac-only"><p>With the API search box or sidebar focused, use <kbd><span class="cmd">&#x2318;</span>-Left</kbd> or <kbd><span class="cmd">&#x2318;</span>-Right</kbd> to switch sidebar tabs.</p></li>
-
-                <li class="pc-only"><p>With the API search box or sidebar focused, use <kbd>Ctrl+Left</kbd> and <kbd>Ctrl+Right</kbd> to switch sidebar tabs.</p></li>
-            </ul>
-        </div>
-    </div>
-
-
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function(){
+	&#x2F;**
+	* Logger utilities, only interface to console methods.
+	* @class Logger
+	**&#x2F;
+	function Logger(){
+		this.initialize();
+	}
+	var p = Logger.prototype;
+	
+	&#x2F;**
+	* All instances of active loggers.
+	* @property loggers
+	**&#x2F;
+	p.loggers = {};
+	
+	&#x2F;**
+	* @method initialize
+	**&#x2F;
+	p.initialize = function(){
+	};
+	
+	&#x2F;**
+	* Get requested logger, or create instance if not exists.
+	* @method getLogger
+	* @param name
+	**&#x2F;
+	p.getLogger = function(name){
+		if(typeof(this.loggers[name]) === &quot;undefined&quot;){
+			this.loggers[name] = {
+				info: function(){
+					console.info(name, arguments);
+				},
+				warn: function(){
+					console.warn(name, arguments);
+				},
+				debug: function(){
+					console.debug(name, arguments);
+				}
+			};
+		}
+		return this.loggers[name];
+	};
+	return new Logger();
+});
+    </pre>
+</div>
 
                     </div>
                 </div>
@@ -114,13 +144,13 @@
         </div>
     </div>
 </div>
-<script src=".&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
-<script src=".&#x2F;assets/js/yui-prettify.js"></script>
-<script src=".&#x2F;assets/../api.js"></script>
-<script src=".&#x2F;assets/js/api-filter.js"></script>
-<script src=".&#x2F;assets/js/api-list.js"></script>
-<script src=".&#x2F;assets/js/api-search.js"></script>
-<script src=".&#x2F;assets/js/apidocs.js"></script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
 </body>
 </html>
