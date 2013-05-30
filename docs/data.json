@@ -2,7 +2,7 @@
     "project": {
         "name": "NodeMMORPG",
         "description": "Super-speedup canvas library!",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "url": "http://www.github.com/ilmattodel93/NodeMMORPG"
     },
     "files": {
@@ -85,6 +85,11 @@
                     "name": "max_height",
                     "description": "Max Stage height, above will be max screen size.",
                     "type": "Integer"
+                },
+                {
+                    "name": "ignore_max",
+                    "description": "Ignore max dimensions and apply fullscreen canvas.",
+                    "type": "Boolean"
                 }
             ]
         },
@@ -98,7 +103,8 @@
             "extension_for": [],
             "file": "lib\\Shared\\Logger.js",
             "line": 2,
-            "description": "Logger utilities, only interface to console methods."
+            "description": "Logger utilities, only interface to console methods.",
+            "is_constructor": 1
         }
     },
     "classitems": [
@@ -318,14 +324,14 @@
         },
         {
             "file": "lib\\Client\\ResponsiveStage.js",
-            "line": 18,
+            "line": 19,
             "access": "protected",
             "tagname": "",
             "class": "ResponsiveStage"
         },
         {
             "file": "lib\\Shared\\Logger.js",
-            "line": 11,
+            "line": 12,
             "description": "All instances of active loggers.",
             "itemtype": "property",
             "name": "loggers",
@@ -333,14 +339,14 @@
         },
         {
             "file": "lib\\Shared\\Logger.js",
-            "line": 17,
+            "line": 18,
             "itemtype": "method",
             "name": "initialize",
             "class": "Logger"
         },
         {
             "file": "lib\\Shared\\Logger.js",
-            "line": 23,
+            "line": 24,
             "description": "Get requested logger, or create instance if not exists.",
             "itemtype": "method",
             "name": "getLogger",
@@ -356,7 +362,7 @@
     "warnings": [
         {
             "message": "Missing item type",
-            "line": " lib\\Client\\ResponsiveStage.js:18"
+            "line": " lib\\Client\\ResponsiveStage.js:19"
         }
     ]
 }

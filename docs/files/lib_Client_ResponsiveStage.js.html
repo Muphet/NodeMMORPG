@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.1</em>
+            <em>API Docs for: 0.0.2</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -99,9 +99,10 @@ define([&#x27;createjs&#x27;, &#x27;Shared&#x2F;Logger&#x27;, &#x27;jquery&#x27;
 	* @param element {HTMLElement} Stage &lt;canvas&gt; HTML Element.
 	* @param max_width {Integer} Max Stage width, above will be max screen size.
 	* @param max_height {Integer} Max Stage height, above will be max screen size.
+	* @param ignore_max {Boolean} Ignore max dimensions and apply fullscreen canvas.
 	**&#x2F;
-	function ResponsiveStage(element, max_width, max_height){
-		this.initialize(element, max_width || 800, max_height || 600);
+	function ResponsiveStage(element, max_width, max_height, ignore_max){
+		this.initialize(element, max_width || 800, max_height || 600, ignore_max || false);
 	}
 	
 	var p = ResponsiveStage.prototype = new createjs.Stage();
@@ -110,20 +111,20 @@ define([&#x27;createjs&#x27;, &#x27;Shared&#x2F;Logger&#x27;, &#x27;jquery&#x27;
 	&#x2F;**
 	* @protected
 	**&#x2F;
-	p.initialize = function(element, max_width, max_height){
+	p.initialize = function(element, max_width, max_height, ignore_max){
 		this.Stage_initialize(element);
 		var that = this;
 		that.el = element;
-		
 		var fn = function(){
 			var w = $(&#x27;body&#x27;).width();
 			var h = $(&#x27;body&#x27;).height();
-			if(w &lt; max_width){
+			console.log(ignore_max == true);
+			if((w &lt; max_width) || ignore_max == true){
 				w0 = w;
 			}else{
 				w0 = max_width;
 			}
-			if(h &lt; max_height){
+			if((h &lt; max_height) || ignore_max == true){
 				h0 = h;
 			}else{
 				h0 = max_height;

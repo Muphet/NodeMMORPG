@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.1</em>
+            <em>API Docs for: 0.0.2</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -94,6 +94,7 @@ define(function(){
 	&#x2F;**
 	* Logger utilities, only interface to console methods.
 	* @class Logger
+	* @constructor
 	**&#x2F;
 	function Logger(){
 		this.initialize();
@@ -121,13 +122,25 @@ define(function(){
 		if(typeof(this.loggers[name]) === &quot;undefined&quot;){
 			this.loggers[name] = {
 				info: function(){
-					console.info(name, arguments);
+					if(typeof(console.info) === &quot;function&quot;){
+						console.info(name, arguments);
+					}else{
+						console.log(name, arguments);
+					}
 				},
 				warn: function(){
-					console.warn(name, arguments);
+					if(typeof(console.warn) === &quot;function&quot;){
+						console.warn(name, arguments);
+					}else{
+						console.log(name, arguments);
+					}
 				},
 				debug: function(){
-					console.debug(name, arguments);
+					if(typeof(console.debug) === &quot;function&quot;){
+						console.debug(name, arguments);
+					}else{
+						console.log(name, arguments);
+					}
 				}
 			};
 		}
