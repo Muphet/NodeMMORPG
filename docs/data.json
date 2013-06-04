@@ -15,6 +15,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "lib\\Client\\Preloader.js": {
+            "name": "lib\\Client\\Preloader.js",
+            "modules": {},
+            "classes": {
+                "Preloader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "lib\\Client\\ResponsiveStage.js": {
             "name": "lib\\Client\\ResponsiveStage.js",
             "modules": {},
@@ -56,6 +65,19 @@
                     "type": "HTMLElement"
                 }
             ]
+        },
+        "Preloader": {
+            "name": "Preloader",
+            "shortname": "Preloader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Client\\Preloader.js",
+            "line": 2,
+            "description": "Preloads any image.",
+            "is_constructor": 1
         },
         "ResponsiveStage": {
             "name": "ResponsiveStage",
