@@ -120,7 +120,6 @@ define([&#x27;createjs&#x27;, &#x27;Shared&#x2F;Logger&#x27;, &#x27;jquery&#x27;
 		var fn = function(){
 			var w = $(&#x27;body&#x27;).width();
 			var h = $(&#x27;body&#x27;).height();
-			console.log(ignore_max == true);
 			if((w &lt; max_width) || ignore_max == true){
 				w0 = w;
 			}else{
@@ -135,6 +134,9 @@ define([&#x27;createjs&#x27;, &#x27;Shared&#x2F;Logger&#x27;, &#x27;jquery&#x27;
 			that.el.height = h0;
 			that.scaleX = w0&#x2F;max_width;
 			that.scaleY = h0&#x2F;max_height;
+			&#x2F;&#x2F; Pixelated mode in FF and Chrome, I like it!
+			that.el.getContext(&#x27;2d&#x27;).mozImageSmoothingEnabled = false;
+			that.el.getContext(&#x27;2d&#x27;).webkitImageSmoothingEnabled = false;
 			Logger.getLogger(&quot;ResponsiveStage&quot;).debug(&quot;Resizing Canvas HTML element...&quot;);
 		};
 		$(window).resize(fn);

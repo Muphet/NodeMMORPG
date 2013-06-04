@@ -345,6 +345,103 @@
             "class": "InputElement"
         },
         {
+            "file": "lib\\Client\\Preloader.js",
+            "line": 13,
+            "itemtype": "property",
+            "name": "entries",
+            "class": "Preloader"
+        },
+        {
+            "file": "lib\\Client\\Preloader.js",
+            "line": 18,
+            "description": "Loaded entries count.",
+            "itemtype": "property",
+            "name": "loaded",
+            "class": "Preloader"
+        },
+        {
+            "file": "lib\\Client\\Preloader.js",
+            "line": 24,
+            "itemtype": "method",
+            "name": "initialize",
+            "access": "protected",
+            "tagname": "",
+            "class": "Preloader"
+        },
+        {
+            "file": "lib\\Client\\Preloader.js",
+            "line": 32,
+            "description": "Returns an Image object of preloaded image.",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "namespace",
+                    "description": "Preloaded image namespace to get",
+                    "type": "String"
+                }
+            ],
+            "class": "Preloader"
+        },
+        {
+            "file": "lib\\Client\\Preloader.js",
+            "line": 41,
+            "description": "Add new Image entries to load.",
+            "itemtype": "method",
+            "name": "append",
+            "params": [
+                {
+                    "name": "namespace",
+                    "description": "Namespace for image.",
+                    "type": "String"
+                },
+                {
+                    "name": "src",
+                    "description": "URL of image to preload.",
+                    "type": "String"
+                }
+            ],
+            "class": "Preloader"
+        },
+        {
+            "file": "lib\\Client\\Preloader.js",
+            "line": 58,
+            "description": "Preloads a lot of resources.",
+            "itemtype": "method",
+            "name": "appendManifest",
+            "params": [
+                {
+                    "name": "manifest",
+                    "description": "A dictionary of namespaces and src.",
+                    "type": "Object"
+                }
+            ],
+            "class": "Preloader"
+        },
+        {
+            "file": "lib\\Client\\Preloader.js",
+            "line": 69,
+            "description": "Get current loading percentage, or false on fully loaded.",
+            "itemtype": "method",
+            "name": "getPercentage",
+            "class": "Preloader"
+        },
+        {
+            "file": "lib\\Client\\Preloader.js",
+            "line": 83,
+            "description": "Calls a function when all is preloaded.",
+            "itemtype": "method",
+            "name": "loaded",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "Function to be called after loading succeded.",
+                    "type": "Function"
+                }
+            ],
+            "class": "Preloader"
+        },
+        {
             "file": "lib\\Client\\ResponsiveStage.js",
             "line": 19,
             "access": "protected",
