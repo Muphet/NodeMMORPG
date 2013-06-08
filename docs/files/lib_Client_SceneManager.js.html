@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib\Client\Preloader.js - NodeMMORPG</title>
+    <title>lib\Client\SceneManager.js - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -92,109 +92,117 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib\Client\Preloader.js</h1>
+                        <h1 class="file-heading">File: lib\Client\SceneManager.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define([&quot;Shared&#x2F;Logger&quot;], function(Logger){
+define([&#x27;Client&#x2F;Scene&#x27;, &#x27;Shared&#x2F;Logger&#x27;], function(Scene, Logger){
 	&#x2F;**
-	* Preloads any image.
-	* @class Preloader
+	* Manages different scenes on canvas.
+	* @class SceneManager
 	* @constructor
 	**&#x2F;
-	function Preloader(){
+	function SceneManager(){
 		this.initialize();
 	}
 	
-	var p = Preloader.prototype;
+	var p = SceneManager.prototype;
 	
 	&#x2F;**
-	* @property entries
+	* Holds all scenes.
+	* @property scenes
 	**&#x2F;
-	p.entries = {};
+	p.scenes = {};
 	
 	&#x2F;**
-	* Loaded entries count.
-	* @property loaded
+	* Holds current scene, as instance or string.
+	* @property current
 	**&#x2F;
-	p._loaded = 0;
+	p.current = false;
 	
 	&#x2F;**
+	* Initialize
 	* @method initialize
-	* @protected
 	**&#x2F;
 	p.initialize = function(){
-		this.entries = {};
+		this.scenes = {};
+		this.current = false;
 	};
 	
 	&#x2F;**
-	* Returns an Image object of preloaded image.
+	* Get current scene, if string passed, returns correlated scene, if exists.
 	* @method get
-	* @param namespace {String} Preloaded image namespace to get
+	* @param namespace {String} Scene to get.
 	**&#x2F;
 	p.get = function(namespace){
-		return this.entries[namespace] || null;
-	};
-	
-	&#x2F;**
-	* Add new Image entries to load.
-	* @method append
-	* @param namespace {String} Namespace for image.
-	* @param src {String} URL of image to preload.
-	**&#x2F;
-	p.append = function(namespace, src){
-		Logger.getLogger(&quot;Preloader&quot;).debug(&quot;New [&quot;+namespace+&quot;] resource using &quot;+src);
-		var i = new Image();
-		i.src = src;
-		this.entries[namespace] = i;
-		var that = this;
-		i.onLoad = function(){
-			that._loaded++;
-		};
-	};
-	
-	&#x2F;**
-	* Preloads a lot of resources.
-	* @method appendManifest
-	* @param manifest {Object} A dictionary of namespaces and src.
-	**&#x2F;
-	p.appendManifest = function(manifest){
-		for(var namespace in manifest){
-			this.append(namespace, manifest[namespace]);
-		}
-	};
-	
-	&#x2F;**
-	* Get current loading percentage, or false on fully loaded.
-	* @method getPercentage
-	**&#x2F;
-	p.getPercentage = function(){
-		if(this._loaded == this.entries.length){
-			return false;
-		}
-		if(this._loaded == 0){
-			return 0;
-		}
-		return Math.floor(this._loaded&#x2F;this.entries.length);
-	};
-	
-	&#x2F;**
-	* Calls a function when all is preloaded.
-	* @method loaded
-	* @param fn {Function} Function to be called after loading succeded.
-	**&#x2F;
-	p.loaded = function(fn){
-		var that = this;
-		if(this.getPercentage() == false){
-			fn();
+		if(typeof(namespace) === &quot;undefined&quot;){
+			if(this.current === false || (typeof(this.current) === &quot;string&quot; &amp;&amp; typeof(this.scenes[this.current]) === &quot;undefined&quot;)){
+				return false;
+			}else{
+				if(typeof(this.current) === &quot;string&quot;){
+					return this.scenes[this.current];
+				}else{
+					return this.current;
+				}
+			}
 		}else{
-			setTimeout(function(){
-				that.loaded(fn);
-			},20);
+			if(typeof(this.scenes[namespace]) === &quot;undefined&quot;){
+				return false;
+			}else{
+				return this.scenes[this.current];
+			}
 		}
 	};
 	
-	return new Preloader();
+	&#x2F;**
+	* Runs a tick on currently opened scene.
+	* @method tick
+	**&#x2F;
+	p.tick = function(){
+		if(typeof(this.get().tick) === &quot;function&quot;){
+			this.get().tick();
+		}
+	};
+	
+	&#x2F;**
+	* Opens a Scene, it creates it and open it if instance passed.
+	* @method open
+	**&#x2F;
+	p.open = function(scene){
+		if((typeof(scene) === &quot;string&quot; &amp;&amp; this.get(scene) !== false) || typeof(scene) === &quot;object&quot;){
+			&#x2F;&#x2F; Trigger close on current scene.
+			if(this.get() !== false &amp;&amp; typeof(this.get().close) === &quot;function&quot;){
+				Logger.getLogger(&quot;SceneManager&quot;).debug(&quot;Closing Scene#&quot;+this.get().uuid);
+				this.get().close();
+			}
+			this.current = scene;
+			if(typeof(scene) === &quot;object&quot;){
+				&#x2F;&#x2F; Trigger create on new scene.
+				if(typeof(this.get().create) === &quot;function&quot;){
+					Logger.getLogger(&quot;SceneManager&quot;).debug(&quot;Creating Scene#&quot;+this.get().uuid);
+					this.get().create();
+				}
+			}
+		}
+		&#x2F;&#x2F; Trigger open on new scene.
+		if(typeof(this.get().open) === &quot;function&quot;){
+			Logger.getLogger(&quot;SceneManager&quot;).debug(&quot;Opening Scene#&quot;+this.get().uuid);
+			this.get().open();
+		}
+	};
+	
+	&#x2F;**
+	* Store an instances and open it up later. It triggers create anyway.
+	* @method store
+	**&#x2F;
+	p.store = function(namespace, scene){
+		this.scenes[namespace] = scene;
+		if(typeof(this.scenes[namespace].create) === &quot;function&quot;){
+			Logger.getLogger(&quot;SceneManager&quot;).debug(&quot;Creating Scene#&quot;+this.get().uuid);
+			this.scenes[namespace].create();
+		}
+	}
+	return new SceneManager();
 });
     </pre>
 </div>

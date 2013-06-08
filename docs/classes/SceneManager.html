@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Logger - NodeMMORPG</title>
+    <title>SceneManager - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -92,7 +92,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Logger Class</h1>
+                        <h1>SceneManager Class</h1>
 <div class="box meta">
     
 
@@ -100,7 +100,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l2"><code>lib\Shared\Logger.js:2</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l2"><code>lib\Client\SceneManager.js:2</code></a>
         </div>
     
 
@@ -112,14 +112,14 @@
 
 
 <div class="box intro">
-    <p>Logger utilities, only interface to console methods.</p>
+    <p>Manages different scenes on canvas.</p>
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Logger" class="method item">
-    <h3 class="name"><code>Logger</code></h3>
+        <div id="method_SceneManager" class="method item">
+    <h3 class="name"><code>SceneManager</code></h3>
 
     
         <span class="paren">()</span>
@@ -150,7 +150,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l2"><code>lib\Shared\Logger.js:2</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l2"><code>lib\Client\SceneManager.js:2</code></a>
         
         </p>
 
@@ -199,7 +199,7 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_getLogger">getLogger</a>
+                                <a href="#method_get">get</a>
 
                                 
                                 
@@ -207,6 +207,27 @@
                         
                             <li class="index-item method">
                                 <a href="#method_initialize">initialize</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_open">open</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_store">store</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_tick">tick</a>
 
                                 
                                 
@@ -223,7 +244,14 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_loggers">loggers</a>
+                                <a href="#property_current">current</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_scenes">scenes</a>
 
                                 
                                 
@@ -243,8 +271,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_getLogger" class="method item">
-    <h3 class="name"><code>getLogger</code></h3>
+                    <div id="method_get" class="method item">
+    <h3 class="name"><code>get</code></h3>
 
     
         <div class="args">
@@ -252,7 +280,7 @@
             
                 <li class="arg">
                     
-                        <code>name</code>
+                        <code>namespace</code>
                     
                 </li>
             
@@ -285,7 +313,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l24"><code>lib\Shared\Logger.js:24</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l34"><code>lib\Client\SceneManager.js:34</code></a>
         
         </p>
 
@@ -296,7 +324,7 @@
     </div>
 
     <div class="description">
-        <p>Get requested logger, or create instance if not exists.</p>
+        <p>Get current scene, if string passed, returns correlated scene, if exists.</p>
     </div>
 
     
@@ -307,14 +335,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">name</code>
-                        <span class="type">Object</span>
+                        <code class="param-name">namespace</code>
+                        <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                         
+                        <p>Scene to get.</p>
                     </div>
 
                     
@@ -362,7 +390,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l18"><code>lib\Shared\Logger.js:18</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l25"><code>lib\Client\SceneManager.js:25</code></a>
         
         </p>
 
@@ -373,7 +401,169 @@
     </div>
 
     <div class="description">
+        <p>Initialize</p>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_open" class="method item">
+    <h3 class="name"><code>open</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
         
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l69"><code>lib\Client\SceneManager.js:69</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Opens a Scene, it creates it and open it if instance passed.</p>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_store" class="method item">
+    <h3 class="name"><code>store</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l96"><code>lib\Client\SceneManager.js:96</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Store an instances and open it up later. It triggers create anyway.</p>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_tick" class="method item">
+    <h3 class="name"><code>tick</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l59"><code>lib\Client\SceneManager.js:59</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Runs a tick on currently opened scene.</p>
     </div>
 
     
@@ -392,8 +582,8 @@
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_loggers" class="property item">
-    <h3 class="name"><code>loggers</code></h3>
+                    <div id="property_current" class="property item">
+    <h3 class="name"><code>current</code></h3>
     <span class="type">Unknown</span>
 
     
@@ -415,7 +605,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l12"><code>lib\Shared\Logger.js:12</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l19"><code>lib\Client\SceneManager.js:19</code></a>
         
         </p>
 
@@ -425,7 +615,51 @@
     </div>
 
     <div class="description">
-        <p>All instances of active loggers.</p>
+        <p>Holds current scene, as instance or string.</p>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_scenes" class="property item">
+    <h3 class="name"><code>scenes</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l13"><code>lib\Client\SceneManager.js:13</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Holds all scenes.</p>
     </div>
 
     

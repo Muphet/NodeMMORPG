@@ -33,6 +33,24 @@
             "fors": {},
             "namespaces": {}
         },
+        "lib\\Client\\Scene.js": {
+            "name": "lib\\Client\\Scene.js",
+            "modules": {},
+            "classes": {
+                "Scene": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\Client\\SceneManager.js": {
+            "name": "lib\\Client\\SceneManager.js",
+            "modules": {},
+            "classes": {
+                "SceneManager": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "lib\\Shared\\Logger.js": {
             "name": "lib\\Shared\\Logger.js",
             "modules": {},
@@ -114,6 +132,32 @@
                     "type": "Boolean"
                 }
             ]
+        },
+        "Scene": {
+            "name": "Scene",
+            "shortname": "Scene",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Client\\Scene.js",
+            "line": 2,
+            "description": "A basic scene used by scene manager.",
+            "is_constructor": 1
+        },
+        "SceneManager": {
+            "name": "SceneManager",
+            "shortname": "SceneManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Client\\SceneManager.js",
+            "line": 2,
+            "description": "Manages different scenes on canvas.",
+            "is_constructor": 1
         },
         "Logger": {
             "name": "Logger",
@@ -447,6 +491,69 @@
             "access": "protected",
             "tagname": "",
             "class": "ResponsiveStage"
+        },
+        {
+            "file": "lib\\Client\\SceneManager.js",
+            "line": 13,
+            "description": "Holds all scenes.",
+            "itemtype": "property",
+            "name": "scenes",
+            "class": "SceneManager"
+        },
+        {
+            "file": "lib\\Client\\SceneManager.js",
+            "line": 19,
+            "description": "Holds current scene, as instance or string.",
+            "itemtype": "property",
+            "name": "current",
+            "class": "SceneManager"
+        },
+        {
+            "file": "lib\\Client\\SceneManager.js",
+            "line": 25,
+            "description": "Initialize",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "SceneManager"
+        },
+        {
+            "file": "lib\\Client\\SceneManager.js",
+            "line": 34,
+            "description": "Get current scene, if string passed, returns correlated scene, if exists.",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "namespace",
+                    "description": "Scene to get.",
+                    "type": "String"
+                }
+            ],
+            "class": "SceneManager"
+        },
+        {
+            "file": "lib\\Client\\SceneManager.js",
+            "line": 59,
+            "description": "Runs a tick on currently opened scene.",
+            "itemtype": "method",
+            "name": "tick",
+            "class": "SceneManager"
+        },
+        {
+            "file": "lib\\Client\\SceneManager.js",
+            "line": 69,
+            "description": "Opens a Scene, it creates it and open it if instance passed.",
+            "itemtype": "method",
+            "name": "open",
+            "class": "SceneManager"
+        },
+        {
+            "file": "lib\\Client\\SceneManager.js",
+            "line": 96,
+            "description": "Store an instances and open it up later. It triggers create anyway.",
+            "itemtype": "method",
+            "name": "store",
+            "class": "SceneManager"
         },
         {
             "file": "lib\\Shared\\Logger.js",

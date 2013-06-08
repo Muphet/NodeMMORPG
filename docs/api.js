@@ -4,7 +4,9 @@ YUI.add("yuidoc-meta", function(Y) {
         "InputElement",
         "Logger",
         "Preloader",
-        "ResponsiveStage"
+        "ResponsiveStage",
+        "Scene",
+        "SceneManager"
     ],
     "modules": [],
     "allModules": []
