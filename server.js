@@ -4,6 +4,7 @@ var io = require('socket.io').listen(99);
 Loader(['Server/Factory', 'Server/Player', 'Server/Entity'], function(Factory, Player, Entity){
 	var e = new Entity();
 	setInterval(function(){
+		e.set('variable','Test!');
 		Factory.despawn(e);
 		e = new Entity();
 		e.join('main');
