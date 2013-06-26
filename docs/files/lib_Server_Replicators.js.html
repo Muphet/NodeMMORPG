@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib\Client\Preloader.js - NodeMMORPG</title>
+    <title>lib\Server\Replicators.js - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -102,109 +102,28 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib\Client\Preloader.js</h1>
+                        <h1 class="file-heading">File: lib\Server\Replicators.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define([&quot;Shared&#x2F;Logger&quot;], function(Logger){
+define([&#x27;underscore&#x27;, &#x27;backbone&#x27;], function(_, Backbone){
 	&#x2F;**
-	* Preloads any image.
-	* @class Preloader
+	* Collects multiple Replicators. Each replicator can join on multiple channels
+	* @class Replicators
 	* @constructor
 	**&#x2F;
-	function Preloader(){
+	function Replicators(){
 		this.initialize();
 	}
 	
-	var p = Preloader.prototype;
-	
-	&#x2F;**
-	* @property entries
-	**&#x2F;
-	p.entries = {};
-	
-	&#x2F;**
-	* Loaded entries count.
-	* @property loaded
-	**&#x2F;
-	p._loaded = 0;
+	var p = Replicators.prototype;
 	
 	&#x2F;**
 	* @method initialize
-	* @protected
 	**&#x2F;
 	p.initialize = function(){
-		this.entries = {};
+		this.replicators = [];
 	};
-	
-	&#x2F;**
-	* Returns an Image object of preloaded image.
-	* @method get
-	* @param namespace {String} Preloaded image namespace to get
-	**&#x2F;
-	p.get = function(namespace){
-		return this.entries[namespace] || null;
-	};
-	
-	&#x2F;**
-	* Add new Image entries to load.
-	* @method append
-	* @param namespace {String} Namespace for image.
-	* @param src {String} URL of image to preload.
-	**&#x2F;
-	p.append = function(namespace, src){
-		Logger.getLogger(&quot;Preloader&quot;).debug(&quot;New [&quot;+namespace+&quot;] resource using &quot;+src);
-		var i = new Image();
-		i.src = src;
-		this.entries[namespace] = i;
-		var that = this;
-		i.onLoad = function(){
-			that._loaded++;
-		};
-	};
-	
-	&#x2F;**
-	* Preloads a lot of resources.
-	* @method appendManifest
-	* @param manifest {Object} A dictionary of namespaces and src.
-	**&#x2F;
-	p.appendManifest = function(manifest){
-		for(var namespace in manifest){
-			this.append(namespace, manifest[namespace]);
-		}
-	};
-	
-	&#x2F;**
-	* Get current loading percentage, or false on fully loaded.
-	* @method getPercentage
-	**&#x2F;
-	p.getPercentage = function(){
-		if(this._loaded == this.entries.length){
-			return false;
-		}
-		if(this._loaded == 0){
-			return 0;
-		}
-		return Math.floor(this._loaded&#x2F;this.entries.length);
-	};
-	
-	&#x2F;**
-	* Calls a function when all is preloaded.
-	* @method loaded
-	* @param fn {Function} Function to be called after loading succeded.
-	**&#x2F;
-	p.loaded = function(fn){
-		var that = this;
-		if(this.getPercentage() == false){
-			fn();
-		}else{
-			setTimeout(function(){
-				that.loaded(fn);
-			},20);
-		}
-	};
-	
-	return new Preloader();
 });
     </pre>
 </div>

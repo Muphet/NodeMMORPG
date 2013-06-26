@@ -51,6 +51,51 @@
             "fors": {},
             "namespaces": {}
         },
+        "lib\\Server\\Entity.js": {
+            "name": "lib\\Server\\Entity.js",
+            "modules": {},
+            "classes": {
+                "Entity": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\Server\\Factory.js": {
+            "name": "lib\\Server\\Factory.js",
+            "modules": {},
+            "classes": {
+                "Factory": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\Server\\Player.js": {
+            "name": "lib\\Server\\Player.js",
+            "modules": {},
+            "classes": {
+                "Player": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\Server\\Replicators.js": {
+            "name": "lib\\Server\\Replicators.js",
+            "modules": {},
+            "classes": {
+                "Replicators": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\Shared\\Joinable.js": {
+            "name": "lib\\Shared\\Joinable.js",
+            "modules": {},
+            "classes": {
+                "Joinable": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "lib\\Shared\\Logger.js": {
             "name": "lib\\Shared\\Logger.js",
             "modules": {},
@@ -157,6 +202,72 @@
             "file": "lib\\Client\\SceneManager.js",
             "line": 2,
             "description": "Manages different scenes on canvas.",
+            "is_constructor": 1
+        },
+        "Entity": {
+            "name": "Entity",
+            "shortname": "Entity",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Server\\Entity.js",
+            "line": 2,
+            "description": "A server-side entity.",
+            "extends": "Joinable",
+            "is_constructor": 1
+        },
+        "Factory": {
+            "name": "Factory",
+            "shortname": "Factory",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Server\\Factory.js",
+            "line": 2,
+            "description": "An entity collector.",
+            "is_constructor": 1
+        },
+        "Player": {
+            "name": "Player",
+            "shortname": "Player",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Server\\Player.js",
+            "line": 2,
+            "description": "Collects multiple Replicators. Each replicator can join on multiple channels",
+            "is_constructor": 1
+        },
+        "Replicators": {
+            "name": "Replicators",
+            "shortname": "Replicators",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Server\\Replicators.js",
+            "line": 2,
+            "description": "Collects multiple Replicators. Each replicator can join on multiple channels",
+            "is_constructor": 1
+        },
+        "Joinable": {
+            "name": "Joinable",
+            "shortname": "Joinable",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Shared\\Joinable.js",
+            "line": 2,
+            "description": "Manage channels joining.",
             "is_constructor": 1
         },
         "Logger": {
@@ -556,6 +667,279 @@
             "class": "SceneManager"
         },
         {
+            "file": "lib\\Server\\Factory.js",
+            "line": 14,
+            "description": "Store all entities.",
+            "itemtype": "property",
+            "name": "entities",
+            "default": "[]",
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 21,
+            "description": "Last used uuid, like a AutoIncrement generator.",
+            "itemtype": "property",
+            "name": "_uuid",
+            "default": "0",
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 28,
+            "description": "Initializing",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 37,
+            "description": "Generates a new uuid",
+            "itemtype": "method",
+            "name": "uuid",
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 46,
+            "description": "Returns an entity by its uuid.",
+            "params": [
+                {
+                    "name": "uuid",
+                    "description": "UUID"
+                }
+            ],
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 54,
+            "description": "Spawn an entitiy into the world, also auto trigger entity method.",
+            "itemtype": "method",
+            "name": "spawn",
+            "params": [
+                {
+                    "name": "entity",
+                    "description": "An Entity.",
+                    "type": "Entity"
+                }
+            ],
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 88,
+            "description": "Despawn an entitiy from the world, also auto trigger entity method.",
+            "itemtype": "method",
+            "name": "despawn",
+            "params": [
+                {
+                    "name": "entity",
+                    "description": "An Entity.",
+                    "type": "Entity"
+                }
+            ],
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 111,
+            "description": "Triggered once an entity changes a property, all subscribed clients should be informed!",
+            "itemtype": "method",
+            "name": "update",
+            "params": [
+                {
+                    "name": "entity",
+                    "description": ""
+                },
+                {
+                    "name": "key",
+                    "description": ""
+                },
+                {
+                    "name": "old_value",
+                    "description": ""
+                }
+            ],
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 128,
+            "description": "Informs any clients I just joined.",
+            "itemtype": "method",
+            "name": "join",
+            "params": [
+                {
+                    "name": "channel",
+                    "description": "Just joined channel.",
+                    "type": "String"
+                }
+            ],
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 143,
+            "description": "Informs any clients I just joined.",
+            "itemtype": "method",
+            "name": "join",
+            "params": [
+                {
+                    "name": "channel",
+                    "description": "Just joined channel.",
+                    "type": "String"
+                }
+            ],
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 158,
+            "description": "Store all replicators.",
+            "itemtype": "property",
+            "name": "replicators",
+            "default": "[]",
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 165,
+            "description": "Subscribe a replicator to the factory.",
+            "itemtype": "method",
+            "name": "subscribe",
+            "params": [
+                {
+                    "name": "socket",
+                    "description": "A Joinable object wich contains any socket.",
+                    "type": "Socket"
+                }
+            ],
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 181,
+            "description": "Describe a replicator from the factory.",
+            "itemtype": "method",
+            "name": "unscribe",
+            "params": [
+                {
+                    "name": "socket",
+                    "description": "A Joinable object wich contains any socket.",
+                    "type": "Socket"
+                }
+            ],
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Factory.js",
+            "line": 196,
+            "description": "Resync clients entities.",
+            "itemtype": "method",
+            "name": "sync",
+            "params": [
+                {
+                    "name": "socket",
+                    "description": "A Joinable object wich contains any socket.",
+                    "type": "Socket"
+                }
+            ],
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Server\\Player.js",
+            "line": 13,
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "Player"
+        },
+        {
+            "file": "lib\\Server\\Replicators.js",
+            "line": 13,
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "Replicators"
+        },
+        {
+            "file": "lib\\Shared\\Joinable.js",
+            "line": 16,
+            "description": "Channels joined by current replicator.",
+            "itemtype": "property",
+            "name": "channels",
+            "default": "[]",
+            "class": "Joinable"
+        },
+        {
+            "file": "lib\\Shared\\Joinable.js",
+            "line": 23,
+            "description": "Initialize method",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "Joinable"
+        },
+        {
+            "file": "lib\\Shared\\Joinable.js",
+            "line": 31,
+            "description": "Returns boolean based on if user joined a channel.",
+            "itemtype": "method",
+            "name": "in",
+            "params": [
+                {
+                    "name": "channel",
+                    "description": "Channel to check if joined.",
+                    "type": "String"
+                }
+            ],
+            "class": "Joinable"
+        },
+        {
+            "file": "lib\\Shared\\Joinable.js",
+            "line": 44,
+            "description": "Returns boolean based on if user joined any of supplied channels.",
+            "itemtype": "method",
+            "name": "inAny",
+            "params": [
+                {
+                    "name": "channels",
+                    "description": "Channels to check for.",
+                    "type": "Array"
+                }
+            ],
+            "class": "Joinable"
+        },
+        {
+            "file": "lib\\Shared\\Joinable.js",
+            "line": 59,
+            "description": "Joins replicator to a channel... if not joined already.",
+            "itemtype": "method",
+            "name": "join",
+            "params": [
+                {
+                    "name": "channel",
+                    "description": "Channel to join.",
+                    "type": "String"
+                }
+            ],
+            "class": "Joinable"
+        },
+        {
+            "file": "lib\\Shared\\Joinable.js",
+            "line": 71,
+            "description": "Leave a channel, if I was joined.",
+            "itemtype": "method",
+            "name": "leave",
+            "params": [
+                {
+                    "name": "channel",
+                    "description": "Channel to leave.",
+                    "type": "String"
+                }
+            ],
+            "class": "Joinable"
+        },
+        {
             "file": "lib\\Shared\\Logger.js",
             "line": 12,
             "description": "All instances of active loggers.",
@@ -589,6 +973,10 @@
         {
             "message": "Missing item type",
             "line": " lib\\Client\\ResponsiveStage.js:19"
+        },
+        {
+            "message": "Missing item type\nReturns an entity by its uuid.",
+            "line": " lib\\Server\\Factory.js:46"
         }
     ]
 }

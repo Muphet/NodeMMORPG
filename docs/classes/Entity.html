@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Logger - NodeMMORPG</title>
+    <title>Entity - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -102,15 +102,19 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Logger Class</h1>
+                        <h1>Entity Class</h1>
 <div class="box meta">
     
 
     
+        <div class="extends">
+            Extends <a href="..\classes\Joinable.html" class="crosslink">Joinable</a>
+        </div>
+    
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l2"><code>lib\Shared\Logger.js:2</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;lib_Server_Entity.js.html#l2"><code>lib\Server\Entity.js:2</code></a>
         </div>
     
 
@@ -122,14 +126,14 @@
 
 
 <div class="box intro">
-    <p>Logger utilities, only interface to console methods.</p>
+    <p>A server-side entity.</p>
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Logger" class="method item">
-    <h3 class="name"><code>Logger</code></h3>
+        <div id="method_Entity" class="method item">
+    <h3 class="name"><code>Entity</code></h3>
 
     
         <span class="paren">()</span>
@@ -160,7 +164,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l2"><code>lib\Shared\Logger.js:2</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Entity.js.html#l2"><code>lib\Server\Entity.js:2</code></a>
         
         </p>
 
@@ -206,17 +210,38 @@
                 <div class="index-section methods">
                     <h3>Methods</h3>
 
-                    <ul class="index-list methods">
+                    <ul class="index-list methods extends">
                         
-                            <li class="index-item method">
-                                <a href="#method_getLogger">getLogger</a>
+                            <li class="index-item method inherited">
+                                <a href="#method_in">in</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
+                                <a href="#method_inAny">inAny</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
                                 <a href="#method_initialize">initialize</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_join">join</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_leave">leave</a>
 
                                 
                                 
@@ -230,10 +255,10 @@
                 <div class="index-section properties">
                     <h3>Properties</h3>
 
-                    <ul class="index-list properties">
+                    <ul class="index-list properties extends">
                         
-                            <li class="index-item property">
-                                <a href="#property_loggers">loggers</a>
+                            <li class="index-item property inherited">
+                                <a href="#property_channels">channels</a>
 
                                 
                                 
@@ -253,8 +278,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_getLogger" class="method item">
-    <h3 class="name"><code>getLogger</code></h3>
+                    <div id="method_in" class="method item inherited">
+    <h3 class="name"><code>in</code></h3>
 
     
         <div class="args">
@@ -262,7 +287,7 @@
             
                 <li class="arg">
                     
-                        <code>name</code>
+                        <code>channel</code>
                     
                 </li>
             
@@ -287,15 +312,12 @@
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..\classes\Joinable.html#method_in">Joinable</a>:
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l24"><code>lib\Shared\Logger.js:24</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l31"><code>lib\Shared\Joinable.js:31</code></a>
         
         </p>
 
@@ -306,7 +328,7 @@
     </div>
 
     <div class="description">
-        <p>Get requested logger, or create instance if not exists.</p>
+        <p>Returns boolean based on if user joined a channel.</p>
     </div>
 
     
@@ -317,14 +339,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">name</code>
-                        <span class="type">Object</span>
+                        <code class="param-name">channel</code>
+                        <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                         
+                        <p>Channel to check if joined.</p>
                     </div>
 
                     
@@ -340,7 +362,91 @@
 </div>
 
                 
-                    <div id="method_initialize" class="method item">
+                    <div id="method_inAny" class="method item inherited">
+    <h3 class="name"><code>inAny</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>channels</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\Joinable.html#method_inAny">Joinable</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l44"><code>lib\Shared\Joinable.js:44</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns boolean based on if user joined any of supplied channels.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">channels</code>
+                        <span class="type">Array</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Channels to check for.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_initialize" class="method item inherited">
     <h3 class="name"><code>initialize</code></h3>
 
     
@@ -364,15 +470,12 @@
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..\classes\Joinable.html#method_initialize">Joinable</a>:
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l18"><code>lib\Shared\Logger.js:18</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l23"><code>lib\Shared\Joinable.js:23</code></a>
         
         </p>
 
@@ -383,9 +486,177 @@
     </div>
 
     <div class="description">
+        <p>Initialize method</p>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_join" class="method item inherited">
+    <h3 class="name"><code>join</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>channel</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\Joinable.html#method_join">Joinable</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l59"><code>lib\Shared\Joinable.js:59</code></a>
+        
+        </p>
+
+
+        
+
         
     </div>
 
+    <div class="description">
+        <p>Joins replicator to a channel... if not joined already.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">channel</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Channel to join.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_leave" class="method item inherited">
+    <h3 class="name"><code>leave</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>channel</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\Joinable.html#method_leave">Joinable</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l71"><code>lib\Shared\Joinable.js:71</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Leave a channel, if I was joined.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">channel</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Channel to leave.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -402,8 +673,8 @@
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_loggers" class="property item">
-    <h3 class="name"><code>loggers</code></h3>
+                    <div id="property_channels" class="property item inherited">
+    <h3 class="name"><code>channels</code></h3>
     <span class="type">Unknown</span>
 
     
@@ -417,15 +688,12 @@
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..\classes\Joinable.html#property_channels">Joinable</a>:
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Logger.js.html#l12"><code>lib\Shared\Logger.js:12</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l16"><code>lib\Shared\Joinable.js:16</code></a>
         
         </p>
 
@@ -435,9 +703,11 @@
     </div>
 
     <div class="description">
-        <p>All instances of active loggers.</p>
+        <p>Channels joined by current replicator.</p>
     </div>
 
+    
+        <p><strong>Default:</strong> []</p>
     
 
     

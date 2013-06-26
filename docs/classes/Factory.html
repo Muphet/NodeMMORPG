@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Preloader - NodeMMORPG</title>
+    <title>Factory - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -102,7 +102,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Preloader Class</h1>
+                        <h1>Factory Class</h1>
 <div class="box meta">
     
 
@@ -110,7 +110,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l2"><code>lib\Client\Preloader.js:2</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l2"><code>lib\Server\Factory.js:2</code></a>
         </div>
     
 
@@ -122,14 +122,14 @@
 
 
 <div class="box intro">
-    <p>Preloads any image.</p>
+    <p>An entity collector.</p>
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Preloader" class="method item">
-    <h3 class="name"><code>Preloader</code></h3>
+        <div id="method_Factory" class="method item">
+    <h3 class="name"><code>Factory</code></h3>
 
     
         <span class="paren">()</span>
@@ -160,7 +160,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l2"><code>lib\Client\Preloader.js:2</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l2"><code>lib\Server\Factory.js:2</code></a>
         
         </p>
 
@@ -209,34 +209,13 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_append">append</a>
+                                <a href="#method_despawn">despawn</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_appendManifest">appendManifest</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_get">get</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_getPercentage">getPercentage</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method protected">
                                 <a href="#method_initialize">initialize</a>
 
                                 
@@ -244,7 +223,56 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_loaded">loaded</a>
+                                <a href="#method_join">join</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_join">join</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_spawn">spawn</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_subscribe">subscribe</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_sync">sync</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_unscribe">unscribe</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_update">update</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_uuid">uuid</a>
 
                                 
                                 
@@ -261,14 +289,21 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_entries">entries</a>
+                                <a href="#property__uuid">_uuid</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_loaded">loaded</a>
+                                <a href="#property_entities">entities</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_replicators">replicators</a>
 
                                 
                                 
@@ -288,8 +323,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_append" class="method item">
-    <h3 class="name"><code>append</code></h3>
+                    <div id="method_despawn" class="method item">
+    <h3 class="name"><code>despawn</code></h3>
 
     
         <div class="args">
@@ -297,13 +332,7 @@
             
                 <li class="arg">
                     
-                        <code>namespace</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>src</code>
+                        <code>entity</code>
                     
                 </li>
             
@@ -336,7 +365,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l41"><code>lib\Client\Preloader.js:41</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l88"><code>lib\Server\Factory.js:88</code></a>
         
         </p>
 
@@ -347,7 +376,7 @@
     </div>
 
     <div class="description">
-        <p>Add new Image entries to load.</p>
+        <p>Despawn an entitiy from the world, also auto trigger entity method.</p>
     </div>
 
     
@@ -358,29 +387,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">namespace</code>
-                        <span class="type">String</span>
+                        <code class="param-name">entity</code>
+                        <span class="type"><a href="..\classes\Entity.html" class="crosslink">Entity</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Namespace for image.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">src</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>URL of image to preload.</p>
+                        <p>An Entity.</p>
                     </div>
 
                     
@@ -396,235 +410,7 @@
 </div>
 
                 
-                    <div id="method_appendManifest" class="method item">
-    <h3 class="name"><code>appendManifest</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>manifest</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l58"><code>lib\Client\Preloader.js:58</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Preloads a lot of resources.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">manifest</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>A dictionary of namespaces and src.</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_get" class="method item">
-    <h3 class="name"><code>get</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>namespace</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l32"><code>lib\Client\Preloader.js:32</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns an Image object of preloaded image.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">namespace</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Preloaded image namespace to get</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_getPercentage" class="method item">
-    <h3 class="name"><code>getPercentage</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l69"><code>lib\Client\Preloader.js:69</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Get current loading percentage, or false on fully loaded.</p>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_initialize" class="method item protected">
+                    <div id="method_initialize" class="method item">
     <h3 class="name"><code>initialize</code></h3>
 
     
@@ -636,8 +422,6 @@
     
 
     
-        <span class="flag protected">protected</span>
-    
 
     
 
@@ -658,7 +442,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l24"><code>lib\Client\Preloader.js:24</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l28"><code>lib\Server\Factory.js:28</code></a>
         
         </p>
 
@@ -669,7 +453,7 @@
     </div>
 
     <div class="description">
-        
+        <p>Initializing</p>
     </div>
 
     
@@ -680,8 +464,8 @@
 </div>
 
                 
-                    <div id="method_loaded" class="method item">
-    <h3 class="name"><code>loaded</code></h3>
+                    <div id="method_join" class="method item">
+    <h3 class="name"><code>join</code></h3>
 
     
         <div class="args">
@@ -689,7 +473,7 @@
             
                 <li class="arg">
                     
-                        <code>fn</code>
+                        <code>channel</code>
                     
                 </li>
             
@@ -722,7 +506,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l83"><code>lib\Client\Preloader.js:83</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l128"><code>lib\Server\Factory.js:128</code></a>
         
         </p>
 
@@ -733,7 +517,7 @@
     </div>
 
     <div class="description">
-        <p>Calls a function when all is preloaded.</p>
+        <p>Informs any clients I just joined.</p>
     </div>
 
     
@@ -744,14 +528,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">fn</code>
-                        <span class="type">Function</span>
+                        <code class="param-name">channel</code>
+                        <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Function to be called after loading succeded.</p>
+                        <p>Just joined channel.</p>
                     </div>
 
                     
@@ -759,6 +543,624 @@
             
             </ul>
         </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_join" class="method item">
+    <h3 class="name"><code>join</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>channel</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l143"><code>lib\Server\Factory.js:143</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Informs any clients I just joined.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">channel</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Just joined channel.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_spawn" class="method item">
+    <h3 class="name"><code>spawn</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>entity</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l54"><code>lib\Server\Factory.js:54</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Spawn an entitiy into the world, also auto trigger entity method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">entity</code>
+                        <span class="type"><a href="..\classes\Entity.html" class="crosslink">Entity</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An Entity.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_subscribe" class="method item">
+    <h3 class="name"><code>subscribe</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>socket</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l165"><code>lib\Server\Factory.js:165</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Subscribe a replicator to the factory.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">socket</code>
+                        <span class="type">Socket</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>A Joinable object wich contains any socket.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_sync" class="method item">
+    <h3 class="name"><code>sync</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>socket</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l196"><code>lib\Server\Factory.js:196</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Resync clients entities.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">socket</code>
+                        <span class="type">Socket</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>A Joinable object wich contains any socket.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_unscribe" class="method item">
+    <h3 class="name"><code>unscribe</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>socket</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l181"><code>lib\Server\Factory.js:181</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Describe a replicator from the factory.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">socket</code>
+                        <span class="type">Socket</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>A Joinable object wich contains any socket.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_update" class="method item">
+    <h3 class="name"><code>update</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>entity</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>key</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>old_value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l111"><code>lib\Server\Factory.js:111</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Triggered once an entity changes a property, all subscribed clients should be informed!</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">entity</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">key</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">old_value</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_uuid" class="method item">
+    <h3 class="name"><code>uuid</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l37"><code>lib\Server\Factory.js:37</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Generates a new uuid</p>
+    </div>
+
     
 
     
@@ -775,8 +1177,8 @@
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_entries" class="property item">
-    <h3 class="name"><code>entries</code></h3>
+                    <div id="property__uuid" class="property item">
+    <h3 class="name"><code>_uuid</code></h3>
     <span class="type">Unknown</span>
 
     
@@ -798,7 +1200,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l13"><code>lib\Client\Preloader.js:13</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l21"><code>lib\Server\Factory.js:21</code></a>
         
         </p>
 
@@ -808,9 +1210,11 @@
     </div>
 
     <div class="description">
-        
+        <p>Last used uuid, like a AutoIncrement generator.</p>
     </div>
 
+    
+        <p><strong>Default:</strong> 0</p>
     
 
     
@@ -819,8 +1223,8 @@
 </div>
 
                 
-                    <div id="property_loaded" class="property item">
-    <h3 class="name"><code>loaded</code></h3>
+                    <div id="property_entities" class="property item">
+    <h3 class="name"><code>entities</code></h3>
     <span class="type">Unknown</span>
 
     
@@ -842,7 +1246,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l18"><code>lib\Client\Preloader.js:18</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l14"><code>lib\Server\Factory.js:14</code></a>
         
         </p>
 
@@ -852,9 +1256,57 @@
     </div>
 
     <div class="description">
-        <p>Loaded entries count.</p>
+        <p>Store all entities.</p>
     </div>
 
+    
+        <p><strong>Default:</strong> []</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_replicators" class="property item">
+    <h3 class="name"><code>replicators</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l158"><code>lib\Server\Factory.js:158</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Store all replicators.</p>
+    </div>
+
+    
+        <p><strong>Default:</strong> []</p>
     
 
     

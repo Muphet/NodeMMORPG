@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib\Client\Preloader.js - NodeMMORPG</title>
+    <title>lib\Shared\Joinable.js - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -102,109 +102,93 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib\Client\Preloader.js</h1>
+                        <h1 class="file-heading">File: lib\Shared\Joinable.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define([&quot;Shared&#x2F;Logger&quot;], function(Logger){
+define([&#x27;underscore&#x27;, &#x27;backbone&#x27;], function(_, Backbone){
 	&#x2F;**
-	* Preloads any image.
-	* @class Preloader
+	* Manage channels joining.
+	* @class Joinable
 	* @constructor
 	**&#x2F;
-	function Preloader(){
+	function Joinable(){
 		this.initialize();
 	}
 	
-	var p = Preloader.prototype;
+	var p = Joinable.prototype;
+	
+	&#x2F;&#x2F; Append Backbone.Events on this!
+	_.extend(p, Backbone.Events);
 	
 	&#x2F;**
-	* @property entries
+	* Channels joined by current replicator.
+	* @property channels
+	* @default []
 	**&#x2F;
-	p.entries = {};
+	p.channels = [];
 	
 	&#x2F;**
-	* Loaded entries count.
-	* @property loaded
-	**&#x2F;
-	p._loaded = 0;
-	
-	&#x2F;**
+	* Initialize method
 	* @method initialize
-	* @protected
 	**&#x2F;
 	p.initialize = function(){
-		this.entries = {};
+		this.channels = [];
 	};
 	
 	&#x2F;**
-	* Returns an Image object of preloaded image.
-	* @method get
-	* @param namespace {String} Preloaded image namespace to get
+	* Returns boolean based on if user joined a channel.
+	* @method in
+	* @param channel {String} Channel to check if joined.
 	**&#x2F;
-	p.get = function(namespace){
-		return this.entries[namespace] || null;
-	};
-	
-	&#x2F;**
-	* Add new Image entries to load.
-	* @method append
-	* @param namespace {String} Namespace for image.
-	* @param src {String} URL of image to preload.
-	**&#x2F;
-	p.append = function(namespace, src){
-		Logger.getLogger(&quot;Preloader&quot;).debug(&quot;New [&quot;+namespace+&quot;] resource using &quot;+src);
-		var i = new Image();
-		i.src = src;
-		this.entries[namespace] = i;
-		var that = this;
-		i.onLoad = function(){
-			that._loaded++;
-		};
-	};
-	
-	&#x2F;**
-	* Preloads a lot of resources.
-	* @method appendManifest
-	* @param manifest {Object} A dictionary of namespaces and src.
-	**&#x2F;
-	p.appendManifest = function(manifest){
-		for(var namespace in manifest){
-			this.append(namespace, manifest[namespace]);
-		}
-	};
-	
-	&#x2F;**
-	* Get current loading percentage, or false on fully loaded.
-	* @method getPercentage
-	**&#x2F;
-	p.getPercentage = function(){
-		if(this._loaded == this.entries.length){
+	p.in = function(channel){
+		if(_.indexOf(this.channels, channel) &gt; -1){
+			return true;
+		}else{
 			return false;
 		}
-		if(this._loaded == 0){
-			return 0;
-		}
-		return Math.floor(this._loaded&#x2F;this.entries.length);
 	};
 	
 	&#x2F;**
-	* Calls a function when all is preloaded.
-	* @method loaded
-	* @param fn {Function} Function to be called after loading succeded.
+	* Returns boolean based on if user joined any of supplied channels.
+	* @method inAny
+	* @param channels {Array} Channels to check for.
 	**&#x2F;
-	p.loaded = function(fn){
-		var that = this;
-		if(this.getPercentage() == false){
-			fn();
-		}else{
-			setTimeout(function(){
-				that.loaded(fn);
-			},20);
+	p.inAny = function(channels){
+		var passed = false;
+		for(var i = 0; i &lt; channels.length; i++){
+			if(this.in(channels[i])){
+				passed = true;
+			}
+		}
+		return passed;
+	};
+	
+	&#x2F;**
+	* Joins replicator to a channel... if not joined already.
+	* @method join
+	* @param channel {String} Channel to join.
+	**&#x2F;
+	p.join = function(channel){
+		if(!this.in(channel)){
+			this.channels.push(channel);
+			this.trigger(&#x27;join&#x27;, channel);
 		}
 	};
 	
-	return new Preloader();
+	&#x2F;**
+	* Leave a channel, if I was joined.
+	* @method leave
+	* @param channel {String} Channel to leave.
+	**&#x2F;
+	p.leave = function(channel){
+		if(this.in(channel)){
+			this.trigger(&#x27;leave&#x27;, channel);
+			this.channels = _.without(this.channels, channel);
+		}
+	};
+	
+	return Joinable;
 });
     </pre>
 </div>
