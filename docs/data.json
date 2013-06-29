@@ -1,11 +1,34 @@
 {
     "project": {
         "name": "NodeMMORPG",
-        "description": "Super-speedup canvas library!",
-        "version": "0.0.2",
+        "description": "NodeJS based MMORPG engine!",
+        "version": "0.0.3",
         "url": "http://www.github.com/ilmattodel93/NodeMMORPG"
     },
     "files": {
+        "lib\\Client\\Scene\\Offline.js": {
+            "name": "lib\\Client\\Scene\\Offline.js",
+            "modules": {},
+            "classes": {
+                "OfflineScene": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\Client\\Entity.js": {
+            "name": "lib\\Client\\Entity.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\Client\\Factory.js": {
+            "name": "lib\\Client\\Factory.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
         "lib\\Client\\InputElement.js": {
             "name": "lib\\Client\\InputElement.js",
             "modules": {},
@@ -78,15 +101,6 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib\\Server\\Replicators.js": {
-            "name": "lib\\Server\\Replicators.js",
-            "modules": {},
-            "classes": {
-                "Replicators": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
         "lib\\Shared\\Joinable.js": {
             "name": "lib\\Shared\\Joinable.js",
             "modules": {},
@@ -108,6 +122,46 @@
     },
     "modules": {},
     "classes": {
+        "OfflineScene": {
+            "name": "OfflineScene",
+            "shortname": "OfflineScene",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Client\\Scene\\Offline.js",
+            "line": 2,
+            "description": "Defines an offline screen",
+            "is_constructor": 1
+        },
+        "Entity": {
+            "name": "Entity",
+            "shortname": "Entity",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Server\\Entity.js",
+            "line": 2,
+            "description": "A server-side entity.",
+            "extends": "Joinable",
+            "is_constructor": 1
+        },
+        "Factory": {
+            "name": "Factory",
+            "shortname": "Factory",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib\\Server\\Factory.js",
+            "line": 2,
+            "description": "An entity collector.",
+            "is_constructor": 1
+        },
         "InputElement": {
             "name": "InputElement",
             "shortname": "InputElement",
@@ -204,33 +258,6 @@
             "description": "Manages different scenes on canvas.",
             "is_constructor": 1
         },
-        "Entity": {
-            "name": "Entity",
-            "shortname": "Entity",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "lib\\Server\\Entity.js",
-            "line": 2,
-            "description": "A server-side entity.",
-            "extends": "Joinable",
-            "is_constructor": 1
-        },
-        "Factory": {
-            "name": "Factory",
-            "shortname": "Factory",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "lib\\Server\\Factory.js",
-            "line": 2,
-            "description": "An entity collector.",
-            "is_constructor": 1
-        },
         "Player": {
             "name": "Player",
             "shortname": "Player",
@@ -240,19 +267,6 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "lib\\Server\\Player.js",
-            "line": 2,
-            "description": "Collects multiple Replicators. Each replicator can join on multiple channels",
-            "is_constructor": 1
-        },
-        "Replicators": {
-            "name": "Replicators",
-            "shortname": "Replicators",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "lib\\Server\\Replicators.js",
             "line": 2,
             "description": "Collects multiple Replicators. Each replicator can join on multiple channels",
             "is_constructor": 1
@@ -285,6 +299,67 @@
         }
     },
     "classitems": [
+        {
+            "file": "lib\\Client\\Factory.js",
+            "line": 13,
+            "description": "Store all entities.",
+            "itemtype": "property",
+            "name": "entities",
+            "default": "[]",
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Client\\Factory.js",
+            "line": 20,
+            "description": "Initializing",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Client\\Factory.js",
+            "line": 28,
+            "description": "Returns an entity by its uuid.",
+            "params": [
+                {
+                    "name": "uuid",
+                    "description": "UUID"
+                }
+            ],
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Client\\Factory.js",
+            "line": 36,
+            "description": "Binds Factory methods on a socket.",
+            "itemtype": "method",
+            "name": "listen",
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Client\\Factory.js",
+            "line": 55,
+            "description": "Reset current factory.",
+            "itemtype": "method",
+            "name": "reset",
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Client\\Factory.js",
+            "line": 68,
+            "description": "Spawns an entity from given data.",
+            "itemtype": "method",
+            "name": "spawn",
+            "class": "Factory"
+        },
+        {
+            "file": "lib\\Client\\Factory.js",
+            "line": 84,
+            "description": "Despawns an entity.",
+            "itemtype": "method",
+            "name": "despawn",
+            "class": "Factory"
+        },
         {
             "file": "lib\\Client\\InputElement.js",
             "line": 72,
@@ -661,6 +736,14 @@
         {
             "file": "lib\\Client\\SceneManager.js",
             "line": 96,
+            "description": "Closes current opened scene.",
+            "itemtype": "method",
+            "name": "close",
+            "class": "SceneManager"
+        },
+        {
+            "file": "lib\\Client\\SceneManager.js",
+            "line": 110,
             "description": "Store an instances and open it up later. It triggers create anyway.",
             "itemtype": "method",
             "name": "store",
@@ -729,7 +812,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 88,
+            "line": 87,
             "description": "Despawn an entitiy from the world, also auto trigger entity method.",
             "itemtype": "method",
             "name": "despawn",
@@ -744,7 +827,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 111,
+            "line": 110,
             "description": "Triggered once an entity changes a property, all subscribed clients should be informed!",
             "itemtype": "method",
             "name": "update",
@@ -766,7 +849,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 128,
+            "line": 127,
             "description": "Informs any clients I just joined.",
             "itemtype": "method",
             "name": "join",
@@ -781,7 +864,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 143,
+            "line": 142,
             "description": "Informs any clients I just joined.",
             "itemtype": "method",
             "name": "join",
@@ -796,7 +879,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 158,
+            "line": 157,
             "description": "Store all replicators.",
             "itemtype": "property",
             "name": "replicators",
@@ -805,7 +888,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 165,
+            "line": 164,
             "description": "Subscribe a replicator to the factory.",
             "itemtype": "method",
             "name": "subscribe",
@@ -820,7 +903,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 181,
+            "line": 180,
             "description": "Describe a replicator from the factory.",
             "itemtype": "method",
             "name": "unscribe",
@@ -835,7 +918,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 196,
+            "line": 195,
             "description": "Resync clients entities.",
             "itemtype": "method",
             "name": "sync",
@@ -854,13 +937,6 @@
             "itemtype": "method",
             "name": "initialize",
             "class": "Player"
-        },
-        {
-            "file": "lib\\Server\\Replicators.js",
-            "line": 13,
-            "itemtype": "method",
-            "name": "initialize",
-            "class": "Replicators"
         },
         {
             "file": "lib\\Shared\\Joinable.js",
@@ -956,7 +1032,7 @@
         },
         {
             "file": "lib\\Shared\\Logger.js",
-            "line": 24,
+            "line": 32,
             "description": "Get requested logger, or create instance if not exists.",
             "itemtype": "method",
             "name": "getLogger",
@@ -970,6 +1046,10 @@
         }
     ],
     "warnings": [
+        {
+            "message": "Missing item type\nReturns an entity by its uuid.",
+            "line": " lib\\Client\\Factory.js:28"
+        },
         {
             "message": "Missing item type",
             "line": " lib\\Client\\ResponsiveStage.js:19"

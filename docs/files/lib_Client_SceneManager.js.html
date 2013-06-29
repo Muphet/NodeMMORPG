@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.2</em>
+            <em>API Docs for: 0.0.3</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -51,11 +51,11 @@
             
                 <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
             
+                <li><a href="..&#x2F;classes/OfflineScene.html">OfflineScene</a></li>
+            
                 <li><a href="..&#x2F;classes/Player.html">Player</a></li>
             
                 <li><a href="..&#x2F;classes/Preloader.html">Preloader</a></li>
-            
-                <li><a href="..&#x2F;classes/Replicators.html">Replicators</a></li>
             
                 <li><a href="..&#x2F;classes/ResponsiveStage.html">ResponsiveStage</a></li>
             
@@ -198,6 +198,20 @@ define([&#x27;Client&#x2F;Scene&#x27;, &#x27;Shared&#x2F;Logger&#x27;], function
 		if(typeof(this.get().open) === &quot;function&quot;){
 			Logger.getLogger(&quot;SceneManager&quot;).debug(&quot;Opening Scene#&quot;+this.get().uuid);
 			this.get().open();
+		}
+	};
+	
+	&#x2F;**
+	* Closes current opened scene.
+	* @method close
+	**&#x2F;
+	p.close = function(scene){
+		if((typeof(scene) === &quot;string&quot; &amp;&amp; this.get(scene) !== false) || typeof(scene) === &quot;object&quot;){
+			&#x2F;&#x2F; Trigger close on current scene.
+			if(this.get() !== false &amp;&amp; typeof(this.get().close) === &quot;function&quot;){
+				Logger.getLogger(&quot;SceneManager&quot;).debug(&quot;Closing Scene#&quot;+this.get().uuid);
+				this.get().close();
+			}
 		}
 	};
 	

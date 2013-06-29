@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.2</em>
+            <em>API Docs for: 0.0.3</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -51,11 +51,11 @@
             
                 <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
             
+                <li><a href="..&#x2F;classes/OfflineScene.html">OfflineScene</a></li>
+            
                 <li><a href="..&#x2F;classes/Player.html">Player</a></li>
             
                 <li><a href="..&#x2F;classes/Preloader.html">Preloader</a></li>
-            
-                <li><a href="..&#x2F;classes/Replicators.html">Replicators</a></li>
             
                 <li><a href="..&#x2F;classes/ResponsiveStage.html">ResponsiveStage</a></li>
             
@@ -129,33 +129,42 @@ define(function(){
 	p.initialize = function(){
 	};
 	
+	p.log = function(name, arguments){
+		var txt = &#x27;&#x27;;
+		for(var i = 0; i &lt; arguments.length; i++){
+			txt += arguments[i];
+		}
+		console.log(name+&#x27; - &#x27;+txt);
+	}
+	
 	&#x2F;**
 	* Get requested logger, or create instance if not exists.
 	* @method getLogger
 	* @param name
 	**&#x2F;
 	p.getLogger = function(name){
+		var that = this;
 		if(typeof(this.loggers[name]) === &quot;undefined&quot;){
 			this.loggers[name] = {
 				info: function(){
 					if(typeof(console.info) === &quot;function&quot;){
 						console.info(name, arguments);
 					}else{
-						console.log(name, arguments);
+						that.log(name, arguments);
 					}
 				},
 				warn: function(){
 					if(typeof(console.warn) === &quot;function&quot;){
 						console.warn(name, arguments);
 					}else{
-						console.log(name, arguments);
+						that.log(name, arguments);
 					}
 				},
 				debug: function(){
 					if(typeof(console.debug) === &quot;function&quot;){
 						console.debug(name, arguments);
 					}else{
-						console.log(name, arguments);
+						that.log(name, arguments);
 					}
 				}
 			};

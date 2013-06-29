@@ -6,9 +6,9 @@ YUI.add("yuidoc-meta", function(Y) {
         "InputElement",
         "Joinable",
         "Logger",
+        "OfflineScene",
         "Player",
         "Preloader",
-        "Replicators",
         "ResponsiveStage",
         "Scene",
         "SceneManager"

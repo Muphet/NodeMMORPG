@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Scene - NodeMMORPG</title>
+    <title>lib\Client\Factory.js - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -102,119 +102,111 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Scene Class</h1>
-<div class="box meta">
-    
+                        <h1 class="file-heading">File: lib\Client\Factory.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;Shared&#x2F;Logger&#x27;,&#x27;Client&#x2F;Entity&#x2F;Dictionary&#x27;], function(_, Backbone, Logger, EntityDictionary){
+	&#x2F;**
+	* Factory on client side, it is basically a replicator.
+	* @constructor
+	* @class Factory
+	**&#x2F;
+	function Factory(){
+		this.initialize();
+	}
+	var p = Factory.prototype;
+	_.extend(p, Backbone.Events);
+	
+	&#x2F;**
+	* Store all entities.
+	* @property entities
+	* @default []
+	**&#x2F;
+	p.entities = [];
 
-    
-        <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;lib_Client_Scene.js.html#l2"><code>lib\Client\Scene.js:2</code></a>
-        </div>
-    
-
-    
-
-    
-</div>
-
-
-
-<div class="box intro">
-    <p>A basic scene used by scene manager.</p>
-</div>
-
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Scene" class="method item">
-    <h3 class="name"><code>Scene</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Scene.js.html#l2"><code>lib\Client\Scene.js:2</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
-
-
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
-
-        
-        
-        
-        
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-
-            
-
-            
-
-            
-        </div>
-
-        
-
-        
-
-        
-
-        
-    </div>
+	&#x2F;**
+	* Initializing
+	* @method initialize
+	**&#x2F;
+	p.initialize = function(){
+		this.entities = [];
+	};
+		
+	&#x2F;**
+	* Returns an entity by its uuid.
+	* @param uuid UUID
+	**&#x2F;
+	p.get = function(uuid){
+		return _.findWhere(this.entities, {uuid: uuid || false}) || null;
+	};
+	
+	&#x2F;**
+	* Binds Factory methods on a socket.
+	* @method listen
+	**&#x2F;
+	p.listen = function(socket){
+		var that = this;
+		socket.on(&#x27;factory:subscribed&#x27;, this.reset);
+		socket.on(&#x27;factory:unscribed&#x27;, this.reset);
+		socket.on(&#x27;disconnect&#x27;, this.reset);
+		socket.on(&#x27;factory:spawn&#x27;, function(data){
+			var entityType = data._entityType || &#x27;Entity&#x27;;
+			var entity = new EntityDictionary[entityType](data);
+			that.spawn(entity);
+		});
+		socket.on(&#x27;factory:despawn&#x27;, function(data){
+			that.despawn(that.get(data.uuid || null));
+		});
+	};
+	
+	&#x2F;**
+	* Reset current factory.
+	* @method reset
+	**&#x2F;
+	p.reset = function(){
+		_.each(this.entities, function(e){
+			if(typeof(e[&#x27;despawn&#x27;]) == &quot;function&quot;){
+				e.despawn();
+			}
+		});
+		this.entities = [];
+	};
+	
+	&#x2F;**
+	* Spawns an entity from given data.
+	* @method spawn
+	**&#x2F;
+	p.spawn = function(entity){
+		if(entity !== null){
+			Logger.getLogger(&#x27;Factory&#x27;).debug(&#x27;Spawning an entity.&#x27;);		
+			this.entities.push(entity);
+			
+			if(typeof(entity[&#x27;spawn&#x27;]) === &quot;function&quot;){
+				entity.spawn();
+			}
+			this.trigger(&#x27;spawn&#x27;, entity);
+		}
+	};
+	
+	&#x2F;**
+	* Despawns an entity.
+	* @method despawn
+	**&#x2F;
+	p.despawn = function(entity){
+		if(entity !== null){
+			Logger.getLogger(&#x27;Factory&#x27;).debug(&#x27;Despawning an entity.&#x27;);
+			if(typeof(entity[&#x27;despawn&#x27;]) === &quot;function&quot;){
+				entity.despawn();
+			}
+			this.trigger(&#x27;despawn&#x27;, entity);
+			this.entities = _.without(this.entities, entity);
+		}
+	};
+	
+	return new Factory();
+});
+    </pre>
 </div>
 
                     </div>

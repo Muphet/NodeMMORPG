@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.2</em>
+            <em>API Docs for: 0.0.3</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -51,11 +51,11 @@
             
                 <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
             
+                <li><a href="..&#x2F;classes/OfflineScene.html">OfflineScene</a></li>
+            
                 <li><a href="..&#x2F;classes/Player.html">Player</a></li>
             
                 <li><a href="..&#x2F;classes/Preloader.html">Preloader</a></li>
-            
-                <li><a href="..&#x2F;classes/Replicators.html">Replicators</a></li>
             
                 <li><a href="..&#x2F;classes/ResponsiveStage.html">ResponsiveStage</a></li>
             
@@ -187,7 +187,6 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;Shared&#x2F;Logger&#
 			return e.inAny(entity.channels);
 		}), function(e){
 			if(typeof(e.socket) != &quot;undefined&quot;){
-				console.log(&#x27;Sending socket&#x27;);
 				e.socket.emit(&#x27;factory:spawn&#x27;, entity.syncVars());
 			}
 		});
@@ -211,7 +210,7 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;Shared&#x2F;Logger&#
 			return e.inAny(entity.channels);
 		}), function(e){
 			if(typeof(e.socket) != &quot;undefined&quot;){
-				e.socket.emit(&#x27;factory:despawn&#x27;, entity.uuid);
+				e.socket.emit(&#x27;factory:despawn&#x27;, {uuid: entity.uuid});
 			}
 		});
 	};
@@ -228,7 +227,7 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;Shared&#x2F;Logger&#
 			return e.inAny(entity.channels);
 		}), function(e){
 			if(typeof(e.socket) != &quot;undefined&quot;){
-				e.socket.emit(&#x27;factory:update&#x27;, entity.uuid, key, entity[key], old_value);
+				e.socket.emit(&#x27;factory:update&#x27;, {&quot;uuid&quot;: entity.uuid, &quot;key&quot;: key, &quot;value&quot;: entity[key], &quot;old_value&quot;: old_value});
 			}
 		});
 	};
@@ -258,7 +257,7 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;Shared&#x2F;Logger&#
 			return e.in(channel);
 		}), function(e){
 			if(typeof(e.socket) != &quot;undefined&quot;){
-				e.socket.emit(&#x27;factory:despawn&#x27;, entity.uuid);
+				e.socket.emit(&#x27;factory:despawn&#x27;, {uuid: entity.uuid});
 			}
 		});
 	};
@@ -297,7 +296,7 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;Shared&#x2F;Logger&#
 		entity.trigger(&#x27;unscribe&#x27;);
 		this.trigger(&#x27;unscribe&#x27;, entity);
 		if(typeof(entity.socket) != &quot;undefined&quot;){
-			entity.socket.emit(&#x27;factory:unsubscribed&#x27;);
+			entity.socket.emit(&#x27;factory:unscribed&#x27;);
 		}
 	}
 	
