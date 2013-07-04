@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="TileA2" tilewidth="32" tileheight="32">
+  <image source="resource/TileA2.png" width="512" height="384"/>
+ </tileset>
+ <layer name="players" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztziEBAAAIA7BnIhb9A2CROMzE/DpJH9STy83Pz8/PDwAAAADYBpunTnA=
+  </data>
+ </layer>
+ <layer name="overlay" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJytVVsOwjAM4w5wA7jBxP2vBnwgVVH8iFtL1bo2i90kzW43jPt3PMj+Dq5lpHh+x2vI4fBNv/nHaRqva3le5d3VhtZW/OOk4uXwdHNk4+r7IY1d5agau4G0OTFcwTSj2KGcI/5p7a5g+Wb6nNjWPfS+YqefoBw5+XNrsovXO9DGatDVx9artlUju7dMn9KhatPF5A52czdW6b9lEiNmk/TO6kv9Fzo+15b1SoVJj0e6WHyYXlefygHiUXaVA/Gf1KfqgHEmPRHdu1P63HwibrdukS6Uy6RPp7XCagANhMndqBpVD2GxUPlWNom+Sc9StdHNE40rV7ffxYKdRfll60wf2us0OEj7X8c3qfdUm3Pf6vfTO6rO4dQjQ8I59enodfW4tlPsfsc0dnZT38wm1ZnG1j1Dau/4O4GrPJXtiV7mYhq3hDs9zzQHrLa6td3RcSJdyC69r8h31ebWurOf9FTGhebIn8vp9p3OB7JR7ydqqTtXnU/0MFu01mHnDBM+VQ87+hSfy5nUo2On9FWbD2CMbWM=
+  </data>
+ </layer>
+</map>
