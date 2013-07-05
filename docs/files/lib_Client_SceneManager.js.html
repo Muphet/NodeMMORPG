@@ -41,31 +41,47 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="..&#x2F;classes/Entity.html">Entity</a></li>
-            
-                <li><a href="..&#x2F;classes/Factory.html">Factory</a></li>
-            
                 <li><a href="..&#x2F;classes/InputElement.html">InputElement</a></li>
             
                 <li><a href="..&#x2F;classes/Joinable.html">Joinable</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Entity.html">lib_Client_Entity</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Factory.html">lib_Client_Factory</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_GameCanvas.html">lib_Client_GameCanvas</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Package.html">lib_Client_Package</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Preloader.html">lib_Client_Preloader</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_ResponsiveStage.html">lib_Client_ResponsiveStage</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Scene.html">lib_Client_Scene</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_SceneManager.html">lib_Client_SceneManager</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_TiledMapBuilder.html">lib_Client_TiledMapBuilder</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Entity.html">lib_Server_Entity</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Factory.html">lib_Server_Factory</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Player.html">lib_Server_Player</a></li>
             
                 <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
             
                 <li><a href="..&#x2F;classes/OfflineScene.html">OfflineScene</a></li>
             
-                <li><a href="..&#x2F;classes/Player.html">Player</a></li>
-            
-                <li><a href="..&#x2F;classes/Preloader.html">Preloader</a></li>
-            
-                <li><a href="..&#x2F;classes/ResponsiveStage.html">ResponsiveStage</a></li>
-            
-                <li><a href="..&#x2F;classes/Scene.html">Scene</a></li>
-            
-                <li><a href="..&#x2F;classes/SceneManager.html">SceneManager</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/lib.html">lib</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Client.html">lib_Client</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Server.html">lib_Server</a></li>
             
             </ul>
         </div>
@@ -106,10 +122,12 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define([&#x27;Client&#x2F;Scene&#x27;, &#x27;Shared&#x2F;Logger&#x27;], function(Scene, Logger){
+define([&#x27;lib&#x2F;Client&#x2F;Scene&#x27;, &#x27;lib&#x2F;Shared&#x2F;Logger&#x27;], function(Scene, Logger){
 	&#x2F;**
 	* Manages different scenes on canvas.
-	* @class SceneManager
+	* @module lib
+	* @submodule lib_Client
+	* @class lib_Client_SceneManager
 	* @constructor
 	**&#x2F;
 	function SceneManager(){
@@ -168,15 +186,16 @@ define([&#x27;Client&#x2F;Scene&#x27;, &#x27;Shared&#x2F;Logger&#x27;], function
 	* Runs a tick on currently opened scene.
 	* @method tick
 	**&#x2F;
-	p.tick = function(){
+	p.tick = function(delta){
 		if(typeof(this.get().tick) === &quot;function&quot;){
-			this.get().tick();
+			this.get().tick(delta);
 		}
 	};
 	
 	&#x2F;**
 	* Opens a Scene, it creates it and open it if instance passed.
 	* @method open
+	* @param scene {String|Scene} String namespace or Scene to open.
 	**&#x2F;
 	p.open = function(scene){
 		if((typeof(scene) === &quot;string&quot; &amp;&amp; this.get(scene) !== false) || typeof(scene) === &quot;object&quot;){
@@ -204,6 +223,7 @@ define([&#x27;Client&#x2F;Scene&#x27;, &#x27;Shared&#x2F;Logger&#x27;], function
 	&#x2F;**
 	* Closes current opened scene.
 	* @method close
+	* @param scene {String|Scene} String namespace or Scene to close.
 	**&#x2F;
 	p.close = function(scene){
 		if((typeof(scene) === &quot;string&quot; &amp;&amp; this.get(scene) !== false) || typeof(scene) === &quot;object&quot;){
@@ -218,6 +238,8 @@ define([&#x27;Client&#x2F;Scene&#x27;, &#x27;Shared&#x2F;Logger&#x27;], function
 	&#x2F;**
 	* Store an instances and open it up later. It triggers create anyway.
 	* @method store
+	* @param namespace {String} Namespace for the scene.
+	* @param scene {Scene} Scene to save as namespace.
 	**&#x2F;
 	p.store = function(namespace, scene){
 		this.scenes[namespace] = scene;

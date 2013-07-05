@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Factory - NodeMMORPG</title>
+    <title>lib_Server_Factory - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -41,31 +41,47 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="..&#x2F;classes/Entity.html">Entity</a></li>
-            
-                <li><a href="..&#x2F;classes/Factory.html">Factory</a></li>
-            
                 <li><a href="..&#x2F;classes/InputElement.html">InputElement</a></li>
             
                 <li><a href="..&#x2F;classes/Joinable.html">Joinable</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Entity.html">lib_Client_Entity</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Factory.html">lib_Client_Factory</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_GameCanvas.html">lib_Client_GameCanvas</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Package.html">lib_Client_Package</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Preloader.html">lib_Client_Preloader</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_ResponsiveStage.html">lib_Client_ResponsiveStage</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Scene.html">lib_Client_Scene</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_SceneManager.html">lib_Client_SceneManager</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_TiledMapBuilder.html">lib_Client_TiledMapBuilder</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Entity.html">lib_Server_Entity</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Factory.html">lib_Server_Factory</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Player.html">lib_Server_Player</a></li>
             
                 <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
             
                 <li><a href="..&#x2F;classes/OfflineScene.html">OfflineScene</a></li>
             
-                <li><a href="..&#x2F;classes/Player.html">Player</a></li>
-            
-                <li><a href="..&#x2F;classes/Preloader.html">Preloader</a></li>
-            
-                <li><a href="..&#x2F;classes/ResponsiveStage.html">ResponsiveStage</a></li>
-            
-                <li><a href="..&#x2F;classes/Scene.html">Scene</a></li>
-            
-                <li><a href="..&#x2F;classes/SceneManager.html">SceneManager</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/lib.html">lib</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Client.html">lib_Client</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Server.html">lib_Server</a></li>
             
             </ul>
         </div>
@@ -102,7 +118,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Factory Class</h1>
+                        <h1>lib_Server_Factory Class</h1>
 <div class="box meta">
     
 
@@ -115,6 +131,11 @@
     
 
     
+        
+            Module: <a href="../modules/lib_Server.html">lib_Server</a><br>
+            Parent Module: <a href="../modules/lib.html">lib</a>
+        
+    
 
     
 </div>
@@ -125,63 +146,6 @@
     <p>An entity collector.</p>
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Factory" class="method item">
-    <h3 class="name"><code>Factory</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l2"><code>lib\Server\Factory.js:2</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -216,20 +180,6 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_despawn">despawn</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_initialize">initialize</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
                                 <a href="#method_initialize">initialize</a>
 
                                 
@@ -245,27 +195,6 @@
                         
                             <li class="index-item method">
                                 <a href="#method_join">join</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_listen">listen</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_reset">reset</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_spawn">spawn</a>
 
                                 
                                 
@@ -338,13 +267,6 @@
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_entities">entities</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
                                 <a href="#property_replicators">replicators</a>
 
                                 
@@ -369,60 +291,6 @@
     <h3 class="name"><code>despawn</code></h3>
 
     
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Factory.js.html#l84"><code>lib\Client\Factory.js:84</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Despawns an entity.</p>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_despawn" class="method item">
-    <h3 class="name"><code>despawn</code></h3>
-
-    
         <div class="args">
             <span class="paren">(</span><ul class="args-list inline commas">
             
@@ -461,7 +329,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l87"><code>lib\Server\Factory.js:87</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l89"><code>lib\Server\Factory.js:89</code></a>
         
         </p>
 
@@ -484,7 +352,7 @@
                 <li class="param">
                     
                         <code class="param-name">entity</code>
-                        <span class="type"><a href="..\classes\Entity.html" class="crosslink">Entity</a></span>
+                        <span class="type">Entity</span>
                     
 
                     
@@ -538,61 +406,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Client_Factory.js.html#l20"><code>lib\Client\Factory.js:20</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Initializing</p>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_initialize" class="method item">
-    <h3 class="name"><code>initialize</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l28"><code>lib\Server\Factory.js:28</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l30"><code>lib\Server\Factory.js:30</code></a>
         
         </p>
 
@@ -656,7 +470,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l142"><code>lib\Server\Factory.js:142</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l129"><code>lib\Server\Factory.js:129</code></a>
         
         </p>
 
@@ -743,7 +557,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l127"><code>lib\Server\Factory.js:127</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l144"><code>lib\Server\Factory.js:144</code></a>
         
         </p>
 
@@ -780,114 +594,6 @@
             
             </ul>
         </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_listen" class="method item">
-    <h3 class="name"><code>listen</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Factory.js.html#l36"><code>lib\Client\Factory.js:36</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Binds Factory methods on a socket.</p>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_reset" class="method item">
-    <h3 class="name"><code>reset</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Factory.js.html#l55"><code>lib\Client\Factory.js:55</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Reset current factory.</p>
-    </div>
-
     
 
     
@@ -938,7 +644,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l54"><code>lib\Server\Factory.js:54</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l56"><code>lib\Server\Factory.js:56</code></a>
         
         </p>
 
@@ -961,7 +667,7 @@
                 <li class="param">
                     
                         <code class="param-name">entity</code>
-                        <span class="type"><a href="..\classes\Entity.html" class="crosslink">Entity</a></span>
+                        <span class="type">Entity</span>
                     
 
                     
@@ -975,60 +681,6 @@
             
             </ul>
         </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_spawn" class="method item">
-    <h3 class="name"><code>spawn</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Factory.js.html#l68"><code>lib\Client\Factory.js:68</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Spawns an entity from given data.</p>
-    </div>
-
     
 
     
@@ -1079,7 +731,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l164"><code>lib\Server\Factory.js:164</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l166"><code>lib\Server\Factory.js:166</code></a>
         
         </p>
 
@@ -1166,7 +818,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l195"><code>lib\Server\Factory.js:195</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l197"><code>lib\Server\Factory.js:197</code></a>
         
         </p>
 
@@ -1253,7 +905,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l180"><code>lib\Server\Factory.js:180</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l182"><code>lib\Server\Factory.js:182</code></a>
         
         </p>
 
@@ -1352,7 +1004,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l110"><code>lib\Server\Factory.js:110</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l112"><code>lib\Server\Factory.js:112</code></a>
         
         </p>
 
@@ -1459,7 +1111,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l37"><code>lib\Server\Factory.js:37</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l39"><code>lib\Server\Factory.js:39</code></a>
         
         </p>
 
@@ -1512,7 +1164,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l21"><code>lib\Server\Factory.js:21</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l23"><code>lib\Server\Factory.js:23</code></a>
         
         </p>
 
@@ -1558,53 +1210,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Client_Factory.js.html#l13"><code>lib\Client\Factory.js:13</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Store all entities.</p>
-    </div>
-
-    
-        <p><strong>Default:</strong> []</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_entities" class="property item">
-    <h3 class="name"><code>entities</code></h3>
-    <span class="type">Unknown</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l14"><code>lib\Server\Factory.js:14</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l16"><code>lib\Server\Factory.js:16</code></a>
         
         </p>
 
@@ -1650,7 +1256,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l157"><code>lib\Server\Factory.js:157</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Factory.js.html#l159"><code>lib\Server\Factory.js:159</code></a>
         
         </p>
 

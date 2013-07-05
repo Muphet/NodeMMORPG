@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib\Server\Entity.js - NodeMMORPG</title>
+    <title>lib\Client\TiledMapBuilder.js - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -118,62 +118,75 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib\Server\Entity.js</h1>
+                        <h1 class="file-heading">File: lib\Client\TiledMapBuilder.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F;Joinable&#x27;], function(_, Backbone, Joinable){
+define([&#x27;createjs&#x27;], function(createjs){
 	&#x2F;**
-	* A server-side entity.
+	* From an exported tiled json builds a set of cached containers.
 	* @module lib
-	* @module lib_Server
-	* @class lib_Server_Entity
-	* @extends Joinable
+	* @submodule lib_Client
+	* @class lib_Client_TiledMapBuilder
 	* @constructor
 	**&#x2F;
-	function Entity(){
-		this.initialize();
+	function TiledMapBuilder(data){
+		this.initialize(data);
 	}
+	var p = TiledMapBuilder.prototype = new createjs.Container();
 	
-	var p = Entity.prototype = new Joinable();
-	_.extend(p, Backbone.Events);
+	p.json = {};
 	
-	&#x2F;**
-	* Get vars to send over socket to construct Entity on client side.
-	* @method syncVars
-	* @param obj {Object} 
-	**&#x2F;	
-	p.syncVars = function(obj){
-		var obj = obj || {};
-		obj.uuid = this.uuid;
-		obj._entityType = this._entityType;
-		return obj;
-	}
-	
-	&#x2F;**
-	* Updates current Entity property and trigger update event.
-	* @method set
-	* @param key {String} Key to update
-	* @param value Value to update.
-	**&#x2F;
-	p.set = function(key, value){
-		var old_value = this[key];
-		this[key] = value;
-		this.trigger(&#x27;update&#x27;, this, key, old_value);
+	p.Container_initialize = p.initialize;
+	p.initialize = function(data){
+		this.Container_initialize();
+		this.json = data;
+		this.build();
 	};
 	
-	&#x2F;*
-	* Called on spawn, needs to be overwritten.
-	* @method spawn
-	**&#x2F;
-	p.spawn = function(){}; &#x2F;&#x2F; Called on spawn.
-	&#x2F;*
-	* Called on despawn, needs to be overwritten.
-	* @method despawn
-	**&#x2F;
-	p.despawn = function(){}; &#x2F;&#x2F; Called on despawn.
+	p.build = function(){
+		this.images = [];
+		this.layers = {};
+		for(var i = 0; i &lt; this.json.tilesets.length; i++){
+			this.images.push(this.json.tilesets[i].image);
+		}
+		var params = {
+			images: this.images,
+			frames: {
+				width: this.json.tilewidth,
+				height: this.json.tileheight
+			}
+		};
+		this.tileset = new createjs.SpriteSheet(params);
+		this.sprite = new createjs.Container();
+		for(var i = 0; i &lt; this.json.layers.length; i++){
+			this.layers[this.json.layers[i].name] = new createjs.Container();
+			this.addChild(this.layers[this.json.layers[i].name]);
+			for(var y = 0; y &lt; this.json.height; y++){
+				for(var x = 0; x &lt; this.json.width; x++){
+					var idx = (y * this.json.layers[i].width) + x;
+					var gid = this.json.layers[i].data[idx];
+					if(gid &gt; 0){
+						var tile = new createjs.BitmapAnimation(this.tileset);
+						tile.gotoAndStop(gid-1);
+						tile.x = this.json.tilewidth * x;
+						tile.y = this.json.tileheight * y;
+						this.layers[this.json.layers[i].name].addChild(tile);
+					}
+				}
+			}
+		}
+		var that = this;
+		var cache = function(){
+			for(var i = 0; i &lt; that.json.layers.length; i++){
+				that.layers[that.json.layers[i].name].cache(0,0,that.json.width*that.json.tilewidth, that.json.height*that.json.tileheight);
+			}
+		};
+		this.tileset.addEventListener(&quot;complete&quot;, cache);
+		setTimeout(cache,10000);
+	};
 	
-	return Entity;
+	return TiledMapBuilder;
 });
     </pre>
 </div>

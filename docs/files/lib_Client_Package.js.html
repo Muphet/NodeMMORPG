@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib\Server\Entity.js - NodeMMORPG</title>
+    <title>lib\Client\Package.js - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -118,62 +118,110 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib\Server\Entity.js</h1>
+                        <h1 class="file-heading">File: lib\Client\Package.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F;Joinable&#x27;], function(_, Backbone, Joinable){
+define([&#x27;jquery&#x27;,&#x27;lib&#x2F;Client&#x2F;Entity&#x27;,&#x27;lib&#x2F;Shared&#x2F;Logger&#x27;], function($, Entity, Logger){
 	&#x2F;**
-	* A server-side entity.
+	* Loads Package info.
 	* @module lib
-	* @module lib_Server
-	* @class lib_Server_Entity
-	* @extends Joinable
+	* @submodule lib_Client
+	* @class lib_Client_Package
 	* @constructor
 	**&#x2F;
-	function Entity(){
-		this.initialize();
+	function Package(){
+		
 	}
-	
-	var p = Entity.prototype = new Joinable();
-	_.extend(p, Backbone.Events);
+	var p = Package.prototype;
 	
 	&#x2F;**
-	* Get vars to send over socket to construct Entity on client side.
-	* @method syncVars
-	* @param obj {Object} 
-	**&#x2F;	
-	p.syncVars = function(obj){
-		var obj = obj || {};
-		obj.uuid = this.uuid;
-		obj._entityType = this._entityType;
-		return obj;
-	}
-	
-	&#x2F;**
-	* Updates current Entity property and trigger update event.
-	* @method set
-	* @param key {String} Key to update
-	* @param value Value to update.
+	* Store package.json
+	* @property json
 	**&#x2F;
-	p.set = function(key, value){
-		var old_value = this[key];
-		this[key] = value;
-		this.trigger(&#x27;update&#x27;, this, key, old_value);
+	p.json = {};
+	
+	&#x2F;**
+	* Loads modules and calls a callback once all is loaded.constructor
+	* @method loadModules
+	* @param modules {Array} Modules to load.
+	* @param fn {Function} Callback once all is loaded.
+	* @param fn2 {Function} Callback once one module is loaded.
+	* @param loaded {Integer} Number of modules of array loaded.
+	**&#x2F;
+	p.loadModules = function(modules, fn, fn2, loaded){
+		if(typeof(loaded) === &quot;undefined&quot;){ var loaded = 0; }
+		if(typeof(fn2) === &quot;undefined&quot;){ var fn2 = function(){}; }
+		
+		if(modules.length &gt; 0){
+			if(modules.length &lt; loaded){
+				if(typeof(fn) === &quot;function&quot;){
+					fn();
+				}
+			}else{
+				Logger.getLogger(&quot;Package&quot;).info(&quot;Loading module... &quot;+modules[loaded]);
+				if(require.defined(modules[loaded])){
+					loaded++;
+					this.loadModules(modules, fn, fn2, loaded);
+				}else{
+					var that = this;
+					require([modules[loaded]],function(){
+						fn2(modules[loaded]);
+						loaded++;
+						that.loadModules(modules, fn, fn2, loaded);
+					});
+				}
+			}
+		}
 	};
 	
-	&#x2F;*
-	* Called on spawn, needs to be overwritten.
-	* @method spawn
+	&#x2F;**
+	* Loads package.json and calls callbacks
+	* @method load
+	* @param fn {Function} Callback on complete.
+	* @param fn2 {Function} Callback on step.
 	**&#x2F;
-	p.spawn = function(){}; &#x2F;&#x2F; Called on spawn.
-	&#x2F;*
-	* Called on despawn, needs to be overwritten.
-	* @method despawn
-	**&#x2F;
-	p.despawn = function(){}; &#x2F;&#x2F; Called on despawn.
+	p.load = function(fn, fn2){
+		var that = this;
+		$.ajax({
+			dataType: &quot;json&quot;,
+			url: &quot;game&#x2F;package.json&quot;,
+			data: {},
+			success:function(data){
+				that.json = data;
+				var modules = [];
+				for(var key in data){
+					for(var i = 0; i &lt; data[key].length; i++){
+						if(key.toLowerCase() === &quot;entities&quot;){
+							modules.push(&#x27;game&#x2F;Entities&#x2F;Client&#x2F;&#x27;+data[key][i]);
+						}
+						if(key.toLowerCase() === &quot;scenes&quot;){
+							modules.push(&#x27;game&#x2F;Scenes&#x2F;&#x27;+data[key][i]);
+						}
+					}
+				}
+				that.loadModules(modules, fn, fn2);
+			}
+		});
+	};
 	
-	return Entity;
+	&#x2F;**
+	* By a given name, returns entity class.
+	* @method entities
+	* @param name {String} Entity name.
+	**&#x2F;
+	p.entities = function(name){
+		if(typeof(this.json[&#x27;Entities&#x27;]) === &quot;undefined&quot;){
+			throw &quot;No entities loaded.&quot;;
+			return false;
+		}
+		if(require.defined(&#x27;game&#x2F;Entities&#x2F;Client&#x2F;&#x27;+name)){
+			return require(&#x27;game&#x2F;Entities&#x2F;Client&#x2F;&#x27;+name) || Entity;
+		}
+		return Entity;
+	};
+	
+	return new Package();
 });
     </pre>
 </div>

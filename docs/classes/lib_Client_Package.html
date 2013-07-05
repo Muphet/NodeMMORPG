@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Entity - NodeMMORPG</title>
+    <title>lib_Client_Package - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -41,31 +41,47 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="..&#x2F;classes/Entity.html">Entity</a></li>
-            
-                <li><a href="..&#x2F;classes/Factory.html">Factory</a></li>
-            
                 <li><a href="..&#x2F;classes/InputElement.html">InputElement</a></li>
             
                 <li><a href="..&#x2F;classes/Joinable.html">Joinable</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Entity.html">lib_Client_Entity</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Factory.html">lib_Client_Factory</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_GameCanvas.html">lib_Client_GameCanvas</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Package.html">lib_Client_Package</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Preloader.html">lib_Client_Preloader</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_ResponsiveStage.html">lib_Client_ResponsiveStage</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Scene.html">lib_Client_Scene</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_SceneManager.html">lib_Client_SceneManager</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_TiledMapBuilder.html">lib_Client_TiledMapBuilder</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Entity.html">lib_Server_Entity</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Factory.html">lib_Server_Factory</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Player.html">lib_Server_Player</a></li>
             
                 <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
             
                 <li><a href="..&#x2F;classes/OfflineScene.html">OfflineScene</a></li>
             
-                <li><a href="..&#x2F;classes/Player.html">Player</a></li>
-            
-                <li><a href="..&#x2F;classes/Preloader.html">Preloader</a></li>
-            
-                <li><a href="..&#x2F;classes/ResponsiveStage.html">ResponsiveStage</a></li>
-            
-                <li><a href="..&#x2F;classes/Scene.html">Scene</a></li>
-            
-                <li><a href="..&#x2F;classes/SceneManager.html">SceneManager</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/lib.html">lib</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Client.html">lib_Client</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Server.html">lib_Server</a></li>
             
             </ul>
         </div>
@@ -102,22 +118,23 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Entity Class</h1>
+                        <h1>lib_Client_Package Class</h1>
 <div class="box meta">
     
 
     
-        <div class="extends">
-            Extends <a href="..\classes\Joinable.html" class="crosslink">Joinable</a>
-        </div>
-    
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;lib_Server_Entity.js.html#l2"><code>lib\Server\Entity.js:2</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;lib_Client_Package.js.html#l2"><code>lib\Client\Package.js:2</code></a>
         </div>
     
 
+    
+        
+            Module: <a href="../modules/lib_Client.html">lib_Client</a><br>
+            Parent Module: <a href="../modules/lib.html">lib</a>
+        
     
 
     
@@ -126,17 +143,102 @@
 
 
 <div class="box intro">
-    <p>A server-side entity.</p>
+    <p>Loads Package info.</p>
 </div>
 
 
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Entity" class="method item">
-    <h3 class="name"><code>Entity</code></h3>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_entities">entities</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_load">load</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_loadModules">loadModules</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                                <a href="#property_json">json</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_entities" class="method item">
+    <h3 class="name"><code>entities</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -164,7 +266,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Server_Entity.js.html#l2"><code>lib\Server\Entity.js:2</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_Package.js.html#l84"><code>lib\Client\Package.js:84</code></a>
         
         </p>
 
@@ -175,160 +277,7 @@
     </div>
 
     <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
-
-
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
-
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
-        
-        
-        
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods extends">
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_in">in</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_inAny">inAny</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_initialize">initialize</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_join">join</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_leave">leave</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-                <div class="index-section properties">
-                    <h3>Properties</h3>
-
-                    <ul class="index-list properties extends">
-                        
-                            <li class="index-item property inherited">
-                                <a href="#property_channels">channels</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-
-            
-        </div>
-
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_in" class="method item inherited">
-    <h3 class="name"><code>in</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>channel</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\Joinable.html#method_in">Joinable</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l31"><code>lib\Shared\Joinable.js:31</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns boolean based on if user joined a channel.</p>
+        <p>By a given name, returns entity class.</p>
     </div>
 
     
@@ -339,14 +288,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">channel</code>
+                        <code class="param-name">name</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Channel to check if joined.</p>
+                        <p>Entity name.</p>
                     </div>
 
                     
@@ -362,8 +311,8 @@
 </div>
 
                 
-                    <div id="method_inAny" class="method item inherited">
-    <h3 class="name"><code>inAny</code></h3>
+                    <div id="method_load" class="method item">
+    <h3 class="name"><code>load</code></h3>
 
     
         <div class="args">
@@ -371,7 +320,13 @@
             
                 <li class="arg">
                     
-                        <code>channels</code>
+                        <code>fn</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>fn2</code>
                     
                 </li>
             
@@ -396,12 +351,15 @@
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="..\classes\Joinable.html#method_inAny">Joinable</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l44"><code>lib\Shared\Joinable.js:44</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_Package.js.html#l54"><code>lib\Client\Package.js:54</code></a>
         
         </p>
 
@@ -412,7 +370,7 @@
     </div>
 
     <div class="description">
-        <p>Returns boolean based on if user joined any of supplied channels.</p>
+        <p>Loads package.json and calls callbacks</p>
     </div>
 
     
@@ -423,233 +381,179 @@
             
                 <li class="param">
                     
-                        <code class="param-name">channels</code>
+                        <code class="param-name">fn</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Callback on complete.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn2</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Callback on step.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_loadModules" class="method item">
+    <h3 class="name"><code>loadModules</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>modules</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>fn</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>fn2</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>loaded</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Client_Package.js.html#l20"><code>lib\Client\Package.js:20</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Loads modules and calls a callback once all is loaded.constructor</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">modules</code>
                         <span class="type">Array</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Channels to check for.</p>
+                        <p>Modules to load.</p>
                     </div>
 
                     
                 </li>
             
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_initialize" class="method item inherited">
-    <h3 class="name"><code>initialize</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\Joinable.html#method_initialize">Joinable</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l23"><code>lib\Shared\Joinable.js:23</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Initialize method</p>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_join" class="method item inherited">
-    <h3 class="name"><code>join</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>channel</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\Joinable.html#method_join">Joinable</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l59"><code>lib\Shared\Joinable.js:59</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Joins replicator to a channel... if not joined already.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
                 <li class="param">
                     
-                        <code class="param-name">channel</code>
-                        <span class="type">String</span>
+                        <code class="param-name">fn</code>
+                        <span class="type">Function</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Channel to join.</p>
+                        <p>Callback once all is loaded.</p>
                     </div>
 
                     
                 </li>
             
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_leave" class="method item inherited">
-    <h3 class="name"><code>leave</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>channel</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\Joinable.html#method_leave">Joinable</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l71"><code>lib\Shared\Joinable.js:71</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Leave a channel, if I was joined.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
                 <li class="param">
                     
-                        <code class="param-name">channel</code>
-                        <span class="type">String</span>
+                        <code class="param-name">fn2</code>
+                        <span class="type">Function</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Channel to leave.</p>
+                        <p>Callback once one module is loaded.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">loaded</code>
+                        <span class="type">Integer</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Number of modules of array loaded.</p>
                     </div>
 
                     
@@ -673,8 +577,8 @@
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_channels" class="property item inherited">
-    <h3 class="name"><code>channels</code></h3>
+                    <div id="property_json" class="property item">
+    <h3 class="name"><code>json</code></h3>
     <span class="type">Unknown</span>
 
     
@@ -688,12 +592,15 @@
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="..\classes\Joinable.html#property_channels">Joinable</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l16"><code>lib\Shared\Joinable.js:16</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_Package.js.html#l14"><code>lib\Client\Package.js:14</code></a>
         
         </p>
 
@@ -703,11 +610,9 @@
     </div>
 
     <div class="description">
-        <p>Channels joined by current replicator.</p>
+        <p>Store package.json</p>
     </div>
 
-    
-        <p><strong>Default:</strong> []</p>
     
 
     

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Joinable - NodeMMORPG</title>
+    <title>lib_Client_SceneManager - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -118,7 +118,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Joinable Class</h1>
+                        <h1>lib_Client_SceneManager Class</h1>
 <div class="box meta">
     
 
@@ -126,13 +126,14 @@
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l2"><code>lib\Shared\Joinable.js:2</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l2"><code>lib\Client\SceneManager.js:2</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/lib.html">lib</a>
+            Module: <a href="../modules/lib_Client.html">lib_Client</a><br>
+            Parent Module: <a href="../modules/lib.html">lib</a>
         
     
 
@@ -142,66 +143,9 @@
 
 
 <div class="box intro">
-    <p>Manage channels joining.</p>
+    <p>Manages different scenes on canvas.</p>
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Joinable" class="method item">
-    <h3 class="name"><code>Joinable</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l2"><code>lib\Shared\Joinable.js:2</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -229,14 +173,14 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_in">in</a>
+                                <a href="#method_close">close</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_inAny">inAny</a>
+                                <a href="#method_get">get</a>
 
                                 
                                 
@@ -250,14 +194,21 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_join">join</a>
+                                <a href="#method_open">open</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_leave">leave</a>
+                                <a href="#method_store">store</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_tick">tick</a>
 
                                 
                                 
@@ -274,7 +225,14 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_channels">channels</a>
+                                <a href="#property_current">current</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_scenes">scenes</a>
 
                                 
                                 
@@ -294,8 +252,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_in" class="method item">
-    <h3 class="name"><code>in</code></h3>
+                    <div id="method_close" class="method item">
+    <h3 class="name"><code>close</code></h3>
 
     
         <div class="args">
@@ -303,7 +261,7 @@
             
                 <li class="arg">
                     
-                        <code>channel</code>
+                        <code>scene</code>
                     
                 </li>
             
@@ -336,7 +294,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l31"><code>lib\Shared\Joinable.js:31</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l99"><code>lib\Client\SceneManager.js:99</code></a>
         
         </p>
 
@@ -347,7 +305,7 @@
     </div>
 
     <div class="description">
-        <p>Returns boolean based on if user joined a channel.</p>
+        <p>Closes current opened scene.</p>
     </div>
 
     
@@ -358,14 +316,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">channel</code>
-                        <span class="type">String</span>
+                        <code class="param-name">scene</code>
+                        <span class="type">String | Scene</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Channel to check if joined.</p>
+                        <p>String namespace or Scene to close.</p>
                     </div>
 
                     
@@ -381,8 +339,8 @@
 </div>
 
                 
-                    <div id="method_inAny" class="method item">
-    <h3 class="name"><code>inAny</code></h3>
+                    <div id="method_get" class="method item">
+    <h3 class="name"><code>get</code></h3>
 
     
         <div class="args">
@@ -390,7 +348,7 @@
             
                 <li class="arg">
                     
-                        <code>channels</code>
+                        <code>namespace</code>
                     
                 </li>
             
@@ -423,7 +381,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l44"><code>lib\Shared\Joinable.js:44</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l36"><code>lib\Client\SceneManager.js:36</code></a>
         
         </p>
 
@@ -434,7 +392,7 @@
     </div>
 
     <div class="description">
-        <p>Returns boolean based on if user joined any of supplied channels.</p>
+        <p>Get current scene, if string passed, returns correlated scene, if exists.</p>
     </div>
 
     
@@ -445,14 +403,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">channels</code>
-                        <span class="type">Array</span>
+                        <code class="param-name">namespace</code>
+                        <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Channels to check for.</p>
+                        <p>Scene to get.</p>
                     </div>
 
                     
@@ -500,7 +458,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l23"><code>lib\Shared\Joinable.js:23</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l27"><code>lib\Client\SceneManager.js:27</code></a>
         
         </p>
 
@@ -511,7 +469,7 @@
     </div>
 
     <div class="description">
-        <p>Initialize method</p>
+        <p>Initialize</p>
     </div>
 
     
@@ -522,8 +480,8 @@
 </div>
 
                 
-                    <div id="method_join" class="method item">
-    <h3 class="name"><code>join</code></h3>
+                    <div id="method_open" class="method item">
+    <h3 class="name"><code>open</code></h3>
 
     
         <div class="args">
@@ -531,7 +489,7 @@
             
                 <li class="arg">
                     
-                        <code>channel</code>
+                        <code>scene</code>
                     
                 </li>
             
@@ -564,7 +522,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l59"><code>lib\Shared\Joinable.js:59</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l71"><code>lib\Client\SceneManager.js:71</code></a>
         
         </p>
 
@@ -575,7 +533,7 @@
     </div>
 
     <div class="description">
-        <p>Joins replicator to a channel... if not joined already.</p>
+        <p>Opens a Scene, it creates it and open it if instance passed.</p>
     </div>
 
     
@@ -586,14 +544,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">channel</code>
-                        <span class="type">String</span>
+                        <code class="param-name">scene</code>
+                        <span class="type">String | Scene</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Channel to join.</p>
+                        <p>String namespace or Scene to open.</p>
                     </div>
 
                     
@@ -609,8 +567,8 @@
 </div>
 
                 
-                    <div id="method_leave" class="method item">
-    <h3 class="name"><code>leave</code></h3>
+                    <div id="method_store" class="method item">
+    <h3 class="name"><code>store</code></h3>
 
     
         <div class="args">
@@ -618,7 +576,13 @@
             
                 <li class="arg">
                     
-                        <code>channel</code>
+                        <code>namespace</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>scene</code>
                     
                 </li>
             
@@ -651,7 +615,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l71"><code>lib\Shared\Joinable.js:71</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l114"><code>lib\Client\SceneManager.js:114</code></a>
         
         </p>
 
@@ -662,7 +626,7 @@
     </div>
 
     <div class="description">
-        <p>Leave a channel, if I was joined.</p>
+        <p>Store an instances and open it up later. It triggers create anyway.</p>
     </div>
 
     
@@ -673,14 +637,29 @@
             
                 <li class="param">
                     
-                        <code class="param-name">channel</code>
+                        <code class="param-name">namespace</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Channel to leave.</p>
+                        <p>Namespace for the scene.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">scene</code>
+                        <span class="type">Scene</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Scene to save as namespace.</p>
                     </div>
 
                     
@@ -688,6 +667,60 @@
             
             </ul>
         </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_tick" class="method item">
+    <h3 class="name"><code>tick</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l61"><code>lib\Client\SceneManager.js:61</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Runs a tick on currently opened scene.</p>
+    </div>
+
     
 
     
@@ -704,8 +737,8 @@
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_channels" class="property item">
-    <h3 class="name"><code>channels</code></h3>
+                    <div id="property_current" class="property item">
+    <h3 class="name"><code>current</code></h3>
     <span class="type">Unknown</span>
 
     
@@ -727,7 +760,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Shared_Joinable.js.html#l16"><code>lib\Shared\Joinable.js:16</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l21"><code>lib\Client\SceneManager.js:21</code></a>
         
         </p>
 
@@ -737,11 +770,53 @@
     </div>
 
     <div class="description">
-        <p>Channels joined by current replicator.</p>
+        <p>Holds current scene, as instance or string.</p>
     </div>
 
     
-        <p><strong>Default:</strong> []</p>
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_scenes" class="property item">
+    <h3 class="name"><code>scenes</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Client_SceneManager.js.html#l15"><code>lib\Client\SceneManager.js:15</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Holds all scenes.</p>
+    </div>
+
     
 
     

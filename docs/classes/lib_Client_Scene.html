@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Player - NodeMMORPG</title>
+    <title>lib_Client_Scene - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -41,31 +41,47 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="..&#x2F;classes/Entity.html">Entity</a></li>
-            
-                <li><a href="..&#x2F;classes/Factory.html">Factory</a></li>
-            
                 <li><a href="..&#x2F;classes/InputElement.html">InputElement</a></li>
             
                 <li><a href="..&#x2F;classes/Joinable.html">Joinable</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Entity.html">lib_Client_Entity</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Factory.html">lib_Client_Factory</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_GameCanvas.html">lib_Client_GameCanvas</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Package.html">lib_Client_Package</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Preloader.html">lib_Client_Preloader</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_ResponsiveStage.html">lib_Client_ResponsiveStage</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Scene.html">lib_Client_Scene</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_SceneManager.html">lib_Client_SceneManager</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_TiledMapBuilder.html">lib_Client_TiledMapBuilder</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Entity.html">lib_Server_Entity</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Factory.html">lib_Server_Factory</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Player.html">lib_Server_Player</a></li>
             
                 <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
             
                 <li><a href="..&#x2F;classes/OfflineScene.html">OfflineScene</a></li>
             
-                <li><a href="..&#x2F;classes/Player.html">Player</a></li>
-            
-                <li><a href="..&#x2F;classes/Preloader.html">Preloader</a></li>
-            
-                <li><a href="..&#x2F;classes/ResponsiveStage.html">ResponsiveStage</a></li>
-            
-                <li><a href="..&#x2F;classes/Scene.html">Scene</a></li>
-            
-                <li><a href="..&#x2F;classes/SceneManager.html">SceneManager</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/lib.html">lib</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Client.html">lib_Client</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Server.html">lib_Server</a></li>
             
             </ul>
         </div>
@@ -102,7 +118,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Player Class</h1>
+                        <h1>lib_Client_Scene Class</h1>
 <div class="box meta">
     
 
@@ -110,10 +126,15 @@
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;lib_Server_Player.js.html#l2"><code>lib\Server\Player.js:2</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;lib_Client_Scene.js.html#l2"><code>lib\Client\Scene.js:2</code></a>
         </div>
     
 
+    
+        
+            Module: <a href="../modules/lib_Client.html">lib_Client</a><br>
+            Parent Module: <a href="../modules/lib.html">lib</a>
+        
     
 
     
@@ -122,74 +143,15 @@
 
 
 <div class="box intro">
-    <p>Collects multiple Replicators. Each replicator can join on multiple channels</p>
+    <p>A basic scene used by scene manager.</p>
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Player" class="method item">
-    <h3 class="name"><code>Player</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Server_Player.js.html#l2"><code>lib\Server\Player.js:2</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
     <ul class="api-class-tabs">
         <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
         
         
@@ -201,21 +163,6 @@
             <h2 class="off-left">Item Index</h2>
 
             
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method_initialize">initialize</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
 
             
 
@@ -224,66 +171,6 @@
             
         </div>
 
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_initialize" class="method item">
-    <h3 class="name"><code>initialize</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Server_Player.js.html#l13"><code>lib\Server\Player.js:13</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
         
 
         

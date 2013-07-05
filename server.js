@@ -1,7 +1,7 @@
 var Loader = require(__dirname+'/lib/loader');
 var io = require('socket.io').listen(99);
 
-Loader(['Server/Factory', 'Server/Player', 'Server/Entity/Animation'], function(Factory, Player, AnimationEntity){
+Loader(['lib/Server/Factory', 'lib/Server/Player', 'game/Entities/Server/Animation'], function(Factory, Player, AnimationEntity){
 	var e = new AnimationEntity();
 	setInterval(function(){
 		e.set('variable','Test!');

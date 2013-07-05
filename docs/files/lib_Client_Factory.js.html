@@ -41,31 +41,47 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="..&#x2F;classes/Entity.html">Entity</a></li>
-            
-                <li><a href="..&#x2F;classes/Factory.html">Factory</a></li>
-            
                 <li><a href="..&#x2F;classes/InputElement.html">InputElement</a></li>
             
                 <li><a href="..&#x2F;classes/Joinable.html">Joinable</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Entity.html">lib_Client_Entity</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Factory.html">lib_Client_Factory</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_GameCanvas.html">lib_Client_GameCanvas</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Package.html">lib_Client_Package</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Preloader.html">lib_Client_Preloader</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_ResponsiveStage.html">lib_Client_ResponsiveStage</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_Scene.html">lib_Client_Scene</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_SceneManager.html">lib_Client_SceneManager</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Client_TiledMapBuilder.html">lib_Client_TiledMapBuilder</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Entity.html">lib_Server_Entity</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Factory.html">lib_Server_Factory</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Server_Player.html">lib_Server_Player</a></li>
             
                 <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
             
                 <li><a href="..&#x2F;classes/OfflineScene.html">OfflineScene</a></li>
             
-                <li><a href="..&#x2F;classes/Player.html">Player</a></li>
-            
-                <li><a href="..&#x2F;classes/Preloader.html">Preloader</a></li>
-            
-                <li><a href="..&#x2F;classes/ResponsiveStage.html">ResponsiveStage</a></li>
-            
-                <li><a href="..&#x2F;classes/Scene.html">Scene</a></li>
-            
-                <li><a href="..&#x2F;classes/SceneManager.html">SceneManager</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/lib.html">lib</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Client.html">lib_Client</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Server.html">lib_Server</a></li>
             
             </ul>
         </div>
@@ -106,11 +122,13 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;Shared&#x2F;Logger&#x27;,&#x27;Client&#x2F;Entity&#x2F;Dictionary&#x27;], function(_, Backbone, Logger, EntityDictionary){
+define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F;Logger&#x27;,&#x27;lib&#x2F;Client&#x2F;Package&#x27;], function(_, Backbone, Logger, Package){
 	&#x2F;**
 	* Factory on client side, it is basically a replicator.
 	* @constructor
-	* @class Factory
+	* @module lib
+	* @submodule lib_Client
+	* @class lib_Client_Factory
 	**&#x2F;
 	function Factory(){
 		this.initialize();
@@ -152,7 +170,7 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;Shared&#x2F;Logger&#
 		socket.on(&#x27;disconnect&#x27;, this.reset);
 		socket.on(&#x27;factory:spawn&#x27;, function(data){
 			var entityType = data._entityType || &#x27;Entity&#x27;;
-			var entity = new EntityDictionary[entityType](data);
+			var entity = new (Package.entities(entityType))(data);
 			that.spawn(entity);
 		});
 		socket.on(&#x27;factory:despawn&#x27;, function(data){

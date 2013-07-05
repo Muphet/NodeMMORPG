@@ -1,4 +1,4 @@
-define(['Client/GameCanvas','Client/Entity', 'createjs'], function(GameCanvas, Entity, createjs){
+define(['lib/Client/GameCanvas','lib/Client/Entity', 'createjs'], function(GameCanvas, Entity, createjs){
 	function EntityAnimation(data){
 		this.initialize(data);
 	}
@@ -8,7 +8,7 @@ define(['Client/GameCanvas','Client/Entity', 'createjs'], function(GameCanvas, E
 	p.Entity_initialize = p.initialize;
 	p.initialize = function(data){
 		this.spritesheet = new createjs.SpriteSheet({
-			images: ["static/images/animations/Fire.png"],
+			images: ["game/Graphics/Animations/Fire.png"],
 			frames: {width: 50, height:50, regX: 25, regY: 25},
 			animations: {
 				explosion: {

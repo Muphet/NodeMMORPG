@@ -6,8 +6,8 @@
         "url": "http://www.github.com/ilmattodel93/NodeMMORPG"
     },
     "files": {
-        "lib\\Client\\Scene\\Offline.js": {
-            "name": "lib\\Client\\Scene\\Offline.js",
+        "game\\Scenes\\Offline.js": {
+            "name": "game\\Scenes\\Offline.js",
             "modules": {},
             "classes": {
                 "OfflineScene": 1
@@ -17,15 +17,30 @@
         },
         "lib\\Client\\Entity.js": {
             "name": "lib\\Client\\Entity.js",
-            "modules": {},
-            "classes": {},
+            "modules": {
+                "lib_Client": 1
+            },
+            "classes": {
+                "lib_Client_Entity": 1
+            },
             "fors": {},
             "namespaces": {}
         },
         "lib\\Client\\Factory.js": {
             "name": "lib\\Client\\Factory.js",
             "modules": {},
-            "classes": {},
+            "classes": {
+                "lib_Client_Factory": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\Client\\GameCanvas.js": {
+            "name": "lib\\Client\\GameCanvas.js",
+            "modules": {},
+            "classes": {
+                "lib_Client_GameCanvas": 1
+            },
             "fors": {},
             "namespaces": {}
         },
@@ -38,11 +53,20 @@
             "fors": {},
             "namespaces": {}
         },
+        "lib\\Client\\Package.js": {
+            "name": "lib\\Client\\Package.js",
+            "modules": {},
+            "classes": {
+                "lib_Client_Package": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "lib\\Client\\Preloader.js": {
             "name": "lib\\Client\\Preloader.js",
             "modules": {},
             "classes": {
-                "Preloader": 1
+                "lib_Client_Preloader": 1
             },
             "fors": {},
             "namespaces": {}
@@ -51,7 +75,7 @@
             "name": "lib\\Client\\ResponsiveStage.js",
             "modules": {},
             "classes": {
-                "ResponsiveStage": 1
+                "lib_Client_ResponsiveStage": 1
             },
             "fors": {},
             "namespaces": {}
@@ -60,7 +84,7 @@
             "name": "lib\\Client\\Scene.js",
             "modules": {},
             "classes": {
-                "Scene": 1
+                "lib_Client_Scene": 1
             },
             "fors": {},
             "namespaces": {}
@@ -69,16 +93,35 @@
             "name": "lib\\Client\\SceneManager.js",
             "modules": {},
             "classes": {
-                "SceneManager": 1
+                "lib_Client_SceneManager": 1
             },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\Client\\TiledMapBuilder.js": {
+            "name": "lib\\Client\\TiledMapBuilder.js",
+            "modules": {},
+            "classes": {
+                "lib_Client_TiledMapBuilder": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\Server\\Actor.js": {
+            "name": "lib\\Server\\Actor.js",
+            "modules": {},
+            "classes": {},
             "fors": {},
             "namespaces": {}
         },
         "lib\\Server\\Entity.js": {
             "name": "lib\\Server\\Entity.js",
-            "modules": {},
+            "modules": {
+                "lib": 1,
+                "lib_Server": 1
+            },
             "classes": {
-                "Entity": 1
+                "lib_Server_Entity": 1
             },
             "fors": {},
             "namespaces": {}
@@ -87,7 +130,7 @@
             "name": "lib\\Server\\Factory.js",
             "modules": {},
             "classes": {
-                "Factory": 1
+                "lib_Server_Factory": 1
             },
             "fors": {},
             "namespaces": {}
@@ -96,7 +139,7 @@
             "name": "lib\\Server\\Player.js",
             "modules": {},
             "classes": {
-                "Player": 1
+                "lib_Server_Player": 1
             },
             "fors": {},
             "namespaces": {}
@@ -120,95 +163,62 @@
             "namespaces": {}
         }
     },
-    "modules": {},
-    "classes": {
-        "OfflineScene": {
-            "name": "OfflineScene",
-            "shortname": "OfflineScene",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "lib\\Client\\Scene\\Offline.js",
-            "line": 2,
-            "description": "Defines an offline screen",
-            "is_constructor": 1
-        },
-        "Entity": {
-            "name": "Entity",
-            "shortname": "Entity",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "lib\\Server\\Entity.js",
+    "modules": {
+        "lib": {
+            "name": "lib",
+            "submodules": {
+                "lib_Client": 1
+            },
+            "classes": {
+                "OfflineScene": 1,
+                "lib_Client_Entity": 1,
+                "lib_Client_Factory": 1,
+                "lib_Client_GameCanvas": 1,
+                "InputElement": 1,
+                "lib_Client_Package": 1,
+                "lib_Client_Preloader": 1,
+                "lib_Client_ResponsiveStage": 1,
+                "lib_Client_Scene": 1,
+                "lib_Client_SceneManager": 1,
+                "lib_Client_TiledMapBuilder": 1,
+                "lib_Server_Factory": 1,
+                "lib_Server_Player": 1,
+                "Joinable": 1,
+                "Logger": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib\\Shared\\Logger.js",
             "line": 2,
             "description": "A server-side entity.",
             "extends": "Joinable",
             "is_constructor": 1
         },
-        "Factory": {
-            "name": "Factory",
-            "shortname": "Factory",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "lib\\Server\\Factory.js",
+        "lib_Client": {
+            "name": "lib_Client",
+            "submodules": {},
+            "classes": {
+                "lib_Client_Entity": 1,
+                "lib_Client_Factory": 1,
+                "lib_Client_GameCanvas": 1,
+                "lib_Client_Package": 1,
+                "lib_Client_Preloader": 1,
+                "lib_Client_ResponsiveStage": 1,
+                "lib_Client_Scene": 1,
+                "lib_Client_SceneManager": 1,
+                "lib_Client_TiledMapBuilder": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "lib",
+            "namespace": "",
+            "file": "lib\\Client\\TiledMapBuilder.js",
             "line": 2,
-            "description": "An entity collector.",
-            "is_constructor": 1
-        },
-        "InputElement": {
-            "name": "InputElement",
-            "shortname": "InputElement",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "lib\\Client\\InputElement.js",
-            "line": 34,
-            "description": "<b>This class is still experimental, and more advanced use is likely to be buggy. Please report bugs.</b>\n\nA DOMElement allows you to associate a HTMLElement with the display list. It will be transformed\nwithin the DOM as though it is child of the {{#crossLink \"Container\"}}{{/crossLink}} it is added to. However, it is\nnot rendered to canvas, and as such will retain whatever z-index it has relative to the canvas (ie. it will be\ndrawn in front of or behind the canvas).\n\nThe position of a DOMElement is relative to their parent node in the DOM. It is recommended that\nthe DOM Object be added to a div that also contains the canvas so that they share the same position\non the page.\n\nDOMElement is useful for positioning HTML elements over top of canvas content, and for elements\nthat you want to display outside the bounds of the canvas. For example, a tooltip with rich HTML\ncontent.\n\n<h4>Mouse Interaction</h4>\n\nDOMElement instances are not full EaselJS display objects, and do not participate in EaselJS mouse\nevents or support methods like hitTest. To get mouse events from a DOMElement, you must instead add handlers to\nthe htmlElement (note, this does not support EventDispatcher)\n\n     var domElement = new createjs.DOMElement(htmlElement);\n     domElement.htmlElement.onclick = function() {\n         console.log(\"clicked\");\n     }",
-            "extends": "DisplayObject",
+            "description": "A client-side entity.",
             "is_constructor": 1,
-            "params": [
-                {
-                    "name": "htmlElement",
-                    "description": "A reference or id for the DOM element to manage.",
-                    "type": "HTMLElement"
-                }
-            ]
-        },
-        "Preloader": {
-            "name": "Preloader",
-            "shortname": "Preloader",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "lib\\Client\\Preloader.js",
-            "line": 2,
-            "description": "Preloads any image.",
-            "is_constructor": 1
-        },
-        "ResponsiveStage": {
-            "name": "ResponsiveStage",
-            "shortname": "ResponsiveStage",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "lib\\Client\\ResponsiveStage.js",
-            "line": 2,
-            "description": "An extension to easeljs Stage, it resizes itself, and it takes a max_width and max_height parameter.",
             "extends": "Stage",
-            "is_constructor": 1,
             "params": [
                 {
                     "name": "element",
@@ -232,44 +242,243 @@
                 }
             ]
         },
-        "Scene": {
-            "name": "Scene",
-            "shortname": "Scene",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "lib\\Client\\Scene.js",
-            "line": 2,
-            "description": "A basic scene used by scene manager.",
-            "is_constructor": 1
-        },
-        "SceneManager": {
-            "name": "SceneManager",
-            "shortname": "SceneManager",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "lib\\Client\\SceneManager.js",
-            "line": 2,
-            "description": "Manages different scenes on canvas.",
-            "is_constructor": 1
-        },
-        "Player": {
-            "name": "Player",
-            "shortname": "Player",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
+        "lib_Server": {
+            "name": "lib_Server",
+            "submodules": {},
+            "classes": {
+                "lib_Server_Entity": 1,
+                "lib_Server_Factory": 1,
+                "lib_Server_Player": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
             "file": "lib\\Server\\Player.js",
             "line": 2,
-            "description": "Collects multiple Replicators. Each replicator can join on multiple channels",
+            "description": "A server-side entity.",
+            "module": "lib",
             "is_constructor": 1
+        }
+    },
+    "classes": {
+        "OfflineScene": {
+            "name": "OfflineScene",
+            "shortname": "OfflineScene",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "file": "game\\Scenes\\Offline.js",
+            "line": 2,
+            "description": "Defines an offline screen",
+            "is_constructor": 1,
+            "extends": "Scene"
+        },
+        "lib_Client_Entity": {
+            "name": "lib_Client_Entity",
+            "shortname": "lib_Client_Entity",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Client",
+            "namespace": "",
+            "file": "lib\\Client\\Entity.js",
+            "line": 2,
+            "description": "A client-side entity."
+        },
+        "lib_Client_Factory": {
+            "name": "lib_Client_Factory",
+            "shortname": "lib_Client_Factory",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Client",
+            "namespace": "",
+            "file": "lib\\Client\\Factory.js",
+            "line": 2,
+            "description": "Factory on client side, it is basically a replicator.",
+            "is_constructor": 1
+        },
+        "lib_Client_GameCanvas": {
+            "name": "lib_Client_GameCanvas",
+            "shortname": "lib_Client_GameCanvas",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Client",
+            "namespace": "",
+            "file": "lib\\Client\\GameCanvas.js",
+            "line": 2,
+            "description": "Singleton of a ResponsiveStage"
+        },
+        "InputElement": {
+            "name": "InputElement",
+            "shortname": "InputElement",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "namespace": "",
+            "file": "lib\\Client\\InputElement.js",
+            "line": 34,
+            "description": "<b>This class is still experimental, and more advanced use is likely to be buggy. Please report bugs.</b>\n\nA DOMElement allows you to associate a HTMLElement with the display list. It will be transformed\nwithin the DOM as though it is child of the {{#crossLink \"Container\"}}{{/crossLink}} it is added to. However, it is\nnot rendered to canvas, and as such will retain whatever z-index it has relative to the canvas (ie. it will be\ndrawn in front of or behind the canvas).\n\nThe position of a DOMElement is relative to their parent node in the DOM. It is recommended that\nthe DOM Object be added to a div that also contains the canvas so that they share the same position\non the page.\n\nDOMElement is useful for positioning HTML elements over top of canvas content, and for elements\nthat you want to display outside the bounds of the canvas. For example, a tooltip with rich HTML\ncontent.\n\n<h4>Mouse Interaction</h4>\n\nDOMElement instances are not full EaselJS display objects, and do not participate in EaselJS mouse\nevents or support methods like hitTest. To get mouse events from a DOMElement, you must instead add handlers to\nthe htmlElement (note, this does not support EventDispatcher)\n\n     var domElement = new createjs.DOMElement(htmlElement);\n     domElement.htmlElement.onclick = function() {\n         console.log(\"clicked\");\n     }",
+            "extends": "DisplayObject",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "htmlElement",
+                    "description": "A reference or id for the DOM element to manage.",
+                    "type": "HTMLElement"
+                }
+            ]
+        },
+        "lib_Client_Package": {
+            "name": "lib_Client_Package",
+            "shortname": "lib_Client_Package",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Client",
+            "namespace": "",
+            "file": "lib\\Client\\Package.js",
+            "line": 2,
+            "description": "Loads Package info."
+        },
+        "lib_Client_Preloader": {
+            "name": "lib_Client_Preloader",
+            "shortname": "lib_Client_Preloader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Client",
+            "namespace": "",
+            "file": "lib\\Client\\Preloader.js",
+            "line": 2,
+            "description": "Preloads any image."
+        },
+        "lib_Client_ResponsiveStage": {
+            "name": "lib_Client_ResponsiveStage",
+            "shortname": "lib_Client_ResponsiveStage",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Client",
+            "namespace": "",
+            "file": "lib\\Client\\ResponsiveStage.js",
+            "line": 2,
+            "description": "An extension to easeljs Stage, it resizes itself, and it takes a max_width and max_height parameter.",
+            "extends": "Stage"
+        },
+        "lib_Client_Scene": {
+            "name": "lib_Client_Scene",
+            "shortname": "lib_Client_Scene",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Client",
+            "namespace": "",
+            "file": "lib\\Client\\Scene.js",
+            "line": 2,
+            "description": "A basic scene used by scene manager."
+        },
+        "lib_Client_SceneManager": {
+            "name": "lib_Client_SceneManager",
+            "shortname": "lib_Client_SceneManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Client",
+            "namespace": "",
+            "file": "lib\\Client\\SceneManager.js",
+            "line": 2,
+            "description": "Manages different scenes on canvas."
+        },
+        "lib_Client_TiledMapBuilder": {
+            "name": "lib_Client_TiledMapBuilder",
+            "shortname": "lib_Client_TiledMapBuilder",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Client",
+            "namespace": "",
+            "file": "lib\\Client\\TiledMapBuilder.js",
+            "line": 2,
+            "description": "From an exported tiled json builds a set of cached containers."
+        },
+        "lib_Server_Entity": {
+            "name": "lib_Server_Entity",
+            "shortname": "lib_Server_Entity",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib_Server",
+            "namespace": "",
+            "file": "lib\\Server\\Entity.js",
+            "line": 2,
+            "description": "A server-side entity."
+        },
+        "lib_Server_Factory": {
+            "name": "lib_Server_Factory",
+            "shortname": "lib_Server_Factory",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Server",
+            "namespace": "",
+            "file": "lib\\Server\\Factory.js",
+            "line": 2,
+            "description": "An entity collector."
+        },
+        "lib_Server_Player": {
+            "name": "lib_Server_Player",
+            "shortname": "lib_Server_Player",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Server",
+            "namespace": "",
+            "file": "lib\\Server\\Player.js",
+            "line": 2,
+            "description": "Collects multiple Replicators. Each replicator can join on multiple channels"
         },
         "Joinable": {
             "name": "Joinable",
@@ -279,6 +488,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "lib",
+            "namespace": "",
             "file": "lib\\Shared\\Joinable.js",
             "line": 2,
             "description": "Manage channels joining.",
@@ -292,6 +503,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "lib",
+            "namespace": "",
             "file": "lib\\Shared\\Logger.js",
             "line": 2,
             "description": "Logger utilities, only interface to console methods.",
@@ -301,24 +514,28 @@
     "classitems": [
         {
             "file": "lib\\Client\\Factory.js",
-            "line": 13,
+            "line": 15,
             "description": "Store all entities.",
             "itemtype": "property",
             "name": "entities",
             "default": "[]",
-            "class": "Factory"
+            "class": "lib_Client_Factory",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Factory.js",
-            "line": 20,
+            "line": 22,
             "description": "Initializing",
             "itemtype": "method",
             "name": "initialize",
-            "class": "Factory"
+            "class": "lib_Client_Factory",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Factory.js",
-            "line": 28,
+            "line": 30,
             "description": "Returns an entity by its uuid.",
             "params": [
                 {
@@ -326,39 +543,49 @@
                     "description": "UUID"
                 }
             ],
-            "class": "Factory"
+            "class": "lib_Client_Factory",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Factory.js",
-            "line": 36,
+            "line": 38,
             "description": "Binds Factory methods on a socket.",
             "itemtype": "method",
             "name": "listen",
-            "class": "Factory"
+            "class": "lib_Client_Factory",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Factory.js",
-            "line": 55,
+            "line": 57,
             "description": "Reset current factory.",
             "itemtype": "method",
             "name": "reset",
-            "class": "Factory"
+            "class": "lib_Client_Factory",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Factory.js",
-            "line": 68,
+            "line": 70,
             "description": "Spawns an entity from given data.",
             "itemtype": "method",
             "name": "spawn",
-            "class": "Factory"
+            "class": "lib_Client_Factory",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Factory.js",
-            "line": 84,
+            "line": 86,
             "description": "Despawns an entity.",
             "itemtype": "method",
             "name": "despawn",
-            "class": "Factory"
+            "class": "lib_Client_Factory",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -367,7 +594,8 @@
             "itemtype": "property",
             "name": "htmlElement",
             "type": "HTMLElement",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -376,7 +604,8 @@
             "name": "_oldMtx",
             "access": "protected",
             "tagname": "",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -385,7 +614,8 @@
             "name": "_oldVisible",
             "access": "protected",
             "tagname": "",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -395,7 +625,8 @@
             "type": "Function",
             "access": "private",
             "tagname": "",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -405,7 +636,8 @@
             "name": "initialize",
             "access": "protected",
             "tagname": "",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -417,7 +649,8 @@
                 "description": "Boolean indicating whether the display object would be visible if drawn to a canvas",
                 "type": "Boolean"
             },
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -437,7 +670,8 @@
                     "type": "Boolean"
                 }
             ],
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -445,7 +679,8 @@
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "cache",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -453,7 +688,8 @@
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "uncache",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -461,7 +697,8 @@
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "updateCache",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -469,7 +706,8 @@
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "hitArea",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -477,7 +715,8 @@
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "localToGlobal",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -485,7 +724,8 @@
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "globalToLocal",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -493,7 +733,8 @@
             "description": "Not applicable to DOMElement.",
             "itemtype": "method",
             "name": "localToLocal",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -501,7 +742,8 @@
             "description": "DOMElement cannot be cloned. Throws an error.",
             "itemtype": "method",
             "name": "clone",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -513,7 +755,8 @@
                 "description": "a string representation of the instance.",
                 "type": "String"
             },
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -521,7 +764,8 @@
             "description": "Interaction events should be added to `htmlElement`, and not the DOMElement instance, since DOMElement instances\nare not full EaselJS display objects and do not participate in EaselJS mouse events.",
             "itemtype": "event",
             "name": "click",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -529,7 +773,8 @@
             "description": "Interaction events should be added to `htmlElement`, and not the DOMElement instance, since DOMElement instances\nare not full EaselJS display objects and do not participate in EaselJS mouse events.",
             "itemtype": "event",
             "name": "dblClick",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -537,7 +782,8 @@
             "description": "Interaction events should be added to `htmlElement`, and not the DOMElement instance, since DOMElement instances\nare not full EaselJS display objects and do not participate in EaselJS mouse events.",
             "itemtype": "event",
             "name": "mousedown",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -545,7 +791,8 @@
             "description": "The HTMLElement can listen for the mouseover event, not the DOMElement instance.\nSince DOMElement instances are not full EaselJS display objects and do not participate in EaselJS mouse events.",
             "itemtype": "event",
             "name": "mouseover",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -553,7 +800,8 @@
             "description": "Not applicable to DOMElement.",
             "itemtype": "event",
             "name": "tick",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -563,7 +811,8 @@
             "type": "Function",
             "access": "protected",
             "tagname": "",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
         },
         {
             "file": "lib\\Client\\InputElement.js",
@@ -572,35 +821,123 @@
             "name": "_tick",
             "access": "protected",
             "tagname": "",
-            "class": "InputElement"
+            "class": "InputElement",
+            "module": "lib"
+        },
+        {
+            "file": "lib\\Client\\Package.js",
+            "line": 14,
+            "description": "Store package.json",
+            "itemtype": "property",
+            "name": "json",
+            "class": "lib_Client_Package",
+            "module": "lib",
+            "submodule": "lib_Client"
+        },
+        {
+            "file": "lib\\Client\\Package.js",
+            "line": 20,
+            "description": "Loads modules and calls a callback once all is loaded.constructor",
+            "itemtype": "method",
+            "name": "loadModules",
+            "params": [
+                {
+                    "name": "modules",
+                    "description": "Modules to load.",
+                    "type": "Array"
+                },
+                {
+                    "name": "fn",
+                    "description": "Callback once all is loaded.",
+                    "type": "Function"
+                },
+                {
+                    "name": "fn2",
+                    "description": "Callback once one module is loaded.",
+                    "type": "Function"
+                },
+                {
+                    "name": "loaded",
+                    "description": "Number of modules of array loaded.",
+                    "type": "Integer"
+                }
+            ],
+            "class": "lib_Client_Package",
+            "module": "lib",
+            "submodule": "lib_Client"
+        },
+        {
+            "file": "lib\\Client\\Package.js",
+            "line": 54,
+            "description": "Loads package.json and calls callbacks",
+            "itemtype": "method",
+            "name": "load",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "Callback on complete.",
+                    "type": "Function"
+                },
+                {
+                    "name": "fn2",
+                    "description": "Callback on step.",
+                    "type": "Function"
+                }
+            ],
+            "class": "lib_Client_Package",
+            "module": "lib",
+            "submodule": "lib_Client"
+        },
+        {
+            "file": "lib\\Client\\Package.js",
+            "line": 84,
+            "description": "By a given name, returns entity class.",
+            "itemtype": "method",
+            "name": "entities",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Entity name.",
+                    "type": "String"
+                }
+            ],
+            "class": "lib_Client_Package",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Preloader.js",
-            "line": 13,
+            "line": 15,
             "itemtype": "property",
             "name": "entries",
-            "class": "Preloader"
+            "class": "lib_Client_Preloader",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Preloader.js",
-            "line": 18,
+            "line": 20,
             "description": "Loaded entries count.",
             "itemtype": "property",
             "name": "loaded",
-            "class": "Preloader"
+            "class": "lib_Client_Preloader",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Preloader.js",
-            "line": 24,
+            "line": 26,
             "itemtype": "method",
             "name": "initialize",
             "access": "protected",
             "tagname": "",
-            "class": "Preloader"
+            "class": "lib_Client_Preloader",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Preloader.js",
-            "line": 32,
+            "line": 34,
             "description": "Returns an Image object of preloaded image.",
             "itemtype": "method",
             "name": "get",
@@ -611,11 +948,13 @@
                     "type": "String"
                 }
             ],
-            "class": "Preloader"
+            "class": "lib_Client_Preloader",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Preloader.js",
-            "line": 41,
+            "line": 43,
             "description": "Add new Image entries to load.",
             "itemtype": "method",
             "name": "append",
@@ -631,11 +970,13 @@
                     "type": "String"
                 }
             ],
-            "class": "Preloader"
+            "class": "lib_Client_Preloader",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Preloader.js",
-            "line": 58,
+            "line": 60,
             "description": "Preloads a lot of resources.",
             "itemtype": "method",
             "name": "appendManifest",
@@ -646,19 +987,23 @@
                     "type": "Object"
                 }
             ],
-            "class": "Preloader"
+            "class": "lib_Client_Preloader",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Preloader.js",
-            "line": 69,
+            "line": 71,
             "description": "Get current loading percentage, or false on fully loaded.",
             "itemtype": "method",
             "name": "getPercentage",
-            "class": "Preloader"
+            "class": "lib_Client_Preloader",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\Preloader.js",
-            "line": 83,
+            "line": 85,
             "description": "Calls a function when all is preloaded.",
             "itemtype": "method",
             "name": "loaded",
@@ -669,42 +1014,52 @@
                     "type": "Function"
                 }
             ],
-            "class": "Preloader"
+            "class": "lib_Client_Preloader",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\ResponsiveStage.js",
-            "line": 19,
+            "line": 21,
             "access": "protected",
             "tagname": "",
-            "class": "ResponsiveStage"
+            "class": "lib_Client_ResponsiveStage",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\SceneManager.js",
-            "line": 13,
+            "line": 15,
             "description": "Holds all scenes.",
             "itemtype": "property",
             "name": "scenes",
-            "class": "SceneManager"
+            "class": "lib_Client_SceneManager",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\SceneManager.js",
-            "line": 19,
+            "line": 21,
             "description": "Holds current scene, as instance or string.",
             "itemtype": "property",
             "name": "current",
-            "class": "SceneManager"
+            "class": "lib_Client_SceneManager",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\SceneManager.js",
-            "line": 25,
+            "line": 27,
             "description": "Initialize",
             "itemtype": "method",
             "name": "initialize",
-            "class": "SceneManager"
+            "class": "lib_Client_SceneManager",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\SceneManager.js",
-            "line": 34,
+            "line": 36,
             "description": "Get current scene, if string passed, returns correlated scene, if exists.",
             "itemtype": "method",
             "name": "get",
@@ -715,77 +1070,164 @@
                     "type": "String"
                 }
             ],
-            "class": "SceneManager"
+            "class": "lib_Client_SceneManager",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\SceneManager.js",
-            "line": 59,
+            "line": 61,
             "description": "Runs a tick on currently opened scene.",
             "itemtype": "method",
             "name": "tick",
-            "class": "SceneManager"
+            "class": "lib_Client_SceneManager",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\SceneManager.js",
-            "line": 69,
+            "line": 71,
             "description": "Opens a Scene, it creates it and open it if instance passed.",
             "itemtype": "method",
             "name": "open",
-            "class": "SceneManager"
+            "params": [
+                {
+                    "name": "scene",
+                    "description": "String namespace or Scene to open.",
+                    "type": "String|Scene"
+                }
+            ],
+            "class": "lib_Client_SceneManager",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\SceneManager.js",
-            "line": 96,
+            "line": 99,
             "description": "Closes current opened scene.",
             "itemtype": "method",
             "name": "close",
-            "class": "SceneManager"
+            "params": [
+                {
+                    "name": "scene",
+                    "description": "String namespace or Scene to close.",
+                    "type": "String|Scene"
+                }
+            ],
+            "class": "lib_Client_SceneManager",
+            "module": "lib",
+            "submodule": "lib_Client"
         },
         {
             "file": "lib\\Client\\SceneManager.js",
-            "line": 110,
+            "line": 114,
             "description": "Store an instances and open it up later. It triggers create anyway.",
             "itemtype": "method",
             "name": "store",
-            "class": "SceneManager"
+            "params": [
+                {
+                    "name": "namespace",
+                    "description": "Namespace for the scene.",
+                    "type": "String"
+                },
+                {
+                    "name": "scene",
+                    "description": "Scene to save as namespace.",
+                    "type": "Scene"
+                }
+            ],
+            "class": "lib_Client_SceneManager",
+            "module": "lib",
+            "submodule": "lib_Client"
+        },
+        {
+            "file": "lib\\Server\\Actor.js",
+            "line": 2,
+            "description": "defines an Actor, which is an entity on a map.",
+            "class": "lib_Server_Entity",
+            "module": "lib"
+        },
+        {
+            "file": "lib\\Server\\Entity.js",
+            "line": 17,
+            "description": "Get vars to send over socket to construct Entity on client side.",
+            "itemtype": "method",
+            "name": "syncVars",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "lib_Server_Entity",
+            "module": "lib_Server"
+        },
+        {
+            "file": "lib\\Server\\Entity.js",
+            "line": 29,
+            "description": "Updates current Entity property and trigger update event.",
+            "itemtype": "method",
+            "name": "set",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "Key to update",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "Value to update."
+                }
+            ],
+            "class": "lib_Server_Entity",
+            "module": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 14,
+            "line": 16,
             "description": "Store all entities.",
             "itemtype": "property",
             "name": "entities",
             "default": "[]",
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 21,
+            "line": 23,
             "description": "Last used uuid, like a AutoIncrement generator.",
             "itemtype": "property",
             "name": "_uuid",
             "default": "0",
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 28,
+            "line": 30,
             "description": "Initializing",
             "itemtype": "method",
             "name": "initialize",
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 37,
+            "line": 39,
             "description": "Generates a new uuid",
             "itemtype": "method",
             "name": "uuid",
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 46,
+            "line": 48,
             "description": "Returns an entity by its uuid.",
             "params": [
                 {
@@ -793,11 +1235,13 @@
                     "description": "UUID"
                 }
             ],
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 54,
+            "line": 56,
             "description": "Spawn an entitiy into the world, also auto trigger entity method.",
             "itemtype": "method",
             "name": "spawn",
@@ -808,11 +1252,13 @@
                     "type": "Entity"
                 }
             ],
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 87,
+            "line": 89,
             "description": "Despawn an entitiy from the world, also auto trigger entity method.",
             "itemtype": "method",
             "name": "despawn",
@@ -823,11 +1269,13 @@
                     "type": "Entity"
                 }
             ],
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 110,
+            "line": 112,
             "description": "Triggered once an entity changes a property, all subscribed clients should be informed!",
             "itemtype": "method",
             "name": "update",
@@ -845,11 +1293,13 @@
                     "description": ""
                 }
             ],
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 127,
+            "line": 129,
             "description": "Informs any clients I just joined.",
             "itemtype": "method",
             "name": "join",
@@ -860,11 +1310,13 @@
                     "type": "String"
                 }
             ],
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 142,
+            "line": 144,
             "description": "Informs any clients I just joined.",
             "itemtype": "method",
             "name": "join",
@@ -875,20 +1327,24 @@
                     "type": "String"
                 }
             ],
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 157,
+            "line": 159,
             "description": "Store all replicators.",
             "itemtype": "property",
             "name": "replicators",
             "default": "[]",
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 164,
+            "line": 166,
             "description": "Subscribe a replicator to the factory.",
             "itemtype": "method",
             "name": "subscribe",
@@ -899,11 +1355,13 @@
                     "type": "Socket"
                 }
             ],
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 180,
+            "line": 182,
             "description": "Describe a replicator from the factory.",
             "itemtype": "method",
             "name": "unscribe",
@@ -914,11 +1372,13 @@
                     "type": "Socket"
                 }
             ],
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 195,
+            "line": 197,
             "description": "Resync clients entities.",
             "itemtype": "method",
             "name": "sync",
@@ -929,14 +1389,18 @@
                     "type": "Socket"
                 }
             ],
-            "class": "Factory"
+            "class": "lib_Server_Factory",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Player.js",
-            "line": 13,
+            "line": 15,
             "itemtype": "method",
             "name": "initialize",
-            "class": "Player"
+            "class": "lib_Server_Player",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Shared\\Joinable.js",
@@ -945,7 +1409,8 @@
             "itemtype": "property",
             "name": "channels",
             "default": "[]",
-            "class": "Joinable"
+            "class": "Joinable",
+            "module": "lib"
         },
         {
             "file": "lib\\Shared\\Joinable.js",
@@ -953,7 +1418,8 @@
             "description": "Initialize method",
             "itemtype": "method",
             "name": "initialize",
-            "class": "Joinable"
+            "class": "Joinable",
+            "module": "lib"
         },
         {
             "file": "lib\\Shared\\Joinable.js",
@@ -968,7 +1434,8 @@
                     "type": "String"
                 }
             ],
-            "class": "Joinable"
+            "class": "Joinable",
+            "module": "lib"
         },
         {
             "file": "lib\\Shared\\Joinable.js",
@@ -983,7 +1450,8 @@
                     "type": "Array"
                 }
             ],
-            "class": "Joinable"
+            "class": "Joinable",
+            "module": "lib"
         },
         {
             "file": "lib\\Shared\\Joinable.js",
@@ -998,7 +1466,8 @@
                     "type": "String"
                 }
             ],
-            "class": "Joinable"
+            "class": "Joinable",
+            "module": "lib"
         },
         {
             "file": "lib\\Shared\\Joinable.js",
@@ -1013,7 +1482,8 @@
                     "type": "String"
                 }
             ],
-            "class": "Joinable"
+            "class": "Joinable",
+            "module": "lib"
         },
         {
             "file": "lib\\Shared\\Logger.js",
@@ -1021,14 +1491,16 @@
             "description": "All instances of active loggers.",
             "itemtype": "property",
             "name": "loggers",
-            "class": "Logger"
+            "class": "Logger",
+            "module": "lib"
         },
         {
             "file": "lib\\Shared\\Logger.js",
             "line": 18,
             "itemtype": "method",
             "name": "initialize",
-            "class": "Logger"
+            "class": "Logger",
+            "module": "lib"
         },
         {
             "file": "lib\\Shared\\Logger.js",
@@ -1042,21 +1514,26 @@
                     "description": ""
                 }
             ],
-            "class": "Logger"
+            "class": "Logger",
+            "module": "lib"
         }
     ],
     "warnings": [
         {
             "message": "Missing item type\nReturns an entity by its uuid.",
-            "line": " lib\\Client\\Factory.js:28"
+            "line": " lib\\Client\\Factory.js:30"
         },
         {
             "message": "Missing item type",
-            "line": " lib\\Client\\ResponsiveStage.js:19"
+            "line": " lib\\Client\\ResponsiveStage.js:21"
+        },
+        {
+            "message": "Missing item type\ndefines an Actor, which is an entity on a map.",
+            "line": " lib\\Server\\Actor.js:2"
         },
         {
             "message": "Missing item type\nReturns an entity by its uuid.",
-            "line": " lib\\Server\\Factory.js:46"
+            "line": " lib\\Server\\Factory.js:48"
         }
     ]
 }

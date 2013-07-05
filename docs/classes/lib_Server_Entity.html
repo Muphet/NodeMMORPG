@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>OfflineScene - NodeMMORPG</title>
+    <title>lib_Server_Entity - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -118,25 +118,21 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>OfflineScene Class</h1>
+                        <h1>lib_Server_Entity Class</h1>
 <div class="box meta">
     
 
     
-        <div class="extends">
-            Extends Scene
-        </div>
-    
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;game_Scenes_Offline.js.html#l2"><code>game\Scenes\Offline.js:2</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;lib_Server_Entity.js.html#l2"><code>lib\Server\Entity.js:2</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/lib.html">lib</a>
+            Module: <a href="../modules/lib_Server.html">lib_Server</a>
         
     
 
@@ -146,17 +142,84 @@
 
 
 <div class="box intro">
-    <p>Defines an offline screen</p>
+    <p>A server-side entity.</p>
 </div>
 
 
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_OfflineScene" class="method item">
-    <h3 class="name"><code>OfflineScene</code></h3>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_set">set</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_syncVars">syncVars</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_set" class="method item">
+    <h3 class="name"><code>set</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>key</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -184,7 +247,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;game_Scenes_Offline.js.html#l2"><code>game\Scenes\Offline.js:2</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Entity.js.html#l29"><code>lib\Server\Entity.js:29</code></a>
         
         </p>
 
@@ -195,9 +258,47 @@
     </div>
 
     <div class="description">
-        
+        <p>Updates current Entity property and trigger update event.</p>
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">key</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Key to update</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">value</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Value to update.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -205,32 +306,95 @@
     
 </div>
 
+                
+                    <div id="method_syncVars" class="method item">
+    <h3 class="name"><code>syncVars</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>obj</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Entity.js.html#l17"><code>lib\Server\Entity.js:17</code></a>
+        
+        </p>
+
+
+        
+
+        
     </div>
 
+    <div class="description">
+        <p>Get vars to send over socket to construct Entity on client side.</p>
+    </div>
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+    
+        <div class="params">
+            <h4>Parameters:</h4>
 
-        
-        
-        
-        
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
+            <ul class="params-list">
             
+                <li class="param">
+                    
+                        <code class="param-name">obj</code>
+                        <span class="type">Object</span>
+                    
 
-            
+                    
 
-            
+                    <div class="param-description">
+                         
+                    </div>
 
+                    
+                </li>
             
+            </ul>
         </div>
+    
 
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         

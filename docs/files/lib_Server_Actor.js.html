@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib\Server\Entity.js - NodeMMORPG</title>
+    <title>lib\Server\Actor.js - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -118,62 +118,14 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib\Server\Entity.js</h1>
+                        <h1 class="file-heading">File: lib\Server\Actor.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F;Joinable&#x27;], function(_, Backbone, Joinable){
+define(function(){
 	&#x2F;**
-	* A server-side entity.
-	* @module lib
-	* @module lib_Server
-	* @class lib_Server_Entity
-	* @extends Joinable
-	* @constructor
+	* defines an Actor, which is an entity on a map.
 	**&#x2F;
-	function Entity(){
-		this.initialize();
-	}
-	
-	var p = Entity.prototype = new Joinable();
-	_.extend(p, Backbone.Events);
-	
-	&#x2F;**
-	* Get vars to send over socket to construct Entity on client side.
-	* @method syncVars
-	* @param obj {Object} 
-	**&#x2F;	
-	p.syncVars = function(obj){
-		var obj = obj || {};
-		obj.uuid = this.uuid;
-		obj._entityType = this._entityType;
-		return obj;
-	}
-	
-	&#x2F;**
-	* Updates current Entity property and trigger update event.
-	* @method set
-	* @param key {String} Key to update
-	* @param value Value to update.
-	**&#x2F;
-	p.set = function(key, value){
-		var old_value = this[key];
-		this[key] = value;
-		this.trigger(&#x27;update&#x27;, this, key, old_value);
-	};
-	
-	&#x2F;*
-	* Called on spawn, needs to be overwritten.
-	* @method spawn
-	**&#x2F;
-	p.spawn = function(){}; &#x2F;&#x2F; Called on spawn.
-	&#x2F;*
-	* Called on despawn, needs to be overwritten.
-	* @method despawn
-	**&#x2F;
-	p.despawn = function(){}; &#x2F;&#x2F; Called on despawn.
-	
-	return Entity;
 });
     </pre>
 </div>
