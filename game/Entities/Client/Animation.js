@@ -1,4 +1,4 @@
-define(['lib/Client/GameCanvas','lib/Client/Entity', 'createjs'], function(GameCanvas, Entity, createjs){
+define(['lib/Client/GameCanvas','lib/Client/Entity', 'createjs','underscore'], function(GameCanvas, Entity, createjs,_){
 	function EntityAnimation(data){
 		this.initialize(data);
 	}
@@ -7,26 +7,17 @@ define(['lib/Client/GameCanvas','lib/Client/Entity', 'createjs'], function(GameC
 	
 	p.Entity_initialize = p.initialize;
 	p.initialize = function(data){
-		this.spritesheet = new createjs.SpriteSheet({
-			images: ["game/Graphics/Animations/Fire.png"],
-			frames: {width: 50, height:50, regX: 25, regY: 25},
-			animations: {
-				explosion: {
-					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],
-					frequency: 2,
-					next: false,
-				}
-			}
-		});
-		this.sprite = new createjs.BitmapAnimation(this.spritesheet);
+		_.extend(this, data);
+		console.log(this.spritesheet);
+		this.sprite = new createjs.BitmapAnimation(new createjs.SpriteSheet(this.spritesheet));
 		this.Entity_initialize(data);
 	};
 	
 	p.spawn = function(){
 		GameCanvas.addChild(this.sprite);
-		this.sprite.gotoAndPlay("explosion");
-		this.sprite.x = 100;
-		this.sprite.y = 100;
+		this.sprite.gotoAndPlay(this.animation);
+		this.sprite.x = this.x;
+		this.sprite.y = this.y;
 	}
 	
 	p.despawn = function(){

@@ -1,21 +1,31 @@
 var Loader = require(__dirname+'/lib/loader');
-var io = require('socket.io').listen(99);
+var io = require('socket.io').listen(99, {log:false});
 
-Loader(['lib/Server/Factory', 'lib/Server/Player', 'game/Entities/Server/Animation'], function(Factory, Player, AnimationEntity){
+Loader(['lib/Server/Factory', 'lib/Server/Clients', 'lib/Server/Player', 'game/Entities/Server/Animation'], function(Factory, Clients, Player, AnimationEntity){
 	var e = new AnimationEntity();
+	var p = new AnimationEntity();
+	Factory.spawn(p);
+	p.join('main');
+	p.join('sub');
 	setInterval(function(){
-		e.set('variable','Test!');
 		Factory.despawn(e);
 		e = new AnimationEntity();
 		e.join('main');
 		Factory.spawn(e);
 	}, 3000);
+	
+	
 	io.sockets.on('connection', function(socket){
 		var p = new Player(socket);
+		Clients.subscribe(p);
 		p.join('main');
-		Factory.subscribe(p);
+		//Factory.sync(p);
+		setTimeout(function(){
+			p.leave('main');
+			p.join('sub');
+		}, 10000);
 		socket.on('disconnect', function(){
-			Factory.unscribe(p);
+			Clients.unscribe(p);
 		});
 	});
 });

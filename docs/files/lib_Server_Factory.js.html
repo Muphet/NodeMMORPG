@@ -63,11 +63,15 @@
             
                 <li><a href="..&#x2F;classes/lib_Client_TiledMapBuilder.html">lib_Client_TiledMapBuilder</a></li>
             
+                <li><a href="..&#x2F;classes/lib_Server_Clients.html">lib_Server_Clients</a></li>
+            
                 <li><a href="..&#x2F;classes/lib_Server_Entity.html">lib_Server_Entity</a></li>
             
                 <li><a href="..&#x2F;classes/lib_Server_Factory.html">lib_Server_Factory</a></li>
             
                 <li><a href="..&#x2F;classes/lib_Server_Player.html">lib_Server_Player</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Shared_Physics_Body.html">lib_Shared_Physics_Body</a></li>
             
                 <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
             
@@ -82,6 +86,8 @@
                 <li><a href="..&#x2F;modules/lib_Client.html">lib_Client</a></li>
             
                 <li><a href="..&#x2F;modules/lib_Server.html">lib_Server</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Shared.html">lib_Shared</a></li>
             
             </ul>
         </div>
@@ -122,7 +128,7 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F;Logger&#x27;], function(_, Backbone, Logger){
+define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F;Logger&#x27;, &#x27;lib&#x2F;Server&#x2F;Clients&#x27;], function(_, Backbone, Logger, Clients){
 	&#x2F;**
 	* An entity collector.
 	* @module lib
@@ -158,6 +164,9 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F
 	p.initialize = function(){
 		this.entities = [];
 		this._uuid = 0;
+		
+		this.listenTo(Clients, &#x27;clients:join&#x27;, this.clients_join);
+		this.listenTo(Clients, &#x27;clients:leave&#x27;, this.clients_leave);
 	};
 	
 	&#x2F;**
@@ -166,7 +175,7 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F
 	**&#x2F;
 	p.uuid = function(){
 		this._uuid++;
-		return this._uuid;
+		return &#x27;e&#x27;+this._uuid;
 	};
 	
 	&#x2F;**
@@ -199,15 +208,10 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F
 		this.listenTo(entity, &#x27;update&#x27;, this.update);
 		this.listenTo(entity, &#x27;join&#x27;, this.join);
 		this.listenTo(entity, &#x27;leave&#x27;, this.leave);
+		this.listenTo(entity, &#x27;self:despawn&#x27;, this.despawn);
 		
 		&#x2F;&#x2F; Inform clients of spawned entity
-		_.each(_.filter(this.replicators, function(e){
-			return e.inAny(entity.channels);
-		}), function(e){
-			if(typeof(e.socket) != &quot;undefined&quot;){
-				e.socket.emit(&#x27;factory:spawn&#x27;, entity.syncVars());
-			}
-		});
+		Clients.messageToChannels(entity.channels, &#x27;factory:spawn&#x27;, entity.syncVars());
 	};
 	
 	&#x2F;**
@@ -222,15 +226,10 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F
 		}
 		this.trigger(&#x27;despawn&#x27;, entity);
 		this.entities = _.without(this.entities, entity);
+		this.stopListening(entity);
 		
 		&#x2F;&#x2F; Inform clients of despawned entity
-		_.each(_.filter(this.replicators, function(e){
-			return e.inAny(entity.channels);
-		}), function(e){
-			if(typeof(e.socket) != &quot;undefined&quot;){
-				e.socket.emit(&#x27;factory:despawn&#x27;, {uuid: entity.uuid});
-			}
-		});
+		Clients.messageToChannels(entity.channels, &#x27;factory:despawn&#x27;, {uuid: entity.uuid});
 	};
 	
 	&#x2F;**
@@ -241,13 +240,7 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F
 	* @param old_value
 	**&#x2F;
 	p.update = function(entity, key, old_value){
-		_.each(_.filter(this.replicators, function(e){
-			return e.inAny(entity.channels);
-		}), function(e){
-			if(typeof(e.socket) != &quot;undefined&quot;){
-				e.socket.emit(&#x27;factory:update&#x27;, {&quot;uuid&quot;: entity.uuid, &quot;key&quot;: key, &quot;value&quot;: entity[key], &quot;old_value&quot;: old_value});
-			}
-		});
+		Clients.messageToChannels(entity.channels, &#x27;factory:update&#x27;, {&quot;uuid&quot;: entity.uuid, &quot;key&quot;: key, &quot;value&quot;: entity[key], &quot;old_value&quot;: old_value});
 	};
 	
 	&#x2F;**
@@ -255,14 +248,8 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F
 	* @method join
 	* @param channel {String} Just joined channel.
 	**&#x2F;
-	p.join = function(channel){
-		_.each(_.filter(this.replicators, function(e){
-			return e.in(channel);
-		}), function(e){
-			if(typeof(e.socket) != &quot;undefined&quot;){
-				e.socket.emit(&#x27;factory:spawn&#x27;, (entity.syncVars || function(){ return {}; })());
-			}
-		});
+	p.join = function(entity, channel){
+		Clients.messageToChannel(channel, &#x27;factory:spawn&#x27;, entity.syncVars());
 	};
 	
 	&#x2F;**
@@ -270,69 +257,43 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F
 	* @method join
 	* @param channel {String} Just joined channel.
 	**&#x2F;
-	p.leave = function(channel){
-		_.each(_.filter(this.replicators, function(e){
-			return e.in(channel);
-		}), function(e){
-			if(typeof(e.socket) != &quot;undefined&quot;){
-				e.socket.emit(&#x27;factory:despawn&#x27;, {uuid: entity.uuid});
-			}
-		});
+	p.leave = function(entity, channel){
+		Clients.messageToChannel(channel, &#x27;factory:despawn&#x27;, {uuid: entity.uuid});
 	};
 	
 	&#x2F;**
-	* Store all replicators.
-	* @property replicators
-	* @default []
+	* Trigger for client joined a channel
+	* @method clients_join
+	* @param client
+	* @param channel
 	**&#x2F;
-	p.replicators = [];
-	
 	&#x2F;**
-	* Subscribe a replicator to the factory.
-	* @method subscribe
-	* @param socket {Socket} A Joinable object wich contains any socket.
+	* Trigger for client leaved a channel
+	* @method clients_leave
+	* @param client
+	* @param channel
 	**&#x2F;
-	p.subscribe = function(entity){
-		Logger.getLogger(&#x27;Factory&#x27;).debug(&#x27;Subscribed a replicator.&#x27;);
-		entity.trigger(&#x27;subscribe&#x27;);
-		this.replicators.push(entity);
-		this.trigger(&#x27;subscribe&#x27;, entity);
-		if(typeof(entity.socket) != &quot;undefined&quot;){
-			entity.socket.emit(&#x27;factory:subscribed&#x27;);
-			this.sync(entity);
-		}
+	p.clients_join = p.clients_leave = function(client, channel){
+		this.sync(client);
 	};
-	
-	&#x2F;**
-	* Describe a replicator from the factory.
-	* @method unscribe
-	* @param socket {Socket} A Joinable object wich contains any socket.
-	**&#x2F;
-	p.unscribe = function(entity){
-		Logger.getLogger(&#x27;Factory&#x27;).debug(&#x27;Unscribed a replicator.&#x27;);
-		this.replicators = _.without(this.replicators, entity);
-		entity.trigger(&#x27;unscribe&#x27;);
-		this.trigger(&#x27;unscribe&#x27;, entity);
-		if(typeof(entity.socket) != &quot;undefined&quot;){
-			entity.socket.emit(&#x27;factory:unscribed&#x27;);
-		}
-	}
 	
 	&#x2F;**
 	* Resync clients entities.
 	* @method sync
 	* @param socket {Socket} A Joinable object wich contains any socket.
 	**&#x2F;
-	p.sync = function(entity){
+	p.sync = function(client){
+		Logger.getLogger(&quot;Factory&quot;).debug(&quot;Sending resync for client #&quot;+client.uuid);
 		data = _.filter(this.entities, function(e){
-			return e.inAny(entity.channels);
+			return e.inAny(client.channels);
 		});
 		data = _.map(data, function(e){
-			return (e.syncVars || function(){ return {}; })(); &#x2F;&#x2F; Returns empty function if e.syncVars does not exists.
+			return e.syncVars(); &#x2F;&#x2F; Returns empty function if e.syncVars does not exists.
 		});
-		entity.socket.emit(&#x27;factory:sync&#x27;, data);
+		client.socket.emit(&#x27;factory:sync&#x27;, data);
 	};
-
+	
+	&#x2F;&#x2F; TODO: on connect, call sync.
 	return new Factory();
 });
     </pre>

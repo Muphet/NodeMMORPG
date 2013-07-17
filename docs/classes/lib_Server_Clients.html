@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib_Client_Preloader - NodeMMORPG</title>
+    <title>lib_Server_Clients - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -124,7 +124,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>lib_Client_Preloader Class</h1>
+                        <h1>lib_Server_Clients Class</h1>
 <div class="box meta">
     
 
@@ -132,13 +132,13 @@
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l2"><code>lib\Client\Preloader.js:2</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;lib_Server_Clients.js.html#l2"><code>lib\Server\Clients.js:2</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/lib_Client.html">lib_Client</a><br>
+            Module: <a href="../modules/lib_Server.html">lib_Server</a><br>
             Parent Module: <a href="../modules/lib.html">lib</a>
         
     
@@ -149,7 +149,7 @@
 
 
 <div class="box intro">
-    <p>Preloads any image.</p>
+    <p>Manage connected clients.</p>
 </div>
 
 
@@ -179,42 +179,42 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_append">append</a>
+                                <a href="#method_message">message</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_appendManifest">appendManifest</a>
+                                <a href="#method_messageToChannel">messageToChannel</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_get">get</a>
+                                <a href="#method_messageToChannels">messageToChannels</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getPercentage">getPercentage</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method protected">
-                                <a href="#method_initialize">initialize</a>
+                                <a href="#method_subscribe">subscribe</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_loaded">loaded</a>
+                                <a href="#method_unscribe">unscribe</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_uuid">uuid</a>
 
                                 
                                 
@@ -231,14 +231,14 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_entries">entries</a>
+                                <a href="#property__uuid">_uuid</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_loaded">loaded</a>
+                                <a href="#property_clients">clients</a>
 
                                 
                                 
@@ -258,400 +258,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_append" class="method item">
-    <h3 class="name"><code>append</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>namespace</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>src</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l43"><code>lib\Client\Preloader.js:43</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Add new Image entries to load.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">namespace</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Namespace for image.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">src</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>URL of image to preload.</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_appendManifest" class="method item">
-    <h3 class="name"><code>appendManifest</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>manifest</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l60"><code>lib\Client\Preloader.js:60</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Preloads a lot of resources.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">manifest</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>A dictionary of namespaces and src.</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_get" class="method item">
-    <h3 class="name"><code>get</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>namespace</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l34"><code>lib\Client\Preloader.js:34</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns an Image object of preloaded image.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">namespace</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Preloaded image namespace to get</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_getPercentage" class="method item">
-    <h3 class="name"><code>getPercentage</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l71"><code>lib\Client\Preloader.js:71</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Get current loading percentage, or false on fully loaded.</p>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_initialize" class="method item protected">
-    <h3 class="name"><code>initialize</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l26"><code>lib\Client\Preloader.js:26</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_loaded" class="method item">
-    <h3 class="name"><code>loaded</code></h3>
+                    <div id="method_message" class="method item">
+    <h3 class="name"><code>message</code></h3>
 
     
         <div class="args">
@@ -663,6 +271,18 @@
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>params</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -692,7 +312,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l85"><code>lib\Client\Preloader.js:85</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Clients.js.html#l74"><code>lib\Server\Clients.js:74</code></a>
         
         </p>
 
@@ -703,7 +323,7 @@
     </div>
 
     <div class="description">
-        <p>Calls a function when all is preloaded.</p>
+        <p>Sends a message to clients filtering on the fn.</p>
     </div>
 
     
@@ -721,7 +341,37 @@
                     
 
                     <div class="param-description">
-                        <p>Function to be called after loading succeded.</p>
+                        <p>A filtering function that returns true if element is correct.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">event</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Event to call.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An object to be emitted with the event.</p>
                     </div>
 
                     
@@ -729,6 +379,492 @@
             
             </ul>
         </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_messageToChannel" class="method item">
+    <h3 class="name"><code>messageToChannel</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>channel</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>params</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Clients.js.html#l89"><code>lib\Server\Clients.js:89</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sends a message to clients connected on a channel.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">channel</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Channel to send message over.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">event</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Event to call.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An object to be emitted with the event.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_messageToChannels" class="method item">
+    <h3 class="name"><code>messageToChannels</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>channels</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>params</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Clients.js.html#l102"><code>lib\Server\Clients.js:102</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sends a message to clients connected at least on one of specified channels.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">channels</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Channels to send message over.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">event</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Event to call.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An object to be emitted with the event.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_subscribe" class="method item">
+    <h3 class="name"><code>subscribe</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>socket</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Clients.js.html#l38"><code>lib\Server\Clients.js:38</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Subscribe a client to the Clients.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">socket</code>
+                        <span class="type">Socket</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>A Joinable object wich contains any socket.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_unscribe" class="method item">
+    <h3 class="name"><code>unscribe</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>socket</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Clients.js.html#l58"><code>lib\Server\Clients.js:58</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Unscribe a client from the Clients.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">socket</code>
+                        <span class="type">Socket</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>A Joinable object wich contains any socket.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_uuid" class="method item">
+    <h3 class="name"><code>uuid</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Server_Clients.js.html#l29"><code>lib\Server\Clients.js:29</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Generates a new uuid</p>
+    </div>
+
     
 
     
@@ -745,8 +881,8 @@
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_entries" class="property item">
-    <h3 class="name"><code>entries</code></h3>
+                    <div id="property__uuid" class="property item">
+    <h3 class="name"><code>_uuid</code></h3>
     <span class="type">Unknown</span>
 
     
@@ -768,7 +904,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l15"><code>lib\Client\Preloader.js:15</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Clients.js.html#l22"><code>lib\Server\Clients.js:22</code></a>
         
         </p>
 
@@ -778,9 +914,11 @@
     </div>
 
     <div class="description">
-        
+        <p>Last used uuid, like a AutoIncrement generator.</p>
     </div>
 
+    
+        <p><strong>Default:</strong> 0</p>
     
 
     
@@ -789,8 +927,8 @@
 </div>
 
                 
-                    <div id="property_loaded" class="property item">
-    <h3 class="name"><code>loaded</code></h3>
+                    <div id="property_clients" class="property item">
+    <h3 class="name"><code>clients</code></h3>
     <span class="type">Unknown</span>
 
     
@@ -812,7 +950,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;lib_Client_Preloader.js.html#l20"><code>lib\Client\Preloader.js:20</code></a>
+        <a href="..&#x2F;files&#x2F;lib_Server_Clients.js.html#l15"><code>lib\Server\Clients.js:15</code></a>
         
         </p>
 
@@ -822,9 +960,11 @@
     </div>
 
     <div class="description">
-        <p>Loaded entries count.</p>
+        <p>Store all clients.</p>
     </div>
 
+    
+        <p><strong>Default:</strong> []</p>
     
 
     

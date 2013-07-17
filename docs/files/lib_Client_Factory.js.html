@@ -63,11 +63,15 @@
             
                 <li><a href="..&#x2F;classes/lib_Client_TiledMapBuilder.html">lib_Client_TiledMapBuilder</a></li>
             
+                <li><a href="..&#x2F;classes/lib_Server_Clients.html">lib_Server_Clients</a></li>
+            
                 <li><a href="..&#x2F;classes/lib_Server_Entity.html">lib_Server_Entity</a></li>
             
                 <li><a href="..&#x2F;classes/lib_Server_Factory.html">lib_Server_Factory</a></li>
             
                 <li><a href="..&#x2F;classes/lib_Server_Player.html">lib_Server_Player</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Shared_Physics_Body.html">lib_Shared_Physics_Body</a></li>
             
                 <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
             
@@ -82,6 +86,8 @@
                 <li><a href="..&#x2F;modules/lib_Client.html">lib_Client</a></li>
             
                 <li><a href="..&#x2F;modules/lib_Server.html">lib_Server</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Shared.html">lib_Shared</a></li>
             
             </ul>
         </div>
@@ -160,14 +166,38 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F
 	};
 	
 	&#x2F;**
+	* Syncs from data
+	* @method syncFromData
+	* @param data {Array} Received data.
+	**&#x2F;
+	p.syncFromData = function(data){
+		Logger.getLogger(&quot;Factory&quot;).debug(&#x27;Syncing....&#x27;);
+		console.log(data);
+		var that = this;
+		var tmp = this.entities.splice();
+		_.each(this.entities, function(e){
+			if(_.findWhere(data, {uuid: e.uuid}) == null){ &#x2F;&#x2F; Entity not found in data
+				that.despawn(e);
+			}
+		});
+		_.each(data, function(d){
+			if(that.get(d.uuid) == null){ &#x2F;&#x2F; Entity not found in this.entities
+				var entityType = d._entityType || &#x27;Entity&#x27;;
+				var entity = new (Package.entities(entityType))(d);
+				that.spawn(entity);
+			}
+		});
+	};
+	
+	&#x2F;**
 	* Binds Factory methods on a socket.
 	* @method listen
 	**&#x2F;
 	p.listen = function(socket){
 		var that = this;
-		socket.on(&#x27;factory:subscribed&#x27;, this.reset);
-		socket.on(&#x27;factory:unscribed&#x27;, this.reset);
-		socket.on(&#x27;disconnect&#x27;, this.reset);
+		socket.on(&#x27;clients:subscribed&#x27;, this.reset);
+		socket.on(&#x27;clients:unscribed&#x27;, this.reset);
+		socket.on(&#x27;connect&#x27;, this.reset);
 		socket.on(&#x27;factory:spawn&#x27;, function(data){
 			var entityType = data._entityType || &#x27;Entity&#x27;;
 			var entity = new (Package.entities(entityType))(data);
@@ -176,6 +206,9 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F
 		socket.on(&#x27;factory:despawn&#x27;, function(data){
 			that.despawn(that.get(data.uuid || null));
 		});
+		socket.on(&#x27;factory:sync&#x27;, function(data){
+			that.syncFromData(data);
+		});
 	};
 	
 	&#x2F;**
@@ -183,10 +216,13 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F
 	* @method reset
 	**&#x2F;
 	p.reset = function(){
+		var that = this;
+		Logger.getLogger(&quot;Factory&quot;).debug(&#x27;Resetting...&#x27;);
 		_.each(this.entities, function(e){
 			if(typeof(e[&#x27;despawn&#x27;]) == &quot;function&quot;){
 				e.despawn();
 			}
+			that.entities = _.without(that.entities, e);
 		});
 		this.entities = [];
 	};
@@ -197,7 +233,7 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F
 	**&#x2F;
 	p.spawn = function(entity){
 		if(entity !== null){
-			Logger.getLogger(&#x27;Factory&#x27;).debug(&#x27;Spawning an entity.&#x27;);		
+			Logger.getLogger(&#x27;Factory&#x27;).debug(&#x27;Spawning an entity #&#x27;+entity.uuid+&#x27;.&#x27;);		
 			this.entities.push(entity);
 			
 			if(typeof(entity[&#x27;spawn&#x27;]) === &quot;function&quot;){
@@ -213,7 +249,7 @@ define([&#x27;underscore&#x27;, &#x27;backbone&#x27;, &#x27;lib&#x2F;Shared&#x2F
 	**&#x2F;
 	p.despawn = function(entity){
 		if(entity !== null){
-			Logger.getLogger(&#x27;Factory&#x27;).debug(&#x27;Despawning an entity.&#x27;);
+			Logger.getLogger(&#x27;Factory&#x27;).debug(&#x27;Despawning an entity #&#x27;+entity.uuid+&#x27;.&#x27;);
 			if(typeof(entity[&#x27;despawn&#x27;]) === &quot;function&quot;){
 				entity.despawn();
 			}

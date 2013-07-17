@@ -1,4 +1,5 @@
 {
+	"debug":	true,
 	"Entities":	["Animation"],
 	"Scenes":	["Offline"]
 }

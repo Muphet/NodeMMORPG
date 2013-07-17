@@ -63,11 +63,15 @@
             
                 <li><a href="..&#x2F;classes/lib_Client_TiledMapBuilder.html">lib_Client_TiledMapBuilder</a></li>
             
+                <li><a href="..&#x2F;classes/lib_Server_Clients.html">lib_Server_Clients</a></li>
+            
                 <li><a href="..&#x2F;classes/lib_Server_Entity.html">lib_Server_Entity</a></li>
             
                 <li><a href="..&#x2F;classes/lib_Server_Factory.html">lib_Server_Factory</a></li>
             
                 <li><a href="..&#x2F;classes/lib_Server_Player.html">lib_Server_Player</a></li>
+            
+                <li><a href="..&#x2F;classes/lib_Shared_Physics_Body.html">lib_Shared_Physics_Body</a></li>
             
                 <li><a href="..&#x2F;classes/Logger.html">Logger</a></li>
             
@@ -82,6 +86,8 @@
                 <li><a href="..&#x2F;modules/lib_Client.html">lib_Client</a></li>
             
                 <li><a href="..&#x2F;modules/lib_Server.html">lib_Server</a></li>
+            
+                <li><a href="..&#x2F;modules/lib_Shared.html">lib_Shared</a></li>
             
             </ul>
         </div>
@@ -173,6 +179,13 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
+                                <a href="#method_debugEnabled">debugEnabled</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_entities">entities</a>
 
                                 
@@ -188,6 +201,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_loadModules">loadModules</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_scenes">scenes</a>
 
                                 
                                 
@@ -222,6 +242,60 @@
         
             <div id="methods" class="api-class-tabpanel">
                 <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_debugEnabled" class="method item">
+    <h3 class="name"><code>debugEnabled</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Client_Package.js.html#l116"><code>lib\Client\Package.js:116</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns whatever debug is on or off. True by default. Debug will show more console errors and FPS ticker.</p>
+    </div>
+
+    
+
+    
+
+    
+</div>
 
                 
                     <div id="method_entities" class="method item">
@@ -554,6 +628,93 @@
 
                     <div class="param-description">
                         <p>Number of modules of array loaded.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_scenes" class="method item">
+    <h3 class="name"><code>scenes</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;lib_Client_Package.js.html#l100"><code>lib\Client\Package.js:100</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>By a given name, returns scene class.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Scene name.</p>
                     </div>
 
                     

@@ -114,6 +114,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "lib\\Server\\Clients.js": {
+            "name": "lib\\Server\\Clients.js",
+            "modules": {},
+            "classes": {
+                "lib_Server_Clients": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "lib\\Server\\Entity.js": {
             "name": "lib\\Server\\Entity.js",
             "modules": {
@@ -144,6 +153,17 @@
             "fors": {},
             "namespaces": {}
         },
+        "lib\\Shared\\Physic\\Body.js": {
+            "name": "lib\\Shared\\Physic\\Body.js",
+            "modules": {
+                "lib_Shared": 1
+            },
+            "classes": {
+                "lib_Shared_Physics_Body": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "lib\\Shared\\Joinable.js": {
             "name": "lib\\Shared\\Joinable.js",
             "modules": {},
@@ -167,7 +187,9 @@
         "lib": {
             "name": "lib",
             "submodules": {
-                "lib_Client": 1
+                "lib_Client": 1,
+                "lib_Server": 1,
+                "lib_Shared": 1
             },
             "classes": {
                 "OfflineScene": 1,
@@ -181,8 +203,10 @@
                 "lib_Client_Scene": 1,
                 "lib_Client_SceneManager": 1,
                 "lib_Client_TiledMapBuilder": 1,
+                "lib_Server_Clients": 1,
                 "lib_Server_Factory": 1,
                 "lib_Server_Player": 1,
+                "lib_Shared_Physics_Body": 1,
                 "Joinable": 1,
                 "Logger": 1
             },
@@ -246,18 +270,36 @@
             "name": "lib_Server",
             "submodules": {},
             "classes": {
+                "lib_Server_Clients": 1,
                 "lib_Server_Entity": 1,
                 "lib_Server_Factory": 1,
                 "lib_Server_Player": 1
             },
             "fors": {},
+            "is_submodule": 1,
             "namespaces": {},
-            "tag": "module",
+            "module": "lib",
+            "namespace": "",
             "file": "lib\\Server\\Player.js",
             "line": 2,
             "description": "A server-side entity.",
+            "is_constructor": 1,
+            "tag": "module"
+        },
+        "lib_Shared": {
+            "name": "lib_Shared",
+            "submodules": {},
+            "classes": {
+                "lib_Shared_Physics_Body": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
             "module": "lib",
-            "is_constructor": 1
+            "namespace": "",
+            "file": "lib\\Shared\\Physic\\Body.js",
+            "line": 2,
+            "description": "Represents a physic body."
         }
     },
     "classes": {
@@ -436,6 +478,21 @@
             "line": 2,
             "description": "From an exported tiled json builds a set of cached containers."
         },
+        "lib_Server_Clients": {
+            "name": "lib_Server_Clients",
+            "shortname": "lib_Server_Clients",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Server",
+            "namespace": "",
+            "file": "lib\\Server\\Clients.js",
+            "line": 2,
+            "description": "Manage connected clients."
+        },
         "lib_Server_Entity": {
             "name": "lib_Server_Entity",
             "shortname": "lib_Server_Entity",
@@ -479,6 +536,21 @@
             "file": "lib\\Server\\Player.js",
             "line": 2,
             "description": "Collects multiple Replicators. Each replicator can join on multiple channels"
+        },
+        "lib_Shared_Physics_Body": {
+            "name": "lib_Shared_Physics_Body",
+            "shortname": "lib_Shared_Physics_Body",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "lib",
+            "submodule": "lib_Shared",
+            "namespace": "",
+            "file": "lib\\Shared\\Physic\\Body.js",
+            "line": 2,
+            "description": "Represents a physic body."
         },
         "Joinable": {
             "name": "Joinable",
@@ -550,6 +622,23 @@
         {
             "file": "lib\\Client\\Factory.js",
             "line": 38,
+            "description": "Syncs from data",
+            "itemtype": "method",
+            "name": "syncFromData",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Received data.",
+                    "type": "Array"
+                }
+            ],
+            "class": "lib_Client_Factory",
+            "module": "lib",
+            "submodule": "lib_Client"
+        },
+        {
+            "file": "lib\\Client\\Factory.js",
+            "line": 62,
             "description": "Binds Factory methods on a socket.",
             "itemtype": "method",
             "name": "listen",
@@ -559,7 +648,7 @@
         },
         {
             "file": "lib\\Client\\Factory.js",
-            "line": 57,
+            "line": 84,
             "description": "Reset current factory.",
             "itemtype": "method",
             "name": "reset",
@@ -569,7 +658,7 @@
         },
         {
             "file": "lib\\Client\\Factory.js",
-            "line": 70,
+            "line": 100,
             "description": "Spawns an entity from given data.",
             "itemtype": "method",
             "name": "spawn",
@@ -579,7 +668,7 @@
         },
         {
             "file": "lib\\Client\\Factory.js",
-            "line": 86,
+            "line": 116,
             "description": "Despawns an entity.",
             "itemtype": "method",
             "name": "despawn",
@@ -906,6 +995,33 @@
             "submodule": "lib_Client"
         },
         {
+            "file": "lib\\Client\\Package.js",
+            "line": 100,
+            "description": "By a given name, returns scene class.",
+            "itemtype": "method",
+            "name": "scenes",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Scene name.",
+                    "type": "String"
+                }
+            ],
+            "class": "lib_Client_Package",
+            "module": "lib",
+            "submodule": "lib_Client"
+        },
+        {
+            "file": "lib\\Client\\Package.js",
+            "line": 116,
+            "description": "Returns whatever debug is on or off. True by default. Debug will show more console errors and FPS ticker.",
+            "itemtype": "method",
+            "name": "debugEnabled",
+            "class": "lib_Client_Package",
+            "module": "lib",
+            "submodule": "lib_Client"
+        },
+        {
             "file": "lib\\Client\\Preloader.js",
             "line": 15,
             "itemtype": "property",
@@ -1144,8 +1260,155 @@
             "file": "lib\\Server\\Actor.js",
             "line": 2,
             "description": "defines an Actor, which is an entity on a map.",
-            "class": "lib_Server_Entity",
+            "class": "lib_Server_Clients",
             "module": "lib"
+        },
+        {
+            "file": "lib\\Server\\Clients.js",
+            "line": 15,
+            "description": "Store all clients.",
+            "itemtype": "property",
+            "name": "clients",
+            "default": "[]",
+            "class": "lib_Server_Clients",
+            "module": "lib",
+            "submodule": "lib_Server"
+        },
+        {
+            "file": "lib\\Server\\Clients.js",
+            "line": 22,
+            "description": "Last used uuid, like a AutoIncrement generator.",
+            "itemtype": "property",
+            "name": "_uuid",
+            "default": "0",
+            "class": "lib_Server_Clients",
+            "module": "lib",
+            "submodule": "lib_Server"
+        },
+        {
+            "file": "lib\\Server\\Clients.js",
+            "line": 29,
+            "description": "Generates a new uuid",
+            "itemtype": "method",
+            "name": "uuid",
+            "class": "lib_Server_Clients",
+            "module": "lib",
+            "submodule": "lib_Server"
+        },
+        {
+            "file": "lib\\Server\\Clients.js",
+            "line": 38,
+            "description": "Subscribe a client to the Clients.",
+            "itemtype": "method",
+            "name": "subscribe",
+            "params": [
+                {
+                    "name": "socket",
+                    "description": "A Joinable object wich contains any socket.",
+                    "type": "Socket"
+                }
+            ],
+            "class": "lib_Server_Clients",
+            "module": "lib",
+            "submodule": "lib_Server"
+        },
+        {
+            "file": "lib\\Server\\Clients.js",
+            "line": 58,
+            "description": "Unscribe a client from the Clients.",
+            "itemtype": "method",
+            "name": "unscribe",
+            "params": [
+                {
+                    "name": "socket",
+                    "description": "A Joinable object wich contains any socket.",
+                    "type": "Socket"
+                }
+            ],
+            "class": "lib_Server_Clients",
+            "module": "lib",
+            "submodule": "lib_Server"
+        },
+        {
+            "file": "lib\\Server\\Clients.js",
+            "line": 74,
+            "description": "Sends a message to clients filtering on the fn.",
+            "itemtype": "method",
+            "name": "message",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "A filtering function that returns true if element is correct.",
+                    "type": "Function"
+                },
+                {
+                    "name": "event",
+                    "description": "Event to call.",
+                    "type": "String"
+                },
+                {
+                    "name": "params",
+                    "description": "An object to be emitted with the event.",
+                    "type": "Object"
+                }
+            ],
+            "class": "lib_Server_Clients",
+            "module": "lib",
+            "submodule": "lib_Server"
+        },
+        {
+            "file": "lib\\Server\\Clients.js",
+            "line": 89,
+            "description": "Sends a message to clients connected on a channel.",
+            "itemtype": "method",
+            "name": "messageToChannel",
+            "params": [
+                {
+                    "name": "channel",
+                    "description": "Channel to send message over.",
+                    "type": "String"
+                },
+                {
+                    "name": "event",
+                    "description": "Event to call.",
+                    "type": "String"
+                },
+                {
+                    "name": "params",
+                    "description": "An object to be emitted with the event.",
+                    "type": "Object"
+                }
+            ],
+            "class": "lib_Server_Clients",
+            "module": "lib",
+            "submodule": "lib_Server"
+        },
+        {
+            "file": "lib\\Server\\Clients.js",
+            "line": 102,
+            "description": "Sends a message to clients connected at least on one of specified channels.",
+            "itemtype": "method",
+            "name": "messageToChannels",
+            "params": [
+                {
+                    "name": "channels",
+                    "description": "Channels to send message over.",
+                    "type": "String"
+                },
+                {
+                    "name": "event",
+                    "description": "Event to call.",
+                    "type": "String"
+                },
+                {
+                    "name": "params",
+                    "description": "An object to be emitted with the event.",
+                    "type": "Object"
+                }
+            ],
+            "class": "lib_Server_Clients",
+            "module": "lib",
+            "submodule": "lib_Server"
         },
         {
             "file": "lib\\Server\\Entity.js",
@@ -1184,6 +1447,15 @@
             "module": "lib_Server"
         },
         {
+            "file": "lib\\Server\\Entity.js",
+            "line": 52,
+            "description": "Cause auto despawning if object is subscribed.",
+            "itemtype": "method",
+            "name": "selfDespawn",
+            "class": "lib_Server_Entity",
+            "module": "lib_Server"
+        },
+        {
             "file": "lib\\Server\\Factory.js",
             "line": 16,
             "description": "Store all entities.",
@@ -1217,7 +1489,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 39,
+            "line": 42,
             "description": "Generates a new uuid",
             "itemtype": "method",
             "name": "uuid",
@@ -1227,7 +1499,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 48,
+            "line": 51,
             "description": "Returns an entity by its uuid.",
             "params": [
                 {
@@ -1241,7 +1513,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 56,
+            "line": 59,
             "description": "Spawn an entitiy into the world, also auto trigger entity method.",
             "itemtype": "method",
             "name": "spawn",
@@ -1258,7 +1530,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 89,
+            "line": 87,
             "description": "Despawn an entitiy from the world, also auto trigger entity method.",
             "itemtype": "method",
             "name": "despawn",
@@ -1275,7 +1547,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 112,
+            "line": 105,
             "description": "Triggered once an entity changes a property, all subscribed clients should be informed!",
             "itemtype": "method",
             "name": "update",
@@ -1299,7 +1571,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 129,
+            "line": 116,
             "description": "Informs any clients I just joined.",
             "itemtype": "method",
             "name": "join",
@@ -1316,7 +1588,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 144,
+            "line": 125,
             "description": "Informs any clients I just joined.",
             "itemtype": "method",
             "name": "join",
@@ -1333,26 +1605,18 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 159,
-            "description": "Store all replicators.",
-            "itemtype": "property",
-            "name": "replicators",
-            "default": "[]",
-            "class": "lib_Server_Factory",
-            "module": "lib",
-            "submodule": "lib_Server"
-        },
-        {
-            "file": "lib\\Server\\Factory.js",
-            "line": 166,
-            "description": "Subscribe a replicator to the factory.",
+            "line": 134,
+            "description": "Trigger for client joined a channel",
             "itemtype": "method",
-            "name": "subscribe",
+            "name": "clients_join",
             "params": [
                 {
-                    "name": "socket",
-                    "description": "A Joinable object wich contains any socket.",
-                    "type": "Socket"
+                    "name": "client",
+                    "description": ""
+                },
+                {
+                    "name": "channel",
+                    "description": ""
                 }
             ],
             "class": "lib_Server_Factory",
@@ -1361,15 +1625,18 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 182,
-            "description": "Describe a replicator from the factory.",
+            "line": 140,
+            "description": "Trigger for client leaved a channel",
             "itemtype": "method",
-            "name": "unscribe",
+            "name": "clients_leave",
             "params": [
                 {
-                    "name": "socket",
-                    "description": "A Joinable object wich contains any socket.",
-                    "type": "Socket"
+                    "name": "client",
+                    "description": ""
+                },
+                {
+                    "name": "channel",
+                    "description": ""
                 }
             ],
             "class": "lib_Server_Factory",
@@ -1378,7 +1645,7 @@
         },
         {
             "file": "lib\\Server\\Factory.js",
-            "line": 197,
+            "line": 150,
             "description": "Resync clients entities.",
             "itemtype": "method",
             "name": "sync",
@@ -1401,6 +1668,28 @@
             "class": "lib_Server_Player",
             "module": "lib",
             "submodule": "lib_Server"
+        },
+        {
+            "file": "lib\\Shared\\Physic\\Body.js",
+            "line": 13,
+            "description": "Left coordinate of the BB.",
+            "itemtype": "property",
+            "name": "left",
+            "default": "0",
+            "class": "lib_Shared_Physics_Body",
+            "module": "lib",
+            "submodule": "lib_Shared"
+        },
+        {
+            "file": "lib\\Shared\\Physic\\Body.js",
+            "line": 20,
+            "description": "Right coordinate of the BB.",
+            "itemtype": "property",
+            "name": "right",
+            "default": "0",
+            "class": "lib_Shared_Physics_Body",
+            "module": "lib",
+            "submodule": "lib_Shared"
         },
         {
             "file": "lib\\Shared\\Joinable.js",
@@ -1533,7 +1822,7 @@
         },
         {
             "message": "Missing item type\nReturns an entity by its uuid.",
-            "line": " lib\\Server\\Factory.js:48"
+            "line": " lib\\Server\\Factory.js:51"
         }
     ]
 }

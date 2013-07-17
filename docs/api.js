@@ -14,14 +14,17 @@ YUI.add("yuidoc-meta", function(Y) {
         "lib_Client_Scene",
         "lib_Client_SceneManager",
         "lib_Client_TiledMapBuilder",
+        "lib_Server_Clients",
         "lib_Server_Entity",
         "lib_Server_Factory",
-        "lib_Server_Player"
+        "lib_Server_Player",
+        "lib_Shared_Physics_Body"
     ],
     "modules": [
         "lib",
         "lib_Client",
-        "lib_Server"
+        "lib_Server",
+        "lib_Shared"
     ],
     "allModules": [
         {
@@ -38,6 +41,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "lib_Server",
             "name": "lib_Server",
             "description": "A server-side entity."
+        },
+        {
+            "displayName": "lib_Shared",
+            "name": "lib_Shared",
+            "description": "Represents a physic body."
         }
     ]
 } };

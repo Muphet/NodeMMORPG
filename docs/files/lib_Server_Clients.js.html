@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib\Client\Preloader.js - NodeMMORPG</title>
+    <title>lib\Server\Clients.js - NodeMMORPG</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -124,111 +124,134 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib\Client\Preloader.js</h1>
+                        <h1 class="file-heading">File: lib\Server\Clients.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define([&quot;lib&#x2F;Shared&#x2F;Logger&quot;], function(Logger){
+define([&#x27;lib&#x2F;Shared&#x2F;Logger&#x27;,&#x27;underscore&#x27;,&#x27;backbone&#x27;], function(Logger, _, Backbone){
 	&#x2F;**
-	* Preloads any image.
+	* Manage connected clients.
 	* @module lib
-	* @submodule lib_Client
-	* @class lib_Client_Preloader
+	* @submodule lib_Server
+	* @class lib_Server_Clients
 	* @constructor
 	**&#x2F;
-	function Preloader(){
-		this.initialize();
+	function Clients(){
+		
+	}	
+	var p = Clients.prototype;
+	_.extend(p, Backbone.Events);
+	
+	&#x2F;**
+	* Store all clients.
+	* @property clients
+	* @default []
+	**&#x2F;
+	p.clients = [];
+	
+	&#x2F;**
+	* Last used uuid, like a AutoIncrement generator.
+	* @property _uuid
+	* @default 0
+	**&#x2F;
+	p._uuid = 0;
+	
+	&#x2F;**
+	* Generates a new uuid
+	* @method uuid
+	**&#x2F;
+	p.uuid = function(){
+		this._uuid++;
+		return &#x27;c&#x27;+this._uuid;
+	};
+	
+	&#x2F;**
+	* Subscribe a client to the Clients.
+	* @method subscribe
+	* @param socket {Socket} A Joinable object wich contains any socket.
+	**&#x2F;
+	p.subscribe = function(client){
+		if(typeof(client.uuid) === &quot;undefined&quot; || client.uuid == null){
+			client.uuid = this.uuid();
+		}
+		Logger.getLogger(&#x27;Clients&#x27;).debug(&#x27;#&#x27;+client.uuid+&#x27; Client subscribed.&#x27;);
+		client.trigger(&#x27;subscribe&#x27;);
+		this.clients.push(client);
+		this.trigger(&#x27;subscribe&#x27;, client);
+		this.listenTo(client, &#x27;join&#x27;, this.join);
+		this.listenTo(client, &#x27;leave&#x27;, this.leave);
+		if(typeof(client.socket) != &quot;undefined&quot;){
+			client.socket.emit(&#x27;clients:subscribed&#x27;);
+		}
+	};
+	
+	&#x2F;**
+	* Unscribe a client from the Clients.
+	* @method unscribe
+	* @param socket {Socket} A Joinable object wich contains any socket.
+	**&#x2F;
+	p.unscribe = function(client){
+		Logger.getLogger(&#x27;Clients&#x27;).debug(&#x27;#&#x27;+client.uuid+&#x27; Client unscribed.&#x27;);
+		this.clients = _.without(this.clients, client);
+		client.trigger(&#x27;unscribe&#x27;);
+		this.trigger(&#x27;unscribe&#x27;, client);
+		this.stopListening(client);
+		if(typeof(client.socket) != &quot;undefined&quot;){
+			client.socket.emit(&#x27;clients:unscribed&#x27;);
+		}
 	}
 	
-	var p = Preloader.prototype;
-	
 	&#x2F;**
-	* @property entries
+	* Sends a message to clients filtering on the fn.
+	* @method message
+	* @param fn {Function} A filtering function that returns true if element is correct.
+	* @param event {String} Event to call.
+	* @param params {Object} An object to be emitted with the event.
 	**&#x2F;
-	p.entries = {};
-	
-	&#x2F;**
-	* Loaded entries count.
-	* @property loaded
-	**&#x2F;
-	p._loaded = 0;
-	
-	&#x2F;**
-	* @method initialize
-	* @protected
-	**&#x2F;
-	p.initialize = function(){
-		this.entries = {};
+	p.message = function(fn, event, params){
+		_.each(_.filter(this.clients, fn), function(e){
+			if(typeof(e.socket) != &quot;undefined&quot;){
+				e.socket.emit(event, params);
+			}
+		});
 	};
 	
 	&#x2F;**
-	* Returns an Image object of preloaded image.
-	* @method get
-	* @param namespace {String} Preloaded image namespace to get
+	* Sends a message to clients connected on a channel.
+	* @method messageToChannel
+	* @param channel {String} Channel to send message over.
+	* @param event {String} Event to call.
+	* @param params {Object} An object to be emitted with the event.
 	**&#x2F;
-	p.get = function(namespace){
-		return this.entries[namespace] || null;
+	p.messageToChannel = function(channel, event, params){
+		return this.message(function(e){
+			return e.in(channel);
+		}, event, params);
 	};
 	
 	&#x2F;**
-	* Add new Image entries to load.
-	* @method append
-	* @param namespace {String} Namespace for image.
-	* @param src {String} URL of image to preload.
+	* Sends a message to clients connected at least on one of specified channels.
+	* @method messageToChannels
+	* @param channels {String} Channels to send message over.
+	* @param event {String} Event to call.
+	* @param params {Object} An object to be emitted with the event.
 	**&#x2F;
-	p.append = function(namespace, src){
-		Logger.getLogger(&quot;Preloader&quot;).debug(&quot;New [&quot;+namespace+&quot;] resource using &quot;+src);
-		var i = new Image();
-		i.src = src;
-		this.entries[namespace] = i;
-		var that = this;
-		i.onLoad = function(){
-			that._loaded++;
-		};
+	p.messageToChannels = function(channels, event, params){
+		return this.message(function(e){
+			return e.inAny(channels);
+		}, event, params);
 	};
 	
-	&#x2F;**
-	* Preloads a lot of resources.
-	* @method appendManifest
-	* @param manifest {Object} A dictionary of namespaces and src.
-	**&#x2F;
-	p.appendManifest = function(manifest){
-		for(var namespace in manifest){
-			this.append(namespace, manifest[namespace]);
-		}
+	p.join = function(client, channel){
+		Logger.getLogger(&#x27;Clients&#x27;).debug(&#x27;#&#x27;+client.uuid+&#x27; Client joined &#x27;+channel);
+		this.trigger(&#x27;clients:join&#x27;, client, channel);
+	};
+	p.leave = function(client, channel){
+		Logger.getLogger(&#x27;Clients&#x27;).debug(&#x27;#&#x27;+client.uuid+&#x27; Client leave &#x27;+channel);
+		this.trigger(&#x27;clients:leave&#x27;, client, channel);
 	};
 	
-	&#x2F;**
-	* Get current loading percentage, or false on fully loaded.
-	* @method getPercentage
-	**&#x2F;
-	p.getPercentage = function(){
-		if(this._loaded == this.entries.length){
-			return false;
-		}
-		if(this._loaded == 0){
-			return 0;
-		}
-		return Math.floor(this._loaded&#x2F;this.entries.length);
-	};
-	
-	&#x2F;**
-	* Calls a function when all is preloaded.
-	* @method loaded
-	* @param fn {Function} Function to be called after loading succeded.
-	**&#x2F;
-	p.loaded = function(fn){
-		var that = this;
-		if(this.getPercentage() == false){
-			fn();
-		}else{
-			setTimeout(function(){
-				that.loaded(fn);
-			},20);
-		}
-	};
-	
-	return new Preloader();
+	return new Clients();
 });
     </pre>
 </div>
